@@ -12,9 +12,9 @@ export const HomeTemplate = (props) => {
       render={(propsRoute) => {
         return (
           <Fragment>
-            <HeaderComponent />
+            <HeaderComponent {...propsRoute} />
             <Component {...propsRoute} />
-            <FooterComponent />
+            <FooterComponent {...propsRoute} />
           </Fragment>
         );
       }}

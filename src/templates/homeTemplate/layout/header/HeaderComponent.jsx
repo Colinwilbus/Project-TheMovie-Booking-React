@@ -1,8 +1,9 @@
 import React from "react";
 import "./HeaderStyle.scss";
 import logo from "../../../../assets/img/logo_2.png";
+import { NavLink } from "react-router-dom";
 
-export default function HeaderComponent() {
+export default function HeaderComponent(props) {
   return (
     <header>
       <div className="header__content">
@@ -16,9 +17,9 @@ export default function HeaderComponent() {
         </div>
         <div className="header__bot ">
           <nav className="navbar navbar-expand-md  p-0 ">
-            <a className="navbar-brand" href="./index.html">
+            <NavLink exact className="navbar-brand" to="/home">
               <img src={logo} alt="" />
-            </a>
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -34,25 +35,44 @@ export default function HeaderComponent() {
             </button>
             <div className="collapse navbar-collapse" id="navbarMovie">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">
+                <li className="nav-item ">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active__Link"
+                    to="/"
+                  >
                     HOME <span className="sr-only">(current)</span>
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    WHAT'S ON
-                  </a>
+                  <NavLink
+                    exact
+                    className="nav-link"
+                    activeClassName="active__Link"
+                    to="/movie"
+                  >
+                    MOVIE
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    SHORTCODES
-                  </a>
+                  <NavLink
+                    exact
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/booking"
+                  >
+                    BOOKING
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    CONTACT
-                  </a>
+                  <NavLink
+                    exact
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/comingSoon"
+                  >
+                    COMING SOON
+                  </NavLink>
                 </li>
               </ul>
             </div>

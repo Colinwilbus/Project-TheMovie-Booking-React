@@ -47,17 +47,17 @@ const ComingSoonComponent = (props) => {
             <div className="row mt-5 ">
               <div className=" col-12 col-md-6 comingSoon__text">
                 <p>DRAMA, THRILLER</p>
-                <h3>Deepwater Horizon</h3>
+                <h3>{item.tenPhim}</h3>
                 <div className="comingSoon__star">
                   <span>
                     <i className="fa fa-calendar-alt" />
-                    30 September, 2017
+                    {moment(item.ngayKhoiChieu).format("DD/MM/YYYY")}
                   </span>
                 </div>
                 <p>
-                  A dramatization of the April 2010 disaster, when the offshore
-                  drilling rig Deepwater Horizon exploded and created the worst
-                  oil spill in U.S. history.
+                  {item.moTa.length > 150
+                    ? item.moTa.slice(0, 150) + "..."
+                    : item.moTa}
                 </p>
                 <a href="#">
                   MORE INFO <i className="fa fa-angle-right" />
@@ -104,7 +104,9 @@ const ComingSoonComponent = (props) => {
     );
   };
   return (
-    <section className="comingSoon ">{renderMovieListComingSoon()}</section>
+    <section className="comingSoon " id="comingSoonId">
+      {renderMovieListComingSoon()}
+    </section>
   );
 };
 
