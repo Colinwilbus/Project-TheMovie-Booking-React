@@ -1,0 +1,8 @@
+.myContact .myContact__content p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.myContact .myContact__content h3 {
+  font-size: 3rem;
+  color: #ec7632cb;
+}

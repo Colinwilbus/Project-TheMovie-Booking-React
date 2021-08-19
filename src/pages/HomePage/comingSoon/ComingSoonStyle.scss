@@ -1,0 +1,219 @@
+.comingSoon {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.938);
+  width: 100%;
+  overflow: hidden;
+  .comingSoon__content {
+    .comingSoon__detail {
+      .slick-slider {
+        .slick-list {
+          .slick-track {
+            .slick-slide {
+              .comingSoon__Slider {
+                background-color: rgba(0, 0, 0, 0.842);
+                color: white;
+                position: relative;
+                .comingSoon__bg {
+                  img {
+                    width: 100%;
+                    height: 100%;
+                    background-position: top;
+                    background-size: cover;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                  }
+                }
+                .comingSoon__banner {
+                  padding: 50px 10px;
+                  @media screen and(min-width: 992px) {
+                    width: 100%;
+                    padding-left: 100px;
+                    padding-right: 100px;
+                    margin-left: auto;
+                    margin-right: auto;
+                  }
+                  h2 {
+                    font-size: 1.2rem;
+                    color: white;
+                    padding: 30px 0 20px;
+                    border-bottom: 1px solid gray;
+                    position: relative;
+                    letter-spacing: 1px;
+                    &::after {
+                      content: "";
+                      width: 11%;
+                      height: 4px;
+                      background: linear-gradient(to right, #fbbd61, #ec7532);
+                      display: block;
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                    }
+                  }
+                  .row {
+                    .comingSoon__text {
+                      p {
+                        padding: 20px 100px 5px 0;
+                        &:first-of-type {
+                          font-size: 0.9rem;
+                          color: #ec7532;
+                          letter-spacing: 2px;
+                          margin: 30px 0 0;
+                        }
+                      }
+                      h3 {
+                        font-weight: 300;
+                        font-size: 2rem;
+                        color: white;
+                      }
+                      .comingSoon__star {
+                        span {
+                          font-size: 0.9rem;
+                          i {
+                            font-size: 0.7rem;
+                          }
+                        }
+                      }
+                      a {
+                        text-decoration: none;
+                        color: #ec7532;
+                        letter-spacing: 3px;
+                        font-size: 0.8rem;
+                        i {
+                        }
+                      }
+                    }
+                    .comingSoon__img {
+                      img {
+                        box-shadow: 0 0 100px black;
+                        width: 34rem;
+                        height: 18rem;
+                        object-fit: cover;
+                        opacity: 0.6;
+                      }
+                      .comingSoon__play {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        i {
+                          width: 80px;
+                          height: 80px;
+                          border-radius: 50%;
+                          text-align: center;
+                          line-height: 80px;
+                          border: 2px solid #ec7532;
+                          font-size: 1.4rem;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .comingSoon__carousel {
+      padding: 50px 0;
+      .comingSoon__slick {
+        .slick-slider {
+          .slick-list {
+            .slick-track {
+              .slick-slide {
+                .comingSoon__item {
+                  text-align: center;
+                  color: white;
+                  opacity: 1;
+                  position: relative;
+                  padding: 0 15px;
+                  width: 20%;
+                  height: 250px;
+                  .item__img {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    &::after {
+                      content: "";
+                      width: 100%;
+                      height: 100%;
+                      display: block;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      background-color: black;
+                      opacity: 0.6;
+                      transition: all 0.5s;
+                    }
+                    img {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      border-radius: 5px;
+                    }
+                  }
+                  .item__text {
+                    opacity: 0.4;
+                    transition: all 0.5s;
+                    h5 {
+                      font-size: 1rem;
+                      margin: 20px 0 0;
+                      color: white;
+                    }
+                    p {
+                      font-size: 0.8rem;
+                      color: gray;
+                    }
+                  }
+                  &:hover .item__text {
+                    opacity: 1;
+                  }
+                  &:hover .item__img::after {
+                    opacity: 0;
+                  }
+                }
+              }
+              .slick-current {
+                .comingSoon__item {
+                  .item__img {
+                    &::after {
+                      opacity: 0;
+                    }
+                  }
+                  .item__text {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+          .slick-arrow {
+            display: none;
+            @media screen and(min-width: 992px) {
+              color: #ec7532;
+              font-size: 2.2rem;
+              position: absolute;
+            }
+            &::before {
+              display: none;
+            }
+          }
+          .slick-next {
+            top: 40%;
+            z-index: 10;
+            right: -3%;
+          }
+          .slick-prev {
+            top: 40%;
+            z-index: 10;
+            left: -3%;
+          }
+        }
+      }
+    }
+  }
+}
