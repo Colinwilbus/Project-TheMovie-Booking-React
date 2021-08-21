@@ -1,40 +1,35 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./FooterStyle.scss";
 
 export default function FooterComponent() {
   return (
     <footer>
-      <div className="footer__content container">
+      <div className="footer__content">
         <div className="footer__top">
           <div className="row">
             <div className="col-3">
               <h3>GET IN TOUCH</h3>
               <ul>
                 <li>
-                  <a href="#">FAQs</a>
+                  <NavLink to="/">FAQs</NavLink>
                 </li>
                 <li>
-                  <a href="#">Give us feedback</a>
+                  <NavLink to="/">Give us feedback</NavLink>
                 </li>
                 <li>
-                  <a href="#">Contact us</a>
+                  <NavLink to="/">Contact us</NavLink>
                 </li>
               </ul>
             </div>
             <div className="col-3">
-              <h3>ABOUT MOVIE STAR</h3>
+              <h3>ABOUT B.MOVIE</h3>
               <ul>
                 <li>
-                  <a href="#">About us</a>
+                  <NavLink to="/">About us</NavLink>
                 </li>
                 <li>
-                  <a href="#">Find us</a>
-                </li>
-                <li>
-                  <a href="#">Schedule</a>
-                </li>
-                <li>
-                  <a href="#">News</a>
+                  <NavLink to="/">Find us</NavLink>
                 </li>
               </ul>
             </div>
@@ -42,13 +37,10 @@ export default function FooterComponent() {
               <h3>LEGAL STUFF</h3>
               <ul>
                 <li>
-                  <a href="#">Terms &amp; Conditions</a>
+                  <NavLink to="/">Terms &amp; Conditions</NavLink>
                 </li>
                 <li>
-                  <a href="#">Privacy policy</a>
-                </li>
-                <li>
-                  <a href="#">Cookie policy</a>
+                  <NavLink to="/">Privacy policy</NavLink>
                 </li>
               </ul>
             </div>
@@ -56,29 +48,29 @@ export default function FooterComponent() {
               <h3>CONNECT WITH US</h3>
               <ul>
                 <li>
-                  <a href="#">
+                  <NavLink to="/">
                     <i className="fab fa-facebook-f" />
                     <span> Facebook</span>
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a href="#">
+                  <NavLink to="/">
                     <i className="fab fa-twitter" />
                     <span> Twitter</span>
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a href="#">
+                  <NavLink to="/">
                     <i className="fab fa-google-plus-g" />
                     <span> Google +</span>
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </div>
         </div>
         <div className="footer__bot">
-          <p>2017 © Movie Star / Web design by Klever media</p>
+          <p>2021 © B.Movie | Booking Ticket Website | By Colin_Wilbus</p>
         </div>
       </div>
     </footer>

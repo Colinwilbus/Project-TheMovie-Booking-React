@@ -1,15 +1,17 @@
 import React from "react";
 import "./FilmStyle.scss";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 export default function FilmComponent(props) {
   const { item } = props;
+
   return (
     <div className="showFilm__item">
       <div className="showFilm__img">
         <div className="showFilm__overlay">
           <i className="fa fa-play showFilm__play" />
-          <a href="#">VIEW DETAILS</a>
+          <NavLink to={`/movie-detail/${item.maPhim}`}>VIEW DETAILS</NavLink>
           <p>{moment(item.ngayKhoiChieu).format("dddd-DD/MM/yyyy")}</p>
           <div className="showFilm__star">
             <i className="fa fa-star star__check" />
@@ -24,9 +26,9 @@ export default function FilmComponent(props) {
       <div className="showFilm__text">
         <p>{item.tenPhim}</p>
         <div className="showFilm__booking">
-          <button>
+          <NavLink to={`/movie-detail/${item.maPhim}`}>
             <span>BOOKING</span>
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>

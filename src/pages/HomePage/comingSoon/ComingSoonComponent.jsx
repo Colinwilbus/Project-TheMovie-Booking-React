@@ -3,6 +3,7 @@ import { settingCarousel, settingsSliderNav } from "./ComingSoonSlickSetting";
 import "./ComingSoonStyle.scss";
 import Slider from "react-slick";
 import moment from "moment";
+import bn from "../../../assets/img/slide-5.jpg";
 
 const ComingSoonComponent = (props) => {
   const { movieList } = props;
@@ -40,7 +41,7 @@ const ComingSoonComponent = (props) => {
       bannerArray.push(
         <div className="comingSoon__Slider " key={index}>
           <div className="comingSoon__bg">
-            <img src="./img/slide-1.png" alt="" />
+            <img src={bn} alt="" />
           </div>
           <div className="comingSoon__banner ">
             <h2>COMING SOON</h2>
@@ -48,7 +49,7 @@ const ComingSoonComponent = (props) => {
               <div className=" col-12 col-md-6 comingSoon__text">
                 <p>DRAMA, THRILLER</p>
                 <h3>{item.tenPhim}</h3>
-                <div className="comingSoon__star">
+                <div className="comingSoon__time">
                   <span>
                     <i className="fa fa-calendar-alt" />
                     {moment(item.ngayKhoiChieu).format("DD/MM/YYYY")}
@@ -80,7 +81,12 @@ const ComingSoonComponent = (props) => {
     });
     return (
       <div className="comingSoon__content">
-        <div className="comingSoon__detail">
+        <div
+          className="comingSoon__detail"
+          data-aos="zoom-out"
+          data-aos-once="true"
+          id="comingSoon__detailId"
+        >
           <Slider
             asNavFor={state.nav2}
             ref={(slider) => (slider1.current = slider)}
@@ -90,7 +96,13 @@ const ComingSoonComponent = (props) => {
           </Slider>
         </div>
         <div className="comingSoon__carousel container">
-          <div className="comingSoon__slick">
+          <div
+            className="comingSoon__slick"
+            data-aos="fade-down"
+            data-aos-once="true"
+            data-aos-anchor="#comingSoon__detailId"
+            data-aos-delay="500"
+          >
             <Slider
               asNavFor={state.nav1}
               ref={(slider) => (slider2.current = slider)}

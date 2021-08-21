@@ -8,6 +8,8 @@ export class MovieManagerService extends baseService {
 
   getMovieListApi = () =>
     this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
+  getMovieDetailApi = (idFilm) =>
+    this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
 }
 
 export const movieManagerService = new MovieManagerService();

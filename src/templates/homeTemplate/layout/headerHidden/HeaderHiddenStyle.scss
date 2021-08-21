@@ -1,34 +1,13 @@
-header {
-  position: absolute;
-  z-index: 999;
+.navbarhidden {
+  background-color: #101010e3;
+  position: fixed;
   width: 100%;
-
-  .header__content {
-    text-align: right;
-    .header__top {
-      padding: 20px 10px 0;
-      @media screen and(min-width: 992px) {
-        width: 100%;
-        padding-left: 100px;
-        padding-right: 100px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .row {
-        .col-12 {
-          a {
-            text-decoration: none;
-            color: white;
-            padding: 0 15px;
-            font-size: 0.9rem;
-            &:first-of-type {
-              border-right: 1px dotted white;
-            }
-          }
-        }
-      }
-    }
-    .header__bot {
+  transition: all 0.5s;
+  z-index: 999;
+  top: -100px;
+  display: none;
+  .navbarhidden__overlay {
+    .navbarhidden__content {
       @media screen and(min-width: 992px) {
         width: 100%;
         padding-left: 100px;
@@ -42,9 +21,9 @@ header {
           margin-left: 10px;
 
           img {
-            width: 50%;
+            width: 40%;
             @media screen and (min-width: 1200px) {
-              width: 70%;
+              width: 40%;
             }
           }
         }
@@ -109,5 +88,19 @@ header {
         }
       }
     }
+  }
+}
+.navbarhidden__active {
+  animation: hiddentHeaderAnimation 1s linear 0s;
+  top: 0;
+  display: block;
+}
+
+@keyframes hiddentHeaderAnimation {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
   }
 }

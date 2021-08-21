@@ -1,24 +1,36 @@
-import React from "react";
-import "./HeaderStyle.scss";
-import logo from "../../../../assets/img/logo_2.png";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-scroll";
+import "./HeaderHiddenStyle.scss";
+import logo from "../../../../assets/img/logo_2.png";
 
-export default function HeaderComponent(props) {
+export default function HeaderHidenComponent() {
+  const [state, setState] = useState({ navBar: false });
+
+  const changeHeader = () => {
+    if (window.scrollY >= 150) {
+      setState({
+        ...state,
+        navBar: true,
+      });
+    } else {
+      setState({
+        ...state,
+        navBar: false,
+      });
+    }
+  };
+  window.addEventListener("scroll", changeHeader);
   return (
-    <header data-aos="zoom-out" data-aos-once="true">
-      <div className="header__content">
-        <div className="header__top">
-          <div className="row">
-            <div className="col-12">
-              <NavLink to="/login">Sign In</NavLink>
-              <NavLink to="/register">Sign Up</NavLink>
-            </div>
-          </div>
-        </div>
-        <div className="header__bot ">
+    <section
+      className={
+        state.navBar ? "navbarhidden navbarhidden__active" : "navbarhidden "
+      }
+      id="navbarhiddenid"
+    >
+      <div className="navbarhidden__overlay">
+        <div className="navbarhidden__content ">
           <nav className="navbar navbar-expand-md  p-0 ">
-            <NavLink className="navbar-brand" to="/home">
+            <NavLink exact className="navbar-brand" to="/home">
               <img src={logo} alt="" />
             </NavLink>
             <button
@@ -46,43 +58,40 @@ export default function HeaderComponent(props) {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink
+                    exact
                     className="nav-link"
-                    activeClass="active__Link"
-                    smooth="true"
-                    duration="500"
-                    to="showFilmId"
+                    activeClassName="active__Link"
+                    to="/movie"
                   >
                     MOVIE
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink
+                    exact
                     className="nav-link"
-                    activeClass="active__Link"
-                    smooth="true"
-                    duration="500"
-                    to="showTimeId"
+                    activeClassName="active"
+                    to="/booking"
                   >
                     BOOKING
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink
+                    exact
                     className="nav-link"
-                    activeClass="active__Link"
-                    to="comingSoonId"
-                    smooth="true"
-                    duration="500"
+                    activeClassName="active"
+                    to="/home"
                   >
                     COMING SOON
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </nav>
         </div>
       </div>
-    </header>
+    </section>
   );
 }

@@ -1,0 +1,36 @@
+import React from "react";
+import "./BannerStyle.scss";
+import { CustomCard } from "@tsamantanis/react-glassmorphism";
+import cr2 from "../../../assets/img/cr-2.jpg";
+export default function BannerComponent(props) {
+  const { movieDetail } = props;
+  return (
+    <section className="myBanner">
+      <div
+        data-aos="zoom-out"
+        className="myBanner__img"
+        style={{ backgroundImage: `url(${movieDetail.hinhAnh})` }}
+      >
+        <CustomCard effectColor="#000" blur={10}>
+          <div className="myBanner__content">
+            <h5>{movieDetail.tenPhim}</h5>
+            <p>
+              {movieDetail.moTa.length > 250
+                ? movieDetail.moTa.slice(0, 250) + "..."
+                : movieDetail.moTa}
+            </p>
+            <div className="myBanner__btn">
+              <button>
+                <span>
+                  <i className="fa fa-play" />
+                  PLAY TRAILER
+                </span>
+              </button>
+              <span className="myBanner__score">{`${movieDetail.danhGia}/10`}</span>
+            </div>
+          </div>
+        </CustomCard>
+      </div>
+    </section>
+  );
+}

@@ -9,7 +9,11 @@ import cr4 from "../../../assets/img/cr-4.jpg";
 export default function CarouselComponent() {
   return (
     <section className="myCarousel">
-      <div className="myCarousel__content ">
+      <div
+        className="myCarousel__content "
+        data-aos="zoom-out"
+        data-aos-once="true"
+      >
         <div
           id="carouselMovie"
           className="carousel slide carousel-fade "
@@ -32,11 +36,12 @@ export default function CarouselComponent() {
               <div className="carousel__overlay">
                 <div className="carousel-caption  d-md-block ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>End of the World: Part II</h5>
+                  <h5>Sons of Anarchy</h5>
                   <p>
-                    Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem consuetudium lectorum. Mirum est notare quam
-                    littera gothica, quam nunc putamu.
+                    Sons of Anarchy là một bộ phim truyền hình tội phạm hành
+                    động của Mỹ do Kurt Sutter tạo ra, được phát sóng từ năm
+                    2008 đến năm 2014. Phim kể về cuộc sống của một câu lạc bộ
+                    mô tô ...
                   </p>
                   <span className="carousel__span">PG</span>
                   <button>
@@ -53,11 +58,11 @@ export default function CarouselComponent() {
               <div className="carousel__overlay">
                 <div className="carousel-caption  d-md-block ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>End of the World: Part II</h5>
+                  <h5>John Wick</h5>
                   <p>
-                    Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem consuetudium lectorum. Mirum est notare quam
-                    littera gothica, quam nunc putamu.
+                    John Wick là một loạt tác phẩm giả tưởng thuộc thể loại hành
+                    động giật gân của Mỹ, được tạo ra bởi Derek Kolstad và thuộc
+                    sở hữu của Summit Entertainment...
                   </p>
                   <span className="carousel__span">PG</span>
                   <button>
@@ -74,11 +79,11 @@ export default function CarouselComponent() {
               <div className="carousel__overlay">
                 <div className="carousel-caption  d-md-block ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>End of the World: Part II</h5>
+                  <h5>Ghost Rider II</h5>
                   <p>
-                    Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem consuetudium lectorum. Mirum est notare quam
-                    littera gothica, quam nunc putamu.
+                    Ghost Rider là một bộ phim hành động - kinh dị của Mỹ phát
+                    hành năm 2007, dựa trên nhân vật văn học trong tác phẩm hoạt
+                    hình ăn khách Ghost Rider của hãng Marvel Comics...
                   </p>
                   <span className="carousel__span">PG</span>
                   <button>
@@ -95,11 +100,11 @@ export default function CarouselComponent() {
               <div className="carousel__overlay">
                 <div className="carousel-caption   ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>End of the World: Part II</h5>
+                  <h5>Hobb and Shaw</h5>
                   <p>
-                    Claritas est etiam processus dynamicus, qui sequitur
-                    mutationem consuetudium lectorum. Mirum est notare quam
-                    littera gothica, quam nunc putamu.
+                    Câu chuyện giữa hai người tưởng như không đội trời chung là
+                    Đặc vụ An ninh Ngoại giao Mỹ Luke Hobbs và tên tội phạm đánh
+                    thuê khét tiếng Deckard Shaw ...
                   </p>
                   <span className="carousel__span">PG</span>
                   <button>

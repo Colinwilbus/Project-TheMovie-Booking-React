@@ -16,7 +16,7 @@ function SamplePrevArrow(props) {
   );
 }
 export const settings = {
-  infinite: true,
+  infinite: false,
   swipeToSlide: true,
   slidesToShow: 4,
   arrows: true,

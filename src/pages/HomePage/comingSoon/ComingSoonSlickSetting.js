@@ -26,6 +26,7 @@ export const settingsSliderNav = {
   swipeToSlide: true,
   dots: false,
   arrows: true,
+  infinite: false,
   focusOnSelect: true,
   centerMode: false,
   nextArrow: <SampleNextArrow />,

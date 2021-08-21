@@ -1,5 +1,4 @@
 import React from "react";
-import "antd/dist/antd.css";
 import { Tabs } from "antd";
 import "./ShowTime2Style.scss";
 import moment from "moment";
@@ -51,7 +50,13 @@ export default function ShowTime2Component(props) {
   const renderCinemaList = () =>
     cinemaList?.map((item, index) => (
       <TabPane tab={<img src={item.logo} />} key={index}>
-        <Tabs defaultActiveKey="0" tabPosition="left" onChange={callback}>
+        <Tabs
+          data-aos="fade-right"
+          data-aos-once="true"
+          defaultActiveKey="0"
+          tabPosition="left"
+          onChange={callback}
+        >
           {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => (
             <TabPane
               tab={
@@ -76,8 +81,12 @@ export default function ShowTime2Component(props) {
     console.log(key);
   }
   return (
-    <section className="showTime">
-      <div className="showTime__content">
+    <section className="showTime" id="showTimeId">
+      <div
+        className="showTime__content"
+        data-aos="fade-down"
+        data-aos-once="true"
+      >
         <div className="showTime__title">
           <h2>ALL CINEMAS</h2>
         </div>

@@ -4,6 +4,7 @@ import ComingSoonComponent from "./comingSoon/ComingSoonComponent";
 import ShowFilmComponent from "./showFilm/ShowFilmComponent";
 import ShowTime2Component from "./showTime/ShowTime2Component";
 import { useDispatch, useSelector } from "react-redux";
+import Aos from "aos";
 
 export default function HomePage() {
   const { movieList } = useSelector((state) => state.movieReducer);
@@ -11,6 +12,9 @@ export default function HomePage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    Aos.init({
+      duration: 1000,
+    });
     dispatch({
       type: "getMovieListApiAction",
     });

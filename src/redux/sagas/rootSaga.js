@@ -6,6 +6,7 @@ function* rootSaga() {
   yield all([
     movieSaga.getMovieListApiActionSaga(),
     cinemaSaga.getCinemaListApiActionSaga(),
+    movieSaga.getMovieDetailApiActionSaga(),
   ]);
 }
 export default rootSaga;

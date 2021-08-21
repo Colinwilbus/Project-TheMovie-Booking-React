@@ -5,6 +5,7 @@
   width: 100%;
   transition: all 0.5s;
   z-index: 999;
+  display: none;
 }
 .navbarhidden .navbar-brand img {
   width: 80%;

@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "font-Roboto" !important;
+}
+body {
+  overflow-x: hidden;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-Light.ttf");
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-Italic.ttf");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-LightItalic.ttf");
+  font-style: italic;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "font-Roboto";
+  src: url("../fonts/RobotoCondensed-BoldItalic.ttf");
+  font-style: italic;
+  font-weight: 700;
+}
