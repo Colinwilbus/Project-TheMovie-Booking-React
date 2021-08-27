@@ -3,15 +3,22 @@ import "./HeaderStyle.scss";
 import logo from "../../../../assets/img/logo_2.png";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
+import { useSelector } from "react-redux";
 
 export default function HeaderComponent(props) {
+  const { userLogin } = useSelector((state) => state.userReducer);
+  console.log(userLogin);
   return (
     <header data-aos="zoom-out" data-aos-once="true">
       <div className="header__content">
         <div className="header__top">
           <div className="row">
             <div className="col-12">
-              <NavLink to="/login">Sign In</NavLink>
+              {userLogin ? (
+                <NavLink to="/login">Sign In</NavLink>
+              ) : (
+                <NavLink to="">{userLogin.taiKhoan}</NavLink>
+              )}
               <NavLink to="/register">Sign Up</NavLink>
             </div>
           </div>

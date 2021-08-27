@@ -13,9 +13,9 @@ export default function BannerComponent(props) {
       >
         <CustomCard effectColor="#000" blur={10}>
           <div className="myBanner__content">
-            <h5>{movieDetail.tenPhim}</h5>
+            <h5>{movieDetail?.tenPhim}</h5>
             <p>
-              {movieDetail.moTa.length > 250
+              {movieDetail.moTa?.length > 250
                 ? movieDetail.moTa.slice(0, 250) + "..."
                 : movieDetail.moTa}
             </p>

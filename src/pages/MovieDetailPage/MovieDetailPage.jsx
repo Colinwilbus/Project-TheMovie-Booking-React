@@ -8,23 +8,22 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function MovieDetailPage(props) {
   const { id } = props.match.params;
-  console.log(id);
-  const { movieDetail } = useSelector((state) => state.movieReducer);
-  console.log(movieDetail);
+  const { showTimesFilm } = useSelector((state) => state.cinemaReducer);
+  console.log({ showTimesFilm });
   const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({
       duration: 1000,
     });
     dispatch({
-      type: "getMovieDetailAction",
+      type: "getShowTimeFilmApiAction",
       id,
     });
   }, []);
   return (
     <div>
-      <BannerComponent movieDetail={movieDetail} />
-      <ContentFilmComponent movieDetail={movieDetail} />
+      <BannerComponent movieDetail={showTimesFilm} />
+      <ContentFilmComponent movieDetail={showTimesFilm} />
     </div>
   );
 }

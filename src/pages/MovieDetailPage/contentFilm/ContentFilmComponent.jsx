@@ -2,13 +2,46 @@ import React from "react";
 import "./ContentFilmStyle.scss";
 import { Tabs } from "antd";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
 export default function ContentFilmComponent(props) {
   const { movieDetail } = props;
-  function callback(key) {
-    console.log(key);
-  }
+  console.log({ movieDetail });
+
+  const renderCinemaList = () =>
+    movieDetail.heThongRapChieu?.map((item, index) => (
+      <TabPane tab={<img src={item.logo} />} key={index}>
+        <div className="viewingTimes">
+          {item.cumRapChieu?.map((itemChild, index) => {
+            if (itemChild.lichChieuPhim) {
+              return (
+                <div className="viewingTimes__item" key={index}>
+                  <div className="viewingTimes__Cinema">
+                    <h6>{itemChild.tenCumRap}</h6>
+                  </div>
+                  <div className="viewingTimes__Detail">
+                    {itemChild.lichChieuPhim
+                      ?.slice(0, 10)
+                      .map((times, index) => (
+                        <NavLink
+                          to={`/check-out/${times.maLichChieu}`}
+                          key={index}
+                        >
+                          {moment(times.ngayChieuGioChieu).format("hh:mm A")}
+                        </NavLink>
+                      ))}
+                  </div>
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
+        ;
+      </TabPane>
+    ));
   return (
     <section className="contentFilm">
       <div className="contentFilm__content">
@@ -62,26 +95,7 @@ export default function ContentFilmComponent(props) {
               <h2>VIEWING TIMES</h2>
             </div>
             <div className="contentFilm__detail">
-              <Tabs defaultActiveKey="0" onChange={callback}>
-                <TabPane
-                  tab={<img src="https://picsum.photos/1200/300" />}
-                  key="0"
-                >
-                  Content of Tab Pane 1
-                </TabPane>
-                <TabPane
-                  tab={<img src="https://picsum.photos/1200/300" />}
-                  key="1"
-                >
-                  Content of Tab Pane 2
-                </TabPane>
-                <TabPane
-                  tab={<img src="https://picsum.photos/1200/300" />}
-                  key="3"
-                >
-                  Content of Tab Pane 1
-                </TabPane>
-              </Tabs>
+              <Tabs defaultActiveKey="0">{renderCinemaList()}</Tabs>
             </div>
           </div>
         </div>

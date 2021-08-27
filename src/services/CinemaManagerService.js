@@ -7,6 +7,12 @@ export class CinemaManagerService extends baseService {
   }
   getCinemaListApi = () =>
     this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`);
+
+  getShowTimesFilmApi = (idFilm) =>
+    this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${idFilm}`);
+
+  getShowTimesFilmCinemaApi = (idCinema) =>
+    this.get(`/api/QuanLyRap/LayThongTinHeThongRap?maHeThongRap=${idCinema}`);
 }
 
 export const cinemaManagerService = new CinemaManagerService();

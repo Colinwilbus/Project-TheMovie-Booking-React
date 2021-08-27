@@ -65,7 +65,7 @@ export default function ShowTime2Component(props) {
                     <img src={item.logo} />
                   </div>
                   <p>{itemChild.tenCumRap}</p>
-                  <p>{itemChild.diaChi.slice(0, 22) + "..."}</p>
+                  <p>{itemChild.diaChi}</p>
                 </div>
               }
               key={index}

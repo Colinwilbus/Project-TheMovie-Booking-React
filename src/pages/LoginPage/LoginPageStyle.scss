@@ -1,0 +1,95 @@
+.Login {
+  background-color: rgba(0, 0, 0, 0.474);
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 10px;
+  @media screen and(min-width: 576px) {
+    width: 60%;
+  }
+  @media screen and(min-width: 768px) {
+    width: 50%;
+  }
+  @media screen and(min-width: 768px) {
+    width: 40%;
+  }
+  @media screen and(min-width: 1200px) {
+    width: 30%;
+    height: 80%;
+  }
+  h3 {
+    font-weight: 400;
+    color: white;
+  }
+  a {
+    text-align: center;
+    img {
+      width: 70%;
+    }
+  }
+  .login__form {
+    width: 90%;
+
+    .ant-form#basic {
+      .ant-form-item {
+        justify-content: center;
+
+        .ant-form-item-label {
+          label {
+            color: white;
+          }
+        }
+        .ant-form-item-control {
+          margin: 0;
+          .ant-form-item-control-input {
+            .ant-form-item-control-input-content {
+              text-align: center;
+              .ant-btn {
+                padding: 0;
+                margin-top: 20px;
+                margin-left: 0 !important;
+                width: 80%;
+                height: 50px;
+                border-radius: 40px;
+                border: none;
+                background: linear-gradient(to right, #fbbd61, #ec7532);
+                letter-spacing: 3px;
+                font-size: 1.2rem;
+                color: white;
+                margin-left: 10px;
+                transition: all 0.5s;
+                overflow: hidden;
+                position: relative;
+                &::after {
+                  content: "";
+                  width: 0;
+                  height: 100%;
+                  position: absolute;
+                  bottom: 0;
+                  left: -15px;
+                  transform: skewX(30deg);
+                  background-color: #ec7532;
+                  transition: all 0.5s;
+                  z-index: 0;
+                }
+                &:hover::after {
+                  width: 140%;
+                }
+                span {
+                  position: relative;
+                  z-index: 1;
+                  i {
+                    margin-right: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
