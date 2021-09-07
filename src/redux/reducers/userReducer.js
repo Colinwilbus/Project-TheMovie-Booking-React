@@ -22,6 +22,11 @@ const userReducer = (state = stateDefault, action) => {
     case userType.POST_USER_INFO: {
       return { ...state, userLoginInfo: action.data };
     }
+    case userType.DEL_USER_LOGIN: {
+      localStorage.removeItem(USER_LOGIN);
+      localStorage.removeItem(TOKEN);
+      return { ...state, userLogin: {} };
+    }
     default:
       return { ...state };
   }

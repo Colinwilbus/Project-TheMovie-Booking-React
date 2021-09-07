@@ -5,11 +5,14 @@ import InfoBookingComponent from "./infoBooking/InfoBookingComponent";
 import "./CheckOutPageStyle.scss";
 import BookingChairComponent from "./bookingChair/BookingChairComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { connection } from "../..";
+import {
+  HIDE_LOADING,
+  DISLAY_LOADING,
+} from "../../redux/types/lazyLoadingType";
 
 export default function CheckoutPage(props) {
   const { id } = props.match.params;
-  const { listChair, listChoiceChair, listOtherSelectedChair } = useSelector(
+  const { listChair, listChoiceChair } = useSelector(
     (state) => state.bookingReducer
   );
   const { userLogin } = useSelector((state) => state.userReducer);
@@ -17,8 +20,8 @@ export default function CheckoutPage(props) {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    connection.on("loadDanhSachGheDaDat", (dSGheKhachDat) => {
-      console.log("dSGheKhachDat", dSGheKhachDat);
+    dispatch({
+      type: DISLAY_LOADING,
     });
     dispatch({
       type: "getListChairApiAction",
@@ -27,6 +30,11 @@ export default function CheckoutPage(props) {
     Aos.init({
       duration: 700,
     });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
   }, []);
   return (
     <section className="checkoutPage">
@@ -38,7 +46,6 @@ export default function CheckoutPage(props) {
           listChair={listChair}
           listChoiceChair={listChoiceChair}
           userLogin={userLogin}
-          listOtherSelectedChair={listOtherSelectedChair}
         />
         <InfoBookingComponent
           listChair={listChair}

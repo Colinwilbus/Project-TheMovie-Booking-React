@@ -41,7 +41,7 @@ const ComingSoonComponent = (props) => {
       bannerArray.push(
         <div className="comingSoon__Slider " key={index}>
           <div className="comingSoon__bg">
-            <img src={bn} alt="" />
+            <img src={bn} alt={bn} />
           </div>
           <div className="comingSoon__banner ">
             <h2>COMING SOON</h2>

@@ -8,6 +8,8 @@ function* rootSaga() {
   yield all([
     movieSaga.getMovieListApiActionSaga(),
     movieSaga.getMovieDetailApiActionSaga(),
+    movieSaga.postNewMovieApiActionSaga(),
+
     //-----//
     cinemaSaga.getCinemaListApiActionSaga(),
     cinemaSaga.getShowTimesFilmActionSaga(),
@@ -15,6 +17,8 @@ function* rootSaga() {
     //-----//
     userSaga.postUserLoginApiAcionSaga(),
     userSaga.postUserLoginInfoApiActionSaga(),
+    userSaga.postNewUserApiActionSaga(),
+
     //-----//
     bookingSaga.getListChairApiActionSaga(),
     bookingSaga.bookingTicketApiActionSaga(),

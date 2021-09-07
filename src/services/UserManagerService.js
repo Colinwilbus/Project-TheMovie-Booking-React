@@ -8,6 +8,8 @@ class UserManagerService extends baseService {
     this.post(`/api/QuanLyNguoiDung/DangNhap`, userLogin);
   postInfoUserLoginApi = (userAccount) =>
     this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`, userAccount);
+  postNewUserApi = (newUser) =>
+    this.post(`/api/QuanLyNguoiDung/DangKy`, newUser);
 }
 
 export const userManagerService = new UserManagerService();

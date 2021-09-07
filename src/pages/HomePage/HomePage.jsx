@@ -5,6 +5,10 @@ import ShowFilmComponent from "./showFilm/ShowFilmComponent";
 import ShowTime2Component from "./showTime/ShowTime2Component";
 import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
+import {
+  DISLAY_LOADING,
+  HIDE_LOADING,
+} from "../../redux/types/lazyLoadingType";
 
 export default function HomePage() {
   const { movieList } = useSelector((state) => state.movieReducer);
@@ -12,6 +16,9 @@ export default function HomePage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch({
+      type: DISLAY_LOADING,
+    });
     Aos.init({
       duration: 1000,
     });
@@ -21,6 +28,11 @@ export default function HomePage() {
     dispatch({
       type: "getCinemaListApiAction",
     });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
   }, []);
   return (
     <div>

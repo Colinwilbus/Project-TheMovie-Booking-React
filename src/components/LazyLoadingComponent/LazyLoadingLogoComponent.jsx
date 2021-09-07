@@ -13,32 +13,32 @@ export default function LazyLoadingLogoComponent(props) {
         <div className="lazyLogo">
           <div className="lazyLogo__detail row">
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
 
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
             <div className="col-4">
-              <img src={lzloading} alt="" />
+              <img src={lzloading} alt={lzloading} />
             </div>
           </div>
         </div>

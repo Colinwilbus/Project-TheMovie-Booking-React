@@ -1,10 +1,11 @@
 .headerCheckOut {
-  background-color: rgba(0, 0, 0, 0.249);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 999;
   width: 100%;
   padding: 10px 10px;
   position: fixed;
-  transition: all 0.5s;
+  animation: reHeaderCheckOut 1s 0s forwards;
+
   @media screen and(min-width: 992px) {
     width: 100%;
     padding-left: 100px;
@@ -89,5 +90,25 @@
         }
       }
     }
+  }
+}
+.headerCheckOut__Change {
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: changeHeaderCheckOut 1s 0s forwards;
+}
+@keyframes changeHeaderCheckOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes reHeaderCheckOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }

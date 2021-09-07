@@ -5,6 +5,10 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "moment";
 import _ from "lodash";
+import {
+  HIDE_LOADING,
+  DISLAY_LOADING,
+} from "../../redux/types/lazyLoadingType";
 export default function ProfilePage(props) {
   const { userLogin, userLoginInfo } = useSelector(
     (state) => state.userReducer
@@ -12,6 +16,9 @@ export default function ProfilePage(props) {
   console.log({ userLoginInfo });
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch({
+      type: DISLAY_LOADING,
+    });
     const userAccount = {
       taiKhoan: userLogin.taiKhoan,
     };
@@ -19,6 +26,11 @@ export default function ProfilePage(props) {
       type: "postUserLoginInfoApiAction",
       userAccount,
     });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
   }, []);
   const renderHistoryBooking = () =>
     _.reverse(_.sortBy(userLoginInfo.thongTinDatVe, "ngayDat")).map(
@@ -88,7 +100,7 @@ export default function ProfilePage(props) {
             <div className="col-2">
               <div className="profilePage__Home">
                 <NavLink to="/home">
-                  <i class="fa fa-angle-left"></i>
+                  <i className="fa fa-angle-left"></i>
                   <span>HOME</span>
                 </NavLink>
               </div>

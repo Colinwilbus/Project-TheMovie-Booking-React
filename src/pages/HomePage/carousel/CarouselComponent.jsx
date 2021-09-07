@@ -8,7 +8,7 @@ import cr4 from "../../../assets/img/cr-4.jpg";
 
 export default function CarouselComponent() {
   return (
-    <section className="myCarousel">
+    <section className="myCarousel" id="myCarouselId">
       <div
         className="myCarousel__content "
         data-aos="zoom-out"
@@ -30,9 +30,13 @@ export default function CarouselComponent() {
             <li data-target="#carouselMovie" data-slide-to={3} />
           </ol>
           <div className="carousel-inner">
-            <img src={scrollArrow} alt className="carousel__arrow" />
+            <img
+              src={scrollArrow}
+              alt={scrollArrow}
+              className="carousel__arrow"
+            />
             <div className="carousel-item active">
-              <img src={cr1} className="d-block w-100" alt="..." />
+              <img src={cr1} className="d-block w-100" alt={cr1} />
               <div className="carousel__overlay">
                 <div className="carousel-caption  d-md-block ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
@@ -54,7 +58,49 @@ export default function CarouselComponent() {
               </div>
             </div>
             <div className="carousel-item">
-              <img src={cr2} className="d-block w-100" alt="..." />
+              <img src={cr2} className="d-block w-100" alt={cr2} />
+              <div className="carousel__overlay">
+                <div className="carousel-caption  d-md-block ">
+                  <p>ACTION, ADVENTURE, FANTASY</p>
+                  <h5>Peaky Blinders</h5>
+                  <p>
+                    Peaky Blinders là một tổ chức băng đảng đường phố có địa bàn
+                    tại Birmingham của nước Anh, hoạt động từ cuối thế kỷ 19 đến
+                    sau Thế chiến thứ nhất...
+                  </p>
+                  <span className="carousel__span">PG</span>
+                  <button>
+                    <span>
+                      <i className="fa fa-play" />
+                      PLAY TRAILER
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img src={cr4} className="d-block w-100" alt={cr4} />
+              <div className="carousel__overlay">
+                <div className="carousel-caption   ">
+                  <p>ACTION, ADVENTURE, FANTASY</p>
+                  <h5>Legend</h5>
+                  <p>
+                    Legend (2015) là bộ phim hình sự giết người của Anh được
+                    phát hành vào năm 2015 do Brian Helgeland đạo diễn và biên
+                    kịch. Đây là bộ phim được chuyển thể...
+                  </p>
+                  <span className="carousel__span">PG</span>
+                  <button>
+                    <span>
+                      <i className="fa fa-play" />
+                      PLAY TRAILER
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img src={cr3} className="d-block w-100" alt={cr3} />
               <div className="carousel__overlay">
                 <div className="carousel-caption  d-md-block ">
                   <p>ACTION, ADVENTURE, FANTASY</p>
@@ -63,48 +109,6 @@ export default function CarouselComponent() {
                     John Wick là một loạt tác phẩm giả tưởng thuộc thể loại hành
                     động giật gân của Mỹ, được tạo ra bởi Derek Kolstad và thuộc
                     sở hữu của Summit Entertainment...
-                  </p>
-                  <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src={cr3} className="d-block w-100" alt="..." />
-              <div className="carousel__overlay">
-                <div className="carousel-caption  d-md-block ">
-                  <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>Ghost Rider II</h5>
-                  <p>
-                    Ghost Rider là một bộ phim hành động - kinh dị của Mỹ phát
-                    hành năm 2007, dựa trên nhân vật văn học trong tác phẩm hoạt
-                    hình ăn khách Ghost Rider của hãng Marvel Comics...
-                  </p>
-                  <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src={cr4} className="d-block w-100" alt="..." />
-              <div className="carousel__overlay">
-                <div className="carousel-caption   ">
-                  <p>ACTION, ADVENTURE, FANTASY</p>
-                  <h5>Hobb and Shaw</h5>
-                  <p>
-                    Câu chuyện giữa hai người tưởng như không đội trời chung là
-                    Đặc vụ An ninh Ngoại giao Mỹ Luke Hobbs và tên tội phạm đánh
-                    thuê khét tiếng Deckard Shaw ...
                   </p>
                   <span className="carousel__span">PG</span>
                   <button>

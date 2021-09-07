@@ -1,32 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./HeaderHiddenStyle.scss";
 import logo from "../../../../assets/img/logo_2.png";
 
-export default function HeaderHidenComponent() {
-  const [state, setState] = useState({ navBar: false });
+import { NavHashLink } from "react-router-hash-link";
 
-  const changeHeader = () => {
-    if (window.scrollY >= 150) {
-      setState({
-        ...state,
-        navBar: true,
-      });
-    } else {
-      setState({
-        ...state,
-        navBar: false,
-      });
+export default function HeaderHidenComponent() {
+  const changeHeaderHidden = () => {
+    const headerCheckOut = document.querySelector("#navbarhiddenid");
+    if (headerCheckOut) {
+      if (window.scrollY > 350) {
+        headerCheckOut.classList.add("navbarhidden__active");
+        headerCheckOut.style.display = "block";
+      } else {
+        headerCheckOut.classList.remove("navbarhidden__active");
+      }
     }
   };
-  window.addEventListener("scroll", changeHeader);
+  window.addEventListener("scroll", changeHeaderHidden);
+
   return (
-    <section
-      className={
-        state.navBar ? "navbarhidden navbarhidden__active" : "navbarhidden "
-      }
-      id="navbarhiddenid"
-    >
+    <section className="navbarhidden" id="navbarhiddenid">
       <div className="navbarhidden__overlay">
         <div className="navbarhidden__content ">
           <nav className="navbar navbar-expand-md  p-0 ">
@@ -37,55 +31,72 @@ export default function HeaderHidenComponent() {
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
-              data-target="#navbarMovie"
+              data-target="#navbarHiddenMovie"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
               <span>
-                <i class="fa fa-stream"></i>
+                <i className="fa fa-stream"></i>
               </span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarMovie">
+            <div className="collapse navbar-collapse" id="navbarHiddenMovie">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item ">
-                  <NavLink
+                <li
+                  className="nav-item "
+                  data-toggle="collapse"
+                  data-target="#navbarHiddenMovie"
+                >
+                  <NavHashLink
                     className="nav-link"
                     activeClassName="active__Link"
-                    to="/"
+                    to="/home#headerHomeId"
+                    smooth="true"
                   >
                     HOME <span className="sr-only">(current)</span>
-                  </NavLink>
+                  </NavHashLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
+                <li
+                  className="nav-item"
+                  data-toggle="collapse"
+                  data-target="#navbarHiddenMovie"
+                >
+                  <NavHashLink
                     className="nav-link"
                     activeClassName="active__Link"
-                    to="/movie"
+                    smooth="true"
+                    to="/home#showFilmId"
                   >
                     MOVIE
-                  </NavLink>
+                  </NavHashLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
+                <li
+                  className="nav-item"
+                  data-toggle="collapse"
+                  data-target="#navbarHiddenMovie"
+                >
+                  <NavHashLink
                     className="nav-link"
-                    activeClassName="active"
-                    to="/booking"
+                    activeClassName="active__Link"
+                    smooth="true"
+                    to="/home#showTimeId"
                   >
                     BOOKING
-                  </NavLink>
+                  </NavHashLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
+                <li
+                  className="nav-item"
+                  data-toggle="collapse"
+                  data-target="#navbarHiddenMovie"
+                >
+                  <NavHashLink
                     className="nav-link"
-                    activeClassName="active"
-                    to="/home"
+                    activeClassName="active__Link"
+                    smooth="true"
+                    to="/home#comingSoonId"
                   >
                     COMING SOON
-                  </NavLink>
+                  </NavHashLink>
                 </li>
               </ul>
             </div>

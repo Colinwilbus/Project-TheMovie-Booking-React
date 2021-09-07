@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import * as bookingAction from "../../../redux/actions/bookingAction";
 export default function BookingChairComponent(props) {
   const { danhSachGhe } = props.listChair;
-  const { listChoiceChair, userLogin, listOtherSelectedChair } = props;
+  const { listChoiceChair, userLogin } = props;
   const dispatch = useDispatch();
   const typeChair = (chair) => {
     if (chair.loaiGhe === "Vip" && chair.daDat === false) {
@@ -20,12 +20,6 @@ export default function BookingChairComponent(props) {
       return "chair chair_MyBooking";
     }
 
-    const index = listOtherSelectedChair.findIndex(
-      (item) => item.maGhe === chair.maGhe
-    );
-    if (index !== -1) {
-      return "chair chair_OtherSelected";
-    }
     return "chair";
   };
   const renderListChair = () =>
@@ -40,11 +34,10 @@ export default function BookingChairComponent(props) {
         chairChoice = "chair_Selected";
       }
       return (
-        <Fragment>
+        <Fragment key={index}>
           <div
             className="bookingChair__item"
             style={{ display: "inline-block" }}
-            key={index}
           >
             <span
               className={`${typeChair(item)} ${chairChoice}`}
@@ -70,7 +63,7 @@ export default function BookingChairComponent(props) {
           id="bookingChair__CinemaId"
         >
           <div className="bookingChair__Screen">
-            <img src={screen} alt="" />
+            <img src={screen} alt={screen} />
             <h6>SCREEN</h6>
           </div>
           <div className="bookingChair__Listchair">{renderListChair()}</div>
@@ -82,22 +75,24 @@ export default function BookingChairComponent(props) {
           data-aos-anchor="#bookingChair__CinemaId"
           data-aos-delay="700"
         >
-          <p>
-            <span className="chair" style={{ cursor: "default" }}>
-              <i className="fa fa-couch"></i>
-              <span>Normal Seat</span>
-            </span>
-            <span className="chair chair_Vip" style={{ cursor: "default" }}>
-              <i className="fa fa-couch"></i>
-              <span>VIP Seat</span>
-            </span>
-            <span
-              className="chair chair_Reserved"
-              style={{ cursor: "default" }}
-            >
-              <i className="fa fa-couch"></i>
-              <span>Reserved Seat</span>
-            </span>
+          <div>
+            <p>
+              <span className="chair" style={{ cursor: "default" }}>
+                <i className="fa fa-couch"></i>
+                <span>Normal Seat</span>
+              </span>
+              <span className="chair chair_Vip" style={{ cursor: "default" }}>
+                <i className="fa fa-couch"></i>
+                <span>VIP Seat</span>
+              </span>
+              <span
+                className="chair chair_Reserved"
+                style={{ cursor: "default" }}
+              >
+                <i className="fa fa-couch"></i>
+                <span>Reserved Seat</span>
+              </span>
+            </p>
             <p>
               <span
                 className="chair chair_Selected"
@@ -106,13 +101,7 @@ export default function BookingChairComponent(props) {
                 <i className="fa fa-couch"></i>
                 <span>Selected Seat</span>
               </span>
-              <span
-                className="chair chair_OtherSelected"
-                style={{ cursor: "default" }}
-              >
-                <i className="fa fa-couch"></i>
-                <span>Other Selected Seat</span>
-              </span>
+
               <span
                 className="chair chair_MyBooking"
                 style={{ cursor: "default" }}
@@ -121,7 +110,7 @@ export default function BookingChairComponent(props) {
               </span>
               <span className="myBooking__text">Your Seat</span>
             </p>
-          </p>
+          </div>
         </div>
       </div>
     </div>

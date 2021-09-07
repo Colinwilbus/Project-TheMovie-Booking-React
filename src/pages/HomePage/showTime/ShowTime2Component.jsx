@@ -14,7 +14,7 @@ export default function ShowTime2Component(props) {
       return arrayShowTimes.slice(0, 5)?.map((film, index) => (
         <div className="row showTime__film" key={index}>
           <div className="col-12 col-md-2 col-xl-1 sTfilm__img">
-            <img src={film.hinhAnh} alt="" />
+            <img src={film.hinhAnh} alt={film.hinhAnh} />
           </div>
           <div className="col-12 col-md-10 col-xl-11 sTfim__detail">
             <h6>{film.tenPhim}</h6>
@@ -24,7 +24,7 @@ export default function ShowTime2Component(props) {
             </p>
             <div>
               {film.lstLichChieuTheoPhim?.slice(0, 5).map((time, index) => (
-                <NavLink to="/" key={index}>
+                <NavLink to={`/check-out/${time.maLichChieu}`} key={index}>
                   <span>
                     {moment(time.ngayChieuGioChieu).format("hh:mm A")}
                   </span>

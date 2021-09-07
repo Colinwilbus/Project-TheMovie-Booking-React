@@ -18,7 +18,6 @@ export default function InfoBookingComponent(props) {
       </span>
     ));
   const onChange = (e) => {
-    // console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
   const bookingTicket = () => {
@@ -84,17 +83,17 @@ export default function InfoBookingComponent(props) {
           <Radio.Group onChange={onChange} value={value}>
             <Radio value={1}>
               <span>
-                <i class="fa fa-credit-card"></i> Credit Cards
+                <i className="fa fa-credit-card"></i> Credit Cards
               </span>
             </Radio>
             <Radio value={2}>
               <span>
-                <i class="fab fa-cc-visa"></i> Visa, Master
+                <i className="fab fa-cc-visa"></i> Visa, Master
               </span>
             </Radio>
             <Radio value={3}>
               <span>
-                <i class="fa fa-money-bill-wave"></i> By Cash
+                <i className="fa fa-money-bill-wave"></i> By Cash
               </span>
             </Radio>
           </Radio.Group>
@@ -109,7 +108,7 @@ export default function InfoBookingComponent(props) {
       >
         <button onClick={() => bookingTicket()}>
           <span>
-            <i class="fa fa-film"></i>
+            <i className="fa fa-film"></i>
             BOOKING
           </span>
         </button>

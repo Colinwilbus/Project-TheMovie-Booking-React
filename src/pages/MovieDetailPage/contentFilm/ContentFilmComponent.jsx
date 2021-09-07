@@ -3,43 +3,67 @@ import "./ContentFilmStyle.scss";
 import { Tabs } from "antd";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
+import _ from "lodash";
 
 const { TabPane } = Tabs;
 export default function ContentFilmComponent(props) {
   const { movieDetail } = props;
   console.log({ movieDetail });
+  const renderShowTimes = (arrayShowTimes) =>
+    arrayShowTimes.lichChieuPhim.slice(0, 4).map((times, index) => {
+      const date = new Date(times.ngayChieuGioChieu);
+      const [day, month, year, hour, minutes] = [
+        date.getDate(),
+        date.getMonth() + 1,
+        date.getFullYear(),
+        date.getHours(),
+        date.getMinutes(),
+      ];
 
+      const showTimesDate = {
+        date: `${day}/${month}/${year}`,
+        time: times.ngayChieuGioChieu,
+        malichChieu: times.maLichChieu,
+      };
+      return showTimesDate;
+    });
   const renderCinemaList = () =>
     movieDetail.heThongRapChieu?.map((item, index) => (
       <TabPane tab={<img src={item.logo} />} key={index}>
-        <div className="viewingTimes">
-          {item.cumRapChieu?.map((itemChild, index) => {
-            if (itemChild.lichChieuPhim) {
+        <Tabs defaultActiveKey="0">
+          {item.cumRapChieu.map((itemChild) => {
+            const arrayShowTimesDate = renderShowTimes(itemChild);
+            const arrayShowTimsUpdate = _.chain(arrayShowTimesDate)
+              .groupBy("date")
+              .map((value, key) => ({ date: key, times: value }))
+              .value();
+            console.table(arrayShowTimsUpdate);
+            return arrayShowTimsUpdate.map((timeItem, indexF) => {
+              const i = Math.random() * arrayShowTimsUpdate.length;
               return (
-                <div className="viewingTimes__item" key={index}>
-                  <div className="viewingTimes__Cinema">
-                    <h6>{itemChild.tenCumRap}</h6>
+                <TabPane tab={<span>{timeItem.date}</span>} key={i}>
+                  <div className="viewingTimes">
+                    <div className="viewingTimes__Cinema">
+                      <h6>{itemChild.tenCumRap}</h6>
+                    </div>
+                    <div className="viewingTimes__item">
+                      <div className="viewingTimes__Detail">
+                        {timeItem.times.map((hour, index) => (
+                          <NavLink
+                            to={`/check-out/${hour.malichChieu}`}
+                            key={index}
+                          >
+                            {moment(hour.time).format("hh: mm A")}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="viewingTimes__Detail">
-                    {itemChild.lichChieuPhim
-                      ?.slice(0, 10)
-                      .map((times, index) => (
-                        <NavLink
-                          to={`/check-out/${times.maLichChieu}`}
-                          key={index}
-                        >
-                          {moment(times.ngayChieuGioChieu).format("hh:mm A")}
-                        </NavLink>
-                      ))}
-                  </div>
-                </div>
+                </TabPane>
               );
-            } else {
-              return null;
-            }
+            });
           })}
-        </div>
-        ;
+        </Tabs>
       </TabPane>
     ));
   return (

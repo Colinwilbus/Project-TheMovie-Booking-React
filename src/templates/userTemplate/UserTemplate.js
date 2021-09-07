@@ -1,11 +1,14 @@
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
+import { USER_LOGIN } from "../../util/settings/config";
 
 import "./UserTemplateStyle.scss";
 
 const UserTemplate = (props) => {
   const { Component, ...restProps } = props;
-
+  //   if (localStorage.getItem(USER_LOGIN)) {
+  //     return <Redirect to="/home" />;
+  //   }
   return (
     <Route
       {...restProps}

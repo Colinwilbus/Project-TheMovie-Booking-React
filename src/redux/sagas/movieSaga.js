@@ -35,3 +35,18 @@ function* getMovieDetailAction(action) {
 export function* getMovieDetailApiActionSaga() {
   yield takeLatest("getMovieDetailAction", getMovieDetailAction);
 }
+
+function* postNewMovieApiAction(action) {
+  const res = yield call(() =>
+    movieManagerService.postNewMovieApi(action.formData)
+  );
+  try {
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* postNewMovieApiActionSaga() {
+  yield takeLatest("postNewMovieApiAction", postNewMovieApiAction);
+}

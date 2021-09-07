@@ -1,81 +1,72 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useEffect } from "react";
 import "./LoginPageStyle.scss";
 import logo from "../../assets/img/logo_2.png";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import { useFormik } from "formik";
+import Aos from "aos";
 export default function LoginPage(props) {
   console.log(props);
   const dispatch = useDispatch();
-  const onFinish = (values) => {
-    console.log("Success:", values);
-    dispatch({
-      type: "postUserLoginAction",
-      userLogin: values,
-      history: props.history,
+  const formik = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch({
+        type: "postUserLoginAction",
+        userLogin: values,
+        history: props.history,
+      });
+    },
+  });
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
     });
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  }, []);
+  //   data-aos="zoom-out" data-aos-once="true"
   return (
     <div data-aos="zoom-out" data-aos-once="true" className="Login">
-      <NavLink to="/home">
-        <img src={logo} alt="" />
-      </NavLink>
-      <h3>JOIN US NOW</h3>
-      <div className="login__form">
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            name="taiKhoan"
-            rules={[
-              {
-                required: true,
-                message: "Please input your username!",
-              },
-            ]}
-          >
-            <Input placeholder="username" />
-          </Form.Item>
+      <div className="login__Logo">
+        <NavLink to="/home">
+          <img src={logo} alt="" />
+        </NavLink>
+      </div>
+      <div className="login__Title">
+        <h3>JOIN US NOW</h3>
+      </div>
+      <div className="login__Content">
+        <form onSubmit={(e) => formik.handleSubmit(e)}>
+          <div className="form-group">
+            <input
+              placeholder="Username"
+              name="taiKhoan"
+              onChange={(e) => formik.handleChange(e)}
+              className="form-control"
+              value={formik.values.taiKhoan}
+            />
+            <p></p>
+          </div>
 
-          <Form.Item
-            name="matKhau"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-          >
-            <Input.Password placeholder="password" />
-          </Form.Item>
+          <div className="form-group">
+            <input
+              placeholder="Password"
+              type="password"
+              className="form-control"
+              name="matKhau"
+              onChange={(e) => formik.handleChange(e)}
+              value={formik.values.matKhau}
+            />
+            <p></p>
+          </div>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button type="primary" htmlType="submit">
-              Login
-            </Button>
-          </Form.Item>
-        </Form>
+          <button type="submit" className="btn btn-primary">
+            <span>Submit</span>
+          </button>
+        </form>
       </div>
     </div>
   );

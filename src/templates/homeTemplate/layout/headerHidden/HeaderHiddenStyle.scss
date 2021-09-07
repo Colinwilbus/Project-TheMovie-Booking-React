@@ -1,11 +1,20 @@
 .navbarhidden {
-  background-color: #101010e3;
+  background: linear-gradient(
+    to bottom right,
+    #191919ee,
+    #323232ec,
+    #323232ec,
+    #191919ee
+  );
   position: fixed;
   width: 100%;
   transition: all 0.5s;
   z-index: 999;
+  padding: 10px 0;
   top: -100px;
+  animation: unActivetHeaderHidden 0.3s ease-out forwards;
   display: none;
+
   .navbarhidden__overlay {
     .navbarhidden__content {
       @media screen and(min-width: 992px) {
@@ -43,7 +52,7 @@
               padding: 10px 10px;
               position: relative;
               @media screen and (min-width: 768px) {
-                border-bottom: 1px solid gray;
+                // border-bottom: 1px solid gray;
               }
               &::after {
                 content: "";
@@ -91,16 +100,24 @@
   }
 }
 .navbarhidden__active {
-  animation: hiddentHeaderAnimation 1s linear 0s;
+  animation: activetHeaderHidden 0.3s ease-out forwards;
   top: 0;
   display: block;
 }
 
-@keyframes hiddentHeaderAnimation {
+@keyframes activetHeaderHidden {
   from {
     top: -100px;
   }
   to {
     top: 0;
+  }
+}
+@keyframes unActivetHeaderHidden {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100;
   }
 }
