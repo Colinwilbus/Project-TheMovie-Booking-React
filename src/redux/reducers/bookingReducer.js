@@ -3,7 +3,6 @@ import { InfoBookingCinema } from "../../core/models/BookingModel";
 const stateDefault = {
   listChair: new InfoBookingCinema(),
   listChoiceChair: [],
-  listOtherSelectedChair: [{ maGhe: 56041 }, { maGhe: 56042 }],
 };
 
 const bookingReducer = (state = stateDefault, action) => {

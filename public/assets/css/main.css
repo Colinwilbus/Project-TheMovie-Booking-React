@@ -69,3 +69,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #666666;
 }
+.ant-notification .ant-notification-notice {
+  background: linear-gradient(to bottom right, #191919, #323232);
+  color: #fbbd61;
+  border-radius: 5px;
+}
+.ant-notification .ant-notification-notice .ant-notification-notice-message {
+  color: #ec7532;
+}
+.ant-notification .ant-notification-notice a {
+  color: #ec7532;
+}

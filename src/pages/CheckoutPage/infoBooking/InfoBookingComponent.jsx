@@ -4,12 +4,13 @@ import "./InfoBookingStyle.scss";
 import _ from "lodash";
 import { useDispatch } from "react-redux";
 import { InfoBooking } from "../../../core/models/BookingModel";
-
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import ModalInfoBookingComponent from "../ModalInfoBooking/ModalInfoBookingComponent";
 export default function InfoBookingComponent(props) {
   const dispatch = useDispatch();
   const { thongTinPhim } = props.listChair;
   const { listChoiceChair, userLogin, history } = props;
-  console.log(history);
+
   const [value, setValue] = useState(1);
   const renderListChoiceChair = () =>
     _.sortBy(listChoiceChair, "tenGhe").map((item, index) => (
@@ -25,15 +26,17 @@ export default function InfoBookingComponent(props) {
     infoBooking.maLichChieu = props.idShowtimes;
     infoBooking.danhSachVe = listChoiceChair;
     infoBooking.taiKhoanNguoiDung = userLogin.taiKhoan;
-    dispatch({
-      type: "bookingTicketApiAction",
-      infoBooking,
-      history,
-    });
-    dispatch({
-      type: "getListChairApiAction",
-      idShowtimes: props.idShowtimes,
-    });
+    if (!_.isEmpty(infoBooking.danhSachVe)) {
+      dispatch({
+        type: "bookingTicketApiAction",
+        infoBooking,
+        history,
+      });
+      dispatch({
+        type: "getListChairApiAction",
+        idShowtimes: props.idShowtimes,
+      });
+    }
   };
   return (
     <div className="infoBooking">
@@ -106,12 +109,21 @@ export default function InfoBookingComponent(props) {
         data-aos-anchor="#infoBooking__contentId"
         data-aos-delay="700"
       >
-        <button onClick={() => bookingTicket()}>
-          <span>
-            <i className="fa fa-film"></i>
-            BOOKING
-          </span>
-        </button>
+        <ModalComponent
+          classModal="modal__gray"
+          infoFilm={thongTinPhim}
+          listChoiceChair={listChoiceChair}
+          titleModal="Info Booking"
+          textOk="Booking"
+          textShowModal={
+            <span>
+              <i className="fa fa-film"></i>
+              BOOKING
+            </span>
+          }
+          functionOk={() => bookingTicket()}
+          Component={ModalInfoBookingComponent}
+        />
       </div>
     </div>
   );

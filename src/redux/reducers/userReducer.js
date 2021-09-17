@@ -10,6 +10,7 @@ if (localStorage.getItem(USER_LOGIN)) {
 const stateDefault = {
   userLogin: user,
   userLoginInfo: new UserLoginInfo(),
+  listUser: [],
 };
 
 const userReducer = (state = stateDefault, action) => {
@@ -26,6 +27,9 @@ const userReducer = (state = stateDefault, action) => {
       localStorage.removeItem(USER_LOGIN);
       localStorage.removeItem(TOKEN);
       return { ...state, userLogin: {} };
+    }
+    case userType.GET_LIST_USER: {
+      return { ...state, listUser: action.data };
     }
     default:
       return { ...state };

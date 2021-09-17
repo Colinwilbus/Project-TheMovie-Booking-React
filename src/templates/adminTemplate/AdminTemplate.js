@@ -3,7 +3,7 @@ import { Route, Redirect, NavLink } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import logo from "../../assets/img/logo_2.png";
 import { useSelector, useDispatch } from "react-redux";
-import { USER_LOGIN } from "../../util/settings/config";
+// import { USER_LOGIN } from "../../util/settings/config";
 import _ from "lodash";
 
 import "./AdminTemplateStyle.scss";
@@ -14,13 +14,13 @@ const { SubMenu } = Menu;
 
 const AdminTemplate = (props) => {
   const [state, setState] = useState({
-    collapsed: false,
+    collapsed: true,
   });
   const { userLogin } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const { Component, ...restProps } = props;
   const onCollapse = (collapsed) => {
-    console.log(collapsed);
+    console.log("collapsed", collapsed);
     setState({ collapsed });
   };
   const { collapsed } = state;
@@ -45,6 +45,9 @@ const AdminTemplate = (props) => {
       case "/admin/showTimes": {
         return (keyNumber = "3");
       }
+      case "/admin/showUsers": {
+        return (keyNumber = "4");
+      }
 
       default:
         return (keyNumber = "1");
@@ -60,7 +63,7 @@ const AdminTemplate = (props) => {
               collapsible
               collapsed={collapsed}
               onCollapse={onCollapse}
-              //   reverseArrow={true}
+              //   trigger={hide}
             >
               <div className="logo">
                 <NavLink to="/">
@@ -88,6 +91,12 @@ const AdminTemplate = (props) => {
                   <NavLink to="/admin/showTimes">
                     <i className="fa fa-clock"></i>
                     <span>ShowTimes</span>
+                  </NavLink>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <NavLink to="/admin/showUsers">
+                    <i className="fa fa-users"></i>
+                    <span>ShowUsers</span>
                   </NavLink>
                 </Menu.Item>
               </Menu>

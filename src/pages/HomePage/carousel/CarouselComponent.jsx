@@ -5,6 +5,8 @@ import cr1 from "../../../assets/img/cr-1.jpg";
 import cr2 from "../../../assets/img/cr-2.jpg";
 import cr3 from "../../../assets/img/cr-3.jpg";
 import cr4 from "../../../assets/img/cr-4.jpg";
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayTrailerComponent";
 
 export default function CarouselComponent() {
   return (
@@ -48,12 +50,20 @@ export default function CarouselComponent() {
                     mô tô ...
                   </p>
                   <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
+
+                  <ModalComponent
+                    textShowModal={
+                      <span>
+                        <i className="fa fa-play" />
+                        PLAY TRAILER
+                      </span>
+                    }
+                    Component={PlayTrailerComponent}
+                    functionOk={() => {}}
+                    trailerFilm="https://www.youtube.com/embed/-Nv9YrZr3wE"
+                    classModal="modal__black"
+                    titleModal="Trailer"
+                  />
                 </div>
               </div>
             </div>
@@ -69,12 +79,19 @@ export default function CarouselComponent() {
                     sau Thế chiến thứ nhất...
                   </p>
                   <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
+                  <ModalComponent
+                    textShowModal={
+                      <span>
+                        <i className="fa fa-play" />
+                        PLAY TRAILER
+                      </span>
+                    }
+                    Component={PlayTrailerComponent}
+                    functionOk={() => {}}
+                    trailerFilm="https://www.youtube.com/embed/oVzVdvGIC7U"
+                    classModal="modal__black"
+                    titleModal="Trailer"
+                  />
                 </div>
               </div>
             </div>
@@ -90,12 +107,19 @@ export default function CarouselComponent() {
                     kịch. Đây là bộ phim được chuyển thể...
                   </p>
                   <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
+                  <ModalComponent
+                    textShowModal={
+                      <span>
+                        <i className="fa fa-play" />
+                        PLAY TRAILER
+                      </span>
+                    }
+                    Component={PlayTrailerComponent}
+                    functionOk={() => {}}
+                    trailerFilm="https://www.youtube.com/embed/yI3v6KfR9Mw"
+                    classModal="modal__black"
+                    titleModal="Trailer"
+                  />
                 </div>
               </div>
             </div>
@@ -111,12 +135,19 @@ export default function CarouselComponent() {
                     sở hữu của Summit Entertainment...
                   </p>
                   <span className="carousel__span">PG</span>
-                  <button>
-                    <span>
-                      <i className="fa fa-play" />
-                      PLAY TRAILER
-                    </span>
-                  </button>
+                  <ModalComponent
+                    textShowModal={
+                      <span>
+                        <i className="fa fa-play" />
+                        PLAY TRAILER
+                      </span>
+                    }
+                    Component={PlayTrailerComponent}
+                    functionOk={() => {}}
+                    trailerFilm="https://www.youtube.com/embed/56pvThSsoSE"
+                    classModal="modal__black"
+                    titleModal="Trailer"
+                  />
                 </div>
               </div>
             </div>

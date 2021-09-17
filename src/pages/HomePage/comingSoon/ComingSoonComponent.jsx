@@ -4,6 +4,9 @@ import "./ComingSoonStyle.scss";
 import Slider from "react-slick";
 import moment from "moment";
 import bn from "../../../assets/img/slide-5.jpg";
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayTrailerComponent";
+import { NavLink } from "react-router-dom";
 
 const ComingSoonComponent = (props) => {
   const { movieList } = props;
@@ -35,6 +38,9 @@ const ComingSoonComponent = (props) => {
           <div className="item__text">
             <h5>{item.tenPhim}</h5>
             <p>{moment(item.ngayKhoiChieu).format("DD/MM/YYYY")}</p>
+            <NavLink to={`/movie-comingSoon-detail/${item.maPhim}`}>
+              MORE INFO <i className="fa fa-angle-right" />
+            </NavLink>
           </div>
         </div>
       );
@@ -56,13 +62,13 @@ const ComingSoonComponent = (props) => {
                   </span>
                 </div>
                 <p>
-                  {item.moTa.length > 150
-                    ? item.moTa.slice(0, 150) + "..."
+                  {item.moTa.length > 300
+                    ? item.moTa.slice(0, 300) + "..."
                     : item.moTa}
                 </p>
-                <a href="#">
+                {/* <NavLink to={`/movie-comingSoon-detail/${item.maPhim}`}>
                   MORE INFO <i className="fa fa-angle-right" />
-                </a>
+                </NavLink> */}
               </div>
               <div className="col-12 col-md-6 comingSoon__img">
                 <img
@@ -71,7 +77,14 @@ const ComingSoonComponent = (props) => {
                   alt={item.tenPhim}
                 />
                 <div className="comingSoon__play">
-                  <i className="fa fa-play" />
+                  <ModalComponent
+                    textShowModal={<i className="fa fa-play showFilm__play" />}
+                    Component={PlayTrailerComponent}
+                    functionOk={() => {}}
+                    trailerFilm={item.trailer}
+                    classModal="modal__black"
+                    titleModal="Trailer"
+                  />
                 </div>
               </div>
             </div>

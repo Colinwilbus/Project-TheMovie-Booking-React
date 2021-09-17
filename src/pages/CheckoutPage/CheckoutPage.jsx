@@ -9,6 +9,7 @@ import {
   HIDE_LOADING,
   DISLAY_LOADING,
 } from "../../redux/types/lazyLoadingType";
+import * as bookingType from "../../redux/types/bookingType";
 
 export default function CheckoutPage(props) {
   const { id } = props.match.params;
@@ -16,7 +17,6 @@ export default function CheckoutPage(props) {
     (state) => state.bookingReducer
   );
   const { userLogin } = useSelector((state) => state.userReducer);
-  console.log(listChair);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,6 +35,11 @@ export default function CheckoutPage(props) {
         type: HIDE_LOADING,
       });
     }, 2000);
+    return () => {
+      dispatch({
+        type: bookingType.BOOKING_TICKET,
+      });
+    };
   }, []);
   return (
     <section className="checkoutPage">

@@ -8,7 +8,7 @@ import _ from "lodash";
 const { TabPane } = Tabs;
 export default function ContentFilmComponent(props) {
   const { movieDetail } = props;
-  console.log({ movieDetail });
+
   const renderShowTimes = (arrayShowTimes) =>
     arrayShowTimes.lichChieuPhim.slice(0, 4).map((times, index) => {
       const date = new Date(times.ngayChieuGioChieu);
@@ -37,7 +37,7 @@ export default function ContentFilmComponent(props) {
               .groupBy("date")
               .map((value, key) => ({ date: key, times: value }))
               .value();
-            console.table(arrayShowTimsUpdate);
+            // console.table(arrayShowTimsUpdate);
             return arrayShowTimsUpdate.map((timeItem, indexF) => {
               const i = Math.random() * arrayShowTimsUpdate.length;
               return (
@@ -70,7 +70,11 @@ export default function ContentFilmComponent(props) {
     <section className="contentFilm">
       <div className="contentFilm__content">
         <div className="row">
-          <div className="col-12 col-lg-7 contentFilm__Synopsis">
+          <div
+            data-aos="fade-right"
+            data-aos-once="true"
+            className="col-12 col-lg-7 contentFilm__Synopsis"
+          >
             <div className="contentFilm__title">
               <h2>SYNOPSIS</h2>
             </div>
@@ -114,7 +118,11 @@ export default function ContentFilmComponent(props) {
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-5 contentFilm__viewingTimes">
+          <div
+            data-aos="fade-left"
+            data-aos-once="true"
+            className="col-12 col-lg-5 contentFilm__viewingTimes"
+          >
             <div className="contentFilm__title">
               <h2>VIEWING TIMES</h2>
             </div>

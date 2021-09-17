@@ -9,6 +9,7 @@ import {
   DISLAY_LOADING,
   HIDE_LOADING,
 } from "../../redux/types/lazyLoadingType";
+import FindShowTimeComponent from "./findShowTime/FindShowTimeComponent";
 
 export default function HomePage() {
   const { movieList } = useSelector((state) => state.movieReducer);
@@ -37,6 +38,7 @@ export default function HomePage() {
   return (
     <div>
       <CarouselComponent />
+      <FindShowTimeComponent movieList={movieList} />
       <ShowFilmComponent movieList={movieList} />
       <ShowTime2Component cinemaList={cinemaList} />
       <ComingSoonComponent movieList={movieList} />

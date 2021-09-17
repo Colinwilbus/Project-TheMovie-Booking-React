@@ -15,9 +15,12 @@
         }
         .ant-modal-body {
           .addFilm {
+            padding: 10px 0;
             .form-group {
               .ant-input-number {
                 display: block;
+                height: 32px;
+                width: 100%;
                 &:hover {
                   box-shadow: none;
                   border: 1px solid #d9d9d9;
@@ -45,6 +48,8 @@
                 box-shadow: none;
               }
               .ant-picker {
+                height: 32px;
+                width: 100%;
                 &:hover {
                   border: 1px solid #d9d9d9;
                 }
@@ -60,9 +65,12 @@
               }
               .addFilm__error {
                 color: #ec7532;
+                font-weight: 700;
+                font-size: 0.9rem;
               }
               input {
                 display: block;
+                height: 32px;
                 &:focus {
                   box-shadow: none;
                   border: 1px solid #d9d9d9;
@@ -144,6 +152,9 @@
               &:hover {
                 border: 1px solid #323232;
               }
+              &:disabled {
+                color: #999999;
+              }
             }
           }
         }
@@ -187,6 +198,26 @@
           &:hover {
             background: linear-gradient(to right, #fbbd61, #ec7532);
             color: #323232;
+          }
+        }
+        button {
+          color: #d9d9d9;
+          background-color: #323232;
+
+          text-decoration: none;
+          border-radius: 3px;
+          border: 1px solid #323232;
+          &:hover {
+            background: linear-gradient(to right, #fbbd61, #ec7532);
+            color: #323232;
+          }
+          &:disabled {
+            background-color: #d9d9d9;
+            color: #323232;
+            border: 1px solid #d9d9d9;
+            &:hover {
+              background: #d9d9d9;
+            }
           }
         }
       }

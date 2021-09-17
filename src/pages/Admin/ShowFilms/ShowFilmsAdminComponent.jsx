@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import imgErro from "../../../assets/img/img-err.jpg";
 import ModalAddFilm from "../ModalAddFilm/ModalAddFilmComponent";
-
+import ModalEditFilmComponent from "../ModalEditFilm/ModalEditFilmComponent";
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import DeleteFilmComponent from "../DeleteFilm/DeleteFilmComponent";
 const { Search } = Input;
 export default function ShowFilmsAdminComponent(props) {
   const { movieList } = useSelector((state) => state.movieReducer);
@@ -23,6 +25,9 @@ export default function ShowFilmsAdminComponent(props) {
       maPhim: item.maPhim,
       hinhAnh: item.hinhAnh,
       ngayKhoiChieu: item.ngayKhoiChieu,
+      moTa: item.moTa,
+      trailer: item.trailer,
+      danhGia: item.danhGia,
     }));
   const columns = [
     {
@@ -75,19 +80,33 @@ export default function ShowFilmsAdminComponent(props) {
     {
       title: "",
       dataIndex: "",
-      render: () => {
+      render: (text, film) => {
         return (
           <div>
-            <button>
-              <span>
-                <i className="fa fa-edit"></i>
-              </span>
-            </button>
-            <button>
-              <span>
-                <i className="fa fa-trash-alt"></i>
-              </span>
-            </button>
+            <ModalEditFilmComponent idFilm={film.maPhim} film={film} />
+            <ModalComponent
+              textShowModal={
+                <span>
+                  <i className="fa fa-trash-alt"></i>
+                </span>
+              }
+              Component={DeleteFilmComponent}
+              textOk="Delete Film"
+              functionOk={() => {
+                const deleteFilm = async () => {
+                  await dispatch({
+                    type: "deleteMovieApiAction",
+                    id: film.maPhim,
+                  });
+                  await dispatch({
+                    type: "getMovieListApiAction",
+                  });
+                };
+                deleteFilm();
+              }}
+              film={film}
+              titleModal="Delete Film"
+            />
           </div>
         );
       },
@@ -99,7 +118,14 @@ export default function ShowFilmsAdminComponent(props) {
     console.log("params", pagination, filters, sorter, extra);
   }
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    if (value.trim() !== "") {
+      dispatch({
+        type: "getMovieListApiAction",
+        film: value,
+      });
+    }
+  };
   return (
     <section className="showFilmsAm">
       <div className="showFilmsAm__Title">
@@ -110,10 +136,17 @@ export default function ShowFilmsAdminComponent(props) {
           placeholder="input search text"
           onSearch={onSearch}
           enterButton
+          onChange={(e) => {
+            if (e.target.value.trim() === "") {
+              dispatch({
+                type: "getMovieListApiAction",
+              });
+            }
+          }}
         />
       </div>
       <div className="showFilmsAm__Add">
-        <ModalAddFilm history={props.history} />
+        <ModalAddFilm />
       </div>
       <div className="showFilmsAm__Content">
         <Table columns={columns} dataSource={data} onChange={onChange} />

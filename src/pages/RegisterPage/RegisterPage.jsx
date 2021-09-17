@@ -18,6 +18,34 @@ export default function RegisterPage(props) {
       maNhom: GROUPID,
       maLoaiNguoiDung: TYPE_USER,
     },
+    validate: (values) => {
+      const errors = {};
+      if (!values.hoTen.trim()) {
+        errors.hoTen = "required";
+      }
+      if (!values.soDt.trim()) {
+        errors.soDt = "required";
+      } else if (!/^[0-9]+$/.test(values.soDt)) {
+        errors.soDt = "Phone number not valid!";
+      }
+      if (!values.email.trim()) {
+        errors.email = "required";
+      } else if (
+        !/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/.test(
+          values.email
+        )
+      ) {
+        errors.email = "email not valid !";
+      }
+      if (!values.taiKhoan.trim()) {
+        errors.taiKhoan = "required";
+      }
+      if (!values.matKhau.trim()) {
+        errors.matKhau = "required";
+      }
+
+      return errors;
+    },
     onSubmit: (values) => {
       dispatch({
         type: "postNewUserApiAction",
@@ -46,8 +74,13 @@ export default function RegisterPage(props) {
               type="text"
               className="form-control"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
             />
-            <p>aaa</p>
+            <p className="register__validate">
+              {formik.touched.hoTen && formik.errors.hoTen
+                ? "*" + formik.errors.hoTen
+                : ""}
+            </p>
           </div>
           <div className="form-group">
             <input
@@ -55,26 +88,41 @@ export default function RegisterPage(props) {
               placeholder="Username"
               className="form-control"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
             />
-            <p>aaa</p>
+            <p className="register__validate">
+              {formik.touched.taiKhoan && formik.errors.taiKhoan
+                ? "*" + formik.errors.taiKhoan
+                : ""}
+            </p>
           </div>
           <div className="form-group">
             <input
               placeholder="Email"
               className="form-control"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
               name="email"
             />
-            <p>aaa</p>
+            <p className="register__validate">
+              {formik.touched.email && formik.errors.email
+                ? "*" + formik.errors.email
+                : ""}
+            </p>
           </div>
           <div className="form-group">
             <input
               placeholder="Phone"
               className="form-control"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
               name="soDt"
             />
-            <p>aaa</p>
+            <p className="register__validate">
+              {formik.touched.soDt && formik.errors.soDt
+                ? "*" + formik.errors.soDt
+                : ""}
+            </p>
           </div>
           <div className="form-group">
             <input
@@ -82,12 +130,21 @@ export default function RegisterPage(props) {
               type="password"
               className="form-control"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
               name="matKhau"
             />
-            <p>aaa</p>
+            <p className="register__validate">
+              {formik.touched.matKhau && formik.errors.matKhau
+                ? "*" + formik.errors.matKhau
+                : ""}
+            </p>
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!(formik.isValid && formik.dirty)}
+          >
             <span>Submit</span>
           </button>
         </form>

@@ -18,8 +18,10 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AdminTemplate from "./templates/adminTemplate/AdminTemplate";
 import DashboardAdminComponent from "./pages/Admin/Dashboard/DashboardAdminComponent";
-import ShowTimesAdminComponent from "./pages/Admin/ShowTimes/ShowTimesAdminComponent";
 import ShowFilmsAdminComponent from "./pages/Admin/ShowFilms/ShowFilmsAdminComponent.jsx";
+import ShowCinemaAdminComponent from "./pages/Admin/ShowCinemas/ShowCinemasAdminComponent";
+import ShowUsersAdminComponent from "./pages/Admin/ShowUsers/ShowUsersAdminComponent";
+import MovieDetailComingSoonPage from "./pages/MovieDetailComingSoonPage/MovieDetailComingSoonPage";
 
 export const history = createBrowserHistory();
 
@@ -35,6 +37,11 @@ function App() {
           exact
           path="/movie-detail/:id"
           Component={MovieDetailPage}
+        />
+        <HomeTemplate
+          exact
+          path="/movie-comingSoon-detail/:id"
+          Component={MovieDetailComingSoonPage}
         />
         <CheckoutTemplate
           exact
@@ -60,7 +67,11 @@ function App() {
         />
         <AdminTemplate
           path="/admin/showTimes"
-          Component={ShowTimesAdminComponent}
+          Component={ShowCinemaAdminComponent}
+        />
+        <AdminTemplate
+          path="/admin/showUsers"
+          Component={ShowUsersAdminComponent}
         />
       </Switch>
     </BrowserRouter>

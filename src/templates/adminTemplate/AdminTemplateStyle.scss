@@ -1,4 +1,8 @@
 .ant-layout {
+  display: none;
+  @media screen and(min-width: 576px) {
+    display: flex;
+  }
   .ant-layout-sider {
     background-color: #191919;
     box-shadow: 0 0 10px black;

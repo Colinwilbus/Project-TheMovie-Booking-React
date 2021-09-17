@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FilmStyle.scss";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
+import ModalComponent from "../ModalComponent/ModalComponent";
+import PlayTrailerComponent from "../PlayTrailerComponent/PlayTrailerComponent";
 
 export default function FilmComponent(props) {
   const { item } = props;
@@ -10,7 +12,14 @@ export default function FilmComponent(props) {
     <div className="showFilm__item">
       <div className="showFilm__img">
         <div className="showFilm__overlay">
-          <i className="fa fa-play showFilm__play" />
+          <ModalComponent
+            textShowModal={<i className="fa fa-play showFilm__play" />}
+            Component={PlayTrailerComponent}
+            functionOk={() => {}}
+            trailerFilm={item.trailer}
+            classModal="modal__black"
+            titleModal="Trailer"
+          />
           <NavLink to={`/movie-detail/${item.maPhim}`}>VIEW DETAILS</NavLink>
           <p>{moment(item.ngayKhoiChieu).format("dddd-DD/MM/yyyy")}</p>
           <div className="showFilm__star">

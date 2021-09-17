@@ -1,8 +1,9 @@
 import * as movieType from "../types/movieType";
+import { MovieDetail } from "../../core/models/MovieModel";
 
 const stateDefault = {
   movieList: [],
-  movieDetail: {},
+  movieDetail: new MovieDetail(),
 };
 
 const movieReducer = (state = stateDefault, action) => {

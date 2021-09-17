@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import Aos from "aos";
+import _ from "lodash";
 export default function LoginPage(props) {
   console.log(props);
   const dispatch = useDispatch();
@@ -13,8 +14,18 @@ export default function LoginPage(props) {
       taiKhoan: "",
       matKhau: "",
     },
+    validate: (values) => {
+      const errors = {};
+      if (!values.taiKhoan.trim()) {
+        errors.taiKhoan = "required";
+      }
+      if (!values.matKhau.trim()) {
+        errors.matKhau = "required";
+      }
+
+      return errors;
+    },
     onSubmit: (values) => {
-      console.log(values);
       dispatch({
         type: "postUserLoginAction",
         userLogin: values,
@@ -47,8 +58,13 @@ export default function LoginPage(props) {
               onChange={(e) => formik.handleChange(e)}
               className="form-control"
               value={formik.values.taiKhoan}
+              onBlur={(e) => formik.handleBlur(e)}
             />
-            <p></p>
+            <p className="login__validate">
+              {formik.touched.taiKhoan && formik.errors.taiKhoan
+                ? "*" + formik.errors.taiKhoan
+                : ""}
+            </p>
           </div>
 
           <div className="form-group">
@@ -58,12 +74,21 @@ export default function LoginPage(props) {
               className="form-control"
               name="matKhau"
               onChange={(e) => formik.handleChange(e)}
+              onBlur={(e) => formik.handleBlur(e)}
               value={formik.values.matKhau}
             />
-            <p></p>
+            <p className="login__validate">
+              {formik.touched.matKhau && formik.errors.matKhau
+                ? "*" + formik.errors.matKhau
+                : ""}
+            </p>
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!(formik.isValid && formik.dirty)}
+          >
             <span>Submit</span>
           </button>
         </form>
