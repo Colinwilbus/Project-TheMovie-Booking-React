@@ -12,7 +12,7 @@ export default function BannerComingSoonComponent(props) {
         className="myBannerCs__img"
         style={{ backgroundImage: `url(${movieDetail.hinhAnh})` }}
       >
-        <CustomCard effectColor="#000" blur={10}>
+        <CustomCard effectColor="#000" blur={10} className="myBannerCs__banner">
           <div className="myBannerCs__content">
             <h5>{movieDetail?.tenPhim}</h5>
             <p>

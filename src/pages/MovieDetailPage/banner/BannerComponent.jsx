@@ -13,7 +13,7 @@ export default function BannerComponent(props) {
         className="myBanner__img"
         style={{ backgroundImage: `url(${movieDetail.hinhAnh})` }}
       >
-        <CustomCard effectColor="#000" blur={10}>
+        <CustomCard effectColor="#000" blur={10} className="myBanner__banner">
           <div className="myBanner__content">
             <h5>{movieDetail?.tenPhim}</h5>
             <p>

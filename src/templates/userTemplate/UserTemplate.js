@@ -15,7 +15,11 @@ const UserTemplate = (props) => {
       render={(propsRoute) => {
         return (
           <div className="template__user">
-            <CustomCard effectColor="#000" blur={10}>
+            <CustomCard
+              effectColor="#000"
+              blur={10}
+              className="template__userContent"
+            >
               <Component {...propsRoute} />
             </CustomCard>
           </div>
