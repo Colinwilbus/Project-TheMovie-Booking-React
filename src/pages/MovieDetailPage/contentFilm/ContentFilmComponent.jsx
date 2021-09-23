@@ -71,8 +71,8 @@ export default function ContentFilmComponent(props) {
       <div className="contentFilm__content">
         <div className="row">
           <div
-            data-aos="fade-right"
-            data-aos-once="true"
+            // data-aos="fade-right"
+            // data-aos-once="true"
             className="col-12 col-lg-7 contentFilm__Synopsis"
           >
             <div className="contentFilm__title">
@@ -119,8 +119,8 @@ export default function ContentFilmComponent(props) {
             </div>
           </div>
           <div
-            data-aos="fade-left"
-            data-aos-once="true"
+            // data-aos="fade-left"
+            // data-aos-once="true"
             className="col-12 col-lg-5 contentFilm__viewingTimes"
           >
             <div className="contentFilm__title">

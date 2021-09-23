@@ -96,8 +96,8 @@ const ComingSoonComponent = (props) => {
       <div className="comingSoon__content">
         <div
           className="comingSoon__detail"
-          data-aos="zoom-out"
-          data-aos-once="true"
+          //   data-aos="zoom-out"
+          //   data-aos-once="true"
           id="comingSoon__detailId"
         >
           <Slider
@@ -111,10 +111,10 @@ const ComingSoonComponent = (props) => {
         <div className="comingSoon__carousel container">
           <div
             className="comingSoon__slick"
-            data-aos="fade-down"
-            data-aos-once="true"
-            data-aos-anchor="#comingSoon__detailId"
-            data-aos-delay="500"
+            // data-aos="fade-down"
+            // data-aos-once="true"
+            // data-aos-anchor="#comingSoon__detailId"
+            // data-aos-delay="500"
           >
             <Slider
               asNavFor={state.nav1}

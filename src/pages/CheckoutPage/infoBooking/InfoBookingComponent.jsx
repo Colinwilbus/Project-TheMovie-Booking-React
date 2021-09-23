@@ -42,8 +42,8 @@ export default function InfoBookingComponent(props) {
     <div className="infoBooking">
       <div
         className="infoBooking__content"
-        data-aos="fade-down"
-        data-aos-once="true"
+        // data-aos="fade-down"
+        // data-aos-once="true"
         id="infoBooking__contentId"
       >
         <div className="infoBooking__FilmName">
@@ -104,10 +104,10 @@ export default function InfoBookingComponent(props) {
       </div>
       <div
         className="infoBooking__btn"
-        data-aos="fade-left"
-        data-aos-once="true"
-        data-aos-anchor="#infoBooking__contentId"
-        data-aos-delay="700"
+        // data-aos="fade-left"
+        // data-aos-once="true"
+        // data-aos-anchor="#infoBooking__contentId"
+        // data-aos-delay="700"
       >
         <ModalComponent
           classModal="modal__gray"

@@ -8,7 +8,7 @@ export default function ModalInfoBookingComponent(props) {
   return (
     <div className="modalInfoBooking">
       <div className="row">
-        <div className="col-6 modalInfoBooking__info">
+        <div className="col-12 col-md-6 modalInfoBooking__info">
           <table className="table">
             <tbody>
               <tr>
@@ -65,7 +65,7 @@ export default function ModalInfoBookingComponent(props) {
             </tbody>
           </table>
         </div>
-        <div className="col-6 modalInfoBooking__img">
+        <div className="col-12 col-md-6 modalInfoBooking__img">
           <img src={infoFilm.hinhAnh} alt={infoFilm.hinhAnh} />
         </div>
       </div>

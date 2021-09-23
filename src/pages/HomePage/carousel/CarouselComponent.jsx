@@ -10,12 +10,12 @@ import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayT
 
 export default function CarouselComponent() {
   return (
-    <section className="myCarousel" id="myCarouselId">
-      <div
-        className="myCarousel__content "
-        data-aos="zoom-out"
-        data-aos-once="true"
-      >
+    <section
+      className="myCarousel"
+      //  data-aos="zoom-out" data-aos-once="true"
+      id="myCarouselId"
+    >
+      <div className="myCarousel__content ">
         <div
           id="carouselMovie"
           className="carousel slide carousel-fade "

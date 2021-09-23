@@ -58,29 +58,29 @@ export default function ProfilePage(props) {
       <div className="profilePage__Content">
         <div className="profilePage__Info">
           <div className="row">
-            <div className="col-3 col-md-2 col-xl-1">
+            <div className="col-12 col-md-2 col-xl-1">
               <div className="profilePage__Avt">
                 <Avatar>{userLoginInfo.hoTen.slice(0, 1)}</Avatar>
               </div>
             </div>
-            <div className="col-9 col-md-10 col-xl-11">
+            <div className="col-12 col-md-10 col-xl-11">
               <div className="profilePage__Name">
                 <table className="table">
                   <tbody>
                     <tr>
-                      <td>Your Name:</td>
+                      <td>Name:</td>
                       <td>{userLoginInfo.hoTen}</td>
                     </tr>
                     <tr>
-                      <td>Your Username:</td>
+                      <td>Username:</td>
                       <td>{userLoginInfo.taiKhoan}</td>
                     </tr>
                     <tr>
-                      <td>Your Email:</td>
+                      <td>Email:</td>
                       <td>{userLoginInfo.email}</td>
                     </tr>
                     <tr>
-                      <td>Your Phone Number:</td>
+                      <td>Phone Number:</td>
                       <td>{userLoginInfo.soDT}</td>
                     </tr>
                   </tbody>

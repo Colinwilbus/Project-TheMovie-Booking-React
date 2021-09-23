@@ -10,7 +10,7 @@ export default function DeleteFilmComponent(props) {
       <div className="deleteFilm__Content">
         <div className="deleteFilm__Detail">
           <div className="row">
-            <div className="col-7 deleteFilm__Info">
+            <div className="col-12 col-sm-7 deleteFilm__Info">
               <h4>Info Film</h4>
               <table className="table">
                 <tbody>
@@ -39,7 +39,7 @@ export default function DeleteFilmComponent(props) {
                 </tbody>
               </table>
             </div>
-            <div className="col-5 deleteFilm__Img">
+            <div className="col-12 col-sm-5 deleteFilm__Img">
               <img src={film.hinhAnh} alt="" />
             </div>
           </div>

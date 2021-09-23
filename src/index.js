@@ -11,19 +11,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 //  setup redux
 import { Provider } from "react-redux";
 import store from "./redux/configStore";
-import { DOMAIN } from "./util/settings/config";
-//  setup realTime (webSocket SignalR)
-// import * as signalR from "@aspnet/signalr";
-// export const connection = new signalR.HubConnectionBuilder()
-//   .withUrl(`${DOMAIN}/DatVeHub`)
-//   .configureLogging(signalR.LogLevel.Information)
-//   .build();
-// connection
-//   .start()
-//   .then(() => {})
-//   .catch((error) => {
-//     console.log(error);
-//   });
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

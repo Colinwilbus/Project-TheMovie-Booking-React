@@ -1,6 +1,6 @@
 .bookingChair {
   padding: 120px 0;
-  @media screen and( min-width: 992px) {
+  @media screen and( min-width: 1200px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,10 +9,6 @@
     padding: 120px 0 50px;
   }
   .bookingChair__content {
-    @media screen and (min-width: 992px) {
-      margin: auto;
-      margin-left: 100px;
-    }
     @media screen and (min-width: 1200px) {
       margin: auto;
       margin-left: 200px;
@@ -21,13 +17,20 @@
     .bookingChair__Cinema {
       background: linear-gradient(to bottom, #191919, #7f7f7f);
       border-radius: 30px;
-
+      overflow-x: scroll;
       box-shadow: 0 0 30px black;
+      @media screen and (min-width: 768px) {
+        overflow-x: hidden;
+      }
       @media screen and (min-width: 1200px) {
         padding: 10px 20px;
       }
       .bookingChair__Screen {
         position: relative;
+        width: 150%;
+        @media screen and(min-width: 768px) {
+          width: 100%;
+        }
         h6 {
           text-align: center;
           margin: 0;
@@ -46,6 +49,10 @@
       .bookingChair__Listchair {
         margin-top: 20px;
         text-align: center;
+        width: 150%;
+        @media screen and(min-width: 768px) {
+          width: 100%;
+        }
         .bookingChair__item {
           @media screen and(min-width: 576px) {
             margin: 0px 2px;
@@ -105,12 +112,32 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: #191919;
-
+      @media screen and(min-width: 992px) {
+        font-size: 2.5rem;
+      }
+      @media screen and(min-width: 1200px) {
+        font-size: 1.5rem;
+      }
+      @media screen and(min-width: 2560px) {
+        font-size: 2.5rem;
+      }
       span {
-        font-size: 1.2rem;
+        font-size: 1rem;
         padding-left: 5px;
         padding-right: 15px;
         color: black;
+        @media screen and(min-width: 768px) {
+          font-size: 1.2rem;
+        }
+        @media screen and(min-width: 992px) {
+          font-size: 1.8rem;
+        }
+        @media screen and(min-width: 1200px) {
+          font-size: 1.2rem;
+        }
+        @media screen and(min-width: 2560px) {
+          font-size: 2rem;
+        }
       }
     }
     .chair_Reserved {
@@ -158,8 +185,17 @@
   }
 }
 .myBooking__text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-left: 5px;
   padding-right: 15px;
   color: #fbbd61;
+  @media screen and(min-width: 768px) {
+    font-size: 1.2rem;
+  }
+  @media screen and(min-width: 992px) {
+    font-size: 1.8rem;
+  }
+  @media screen and(min-width: 1200px) {
+    font-size: 1.2rem;
+  }
 }

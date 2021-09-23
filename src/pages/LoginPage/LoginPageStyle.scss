@@ -1,6 +1,6 @@
 .Login {
   background-color: rgba(0, 0, 0, 0.474);
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -11,16 +11,19 @@
   z-index: 1000;
   @media screen and(min-width: 576px) {
     width: 60%;
+    height: 500px;
+    justify-content: space-evenly;
   }
-  @media screen and(min-width: 768px) {
-    width: 50%;
-  }
-  @media screen and(min-width: 768px) {
-    width: 40%;
-  }
+  //   @media screen and(min-width: 768px) {
+  //     width: 50%;
+  //   }
+  //   @media screen and(min-width: 768px) {
+  //     width: 40%;
+  //   }
   @media screen and(min-width: 1200px) {
     width: 30%;
-    height: 80%;
+    height: 400px;
+    justify-content: space-around;
   }
   .login__Title {
     h3 {

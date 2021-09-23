@@ -8,7 +8,7 @@ export default function FooterComponent() {
       <div className="footer__content">
         <div className="footer__top">
           <div className="row">
-            <div className="col-3">
+            <div className="col-12 col-md-3 footer__item">
               <h3>GET IN TOUCH</h3>
               <ul>
                 <li>
@@ -22,7 +22,7 @@ export default function FooterComponent() {
                 </li>
               </ul>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3 footer__item">
               <h3>ABOUT B.MOVIE</h3>
               <ul>
                 <li>
@@ -33,7 +33,7 @@ export default function FooterComponent() {
                 </li>
               </ul>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3 footer__item">
               <h3>LEGAL STUFF</h3>
               <ul>
                 <li>
@@ -44,7 +44,7 @@ export default function FooterComponent() {
                 </li>
               </ul>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3 footer__item">
               <h3>CONNECT WITH US</h3>
               <ul>
                 <li>

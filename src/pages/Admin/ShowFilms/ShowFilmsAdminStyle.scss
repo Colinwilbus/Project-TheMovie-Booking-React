@@ -1,4 +1,8 @@
 .showFilmsAm {
+  margin: 150px 0 20px;
+  @media screen and(min-width: 576px) {
+    margin-top: 0px;
+  }
   .showFilmsAm__Title {
     margin-bottom: 20px;
     h3 {
@@ -68,9 +72,16 @@
                         }
                         &:nth-of-type(4) {
                           width: 20%;
+                          display: none;
+                          @media screen and (min-width: 576px) {
+                            display: table-cell;
+                          }
                         }
                         &:nth-of-type(3) {
-                          width: 20%;
+                          display: none;
+                          @media screen and (min-width: 576px) {
+                            display: table-cell;
+                          }
                         }
                       }
                       .ant-table-cell {
@@ -128,8 +139,18 @@
                   tbody {
                     tr {
                       td {
+                        &:nth-of-type(3) {
+                          display: none;
+                          @media screen and (min-width: 576px) {
+                            display: table-cell;
+                          }
+                        }
                         &:nth-of-type(4) {
                           text-align: center;
+                          display: none;
+                          @media screen and (min-width: 576px) {
+                            display: table-cell;
+                          }
                           img {
                             width: 50px;
                             height: 50px;

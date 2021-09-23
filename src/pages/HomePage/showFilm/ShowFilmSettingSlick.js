@@ -20,14 +20,20 @@ export const settings = {
   swipeToSlide: true,
   slidesToShow: 4,
   arrows: true,
+
   prevArrow: <SamplePrevArrow />,
   nextArrow: <SampleNextArrow />,
   responsive: [
     {
-      breakpoint: 768,
+      breakpoint: 767,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         arrows: false,
+        infinite: true,
+        dots: true,
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
       },
     },
     {
@@ -35,6 +41,11 @@ export const settings = {
       settings: {
         slidesToShow: 3,
         arrows: false,
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
       },
     },
     {
@@ -42,13 +53,23 @@ export const settings = {
       settings: {
         slidesToShow: 3,
         arrows: false,
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
       },
     },
     {
       breakpoint: 1200,
       settings: {
         slidesToShow: 4,
-        arrows: true,
+        arrows: false,
+        autoplay: true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplaySpeed: 4000,
       },
     },
   ],

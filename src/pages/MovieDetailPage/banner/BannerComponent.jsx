@@ -1,13 +1,15 @@
 import React from "react";
 import "./BannerStyle.scss";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
-import cr2 from "../../../assets/img/cr-2.jpg";
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayTrailerComponent";
+
 export default function BannerComponent(props) {
   const { movieDetail } = props;
   return (
     <section className="myBanner">
       <div
-        data-aos="zoom-out"
+        // data-aos="zoom-out"
         className="myBanner__img"
         style={{ backgroundImage: `url(${movieDetail.hinhAnh})` }}
       >
@@ -20,12 +22,19 @@ export default function BannerComponent(props) {
                 : movieDetail.moTa}
             </p>
             <div className="myBanner__btn">
-              <button>
-                <span>
-                  <i className="fa fa-play" />
-                  PLAY TRAILER
-                </span>
-              </button>
+              <ModalComponent
+                textShowModal={
+                  <span>
+                    <i className="fa fa-play" />
+                    PLAY TRAILER
+                  </span>
+                }
+                Component={PlayTrailerComponent}
+                functionOk={() => {}}
+                trailerFilm={movieDetail.trailer}
+                classModal="modal__black"
+                titleModal="Trailer"
+              />
               <span className="myBanner__score">{`${movieDetail.danhGia}/10`}</span>
             </div>
           </div>

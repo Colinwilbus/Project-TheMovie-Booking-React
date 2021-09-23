@@ -182,7 +182,7 @@ export default function AddShowTimesComponent(props) {
           <div className="addShowTimes__Content">
             <form>
               <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group">
                     <label>Film:</label>
                     <Select
@@ -208,7 +208,7 @@ export default function AddShowTimesComponent(props) {
                   </div>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group">
                     <label>Cinema System:</label>
                     <Select
@@ -235,7 +235,7 @@ export default function AddShowTimesComponent(props) {
                     </Select>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group">
                     <label>Cinema:</label>
                     <Select
@@ -262,7 +262,7 @@ export default function AddShowTimesComponent(props) {
                     </Select>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group">
                     <label>Theater:</label>
                     <Select
@@ -288,7 +288,7 @@ export default function AddShowTimesComponent(props) {
                   </div>
                 </div>
 
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group">
                     <label>Times:</label>
                     <span className="addShowTimes__validate">
@@ -314,7 +314,7 @@ export default function AddShowTimesComponent(props) {
                     />
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-sm-6">
                   <div className="form-group ">
                     <label>Price: </label>
                     <span className="addShowTimes__validate">

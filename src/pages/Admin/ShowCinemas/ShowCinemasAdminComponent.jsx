@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowCinemasAdminStyle.scss";
-import { Tabs, Table } from "antd";
+import { Tabs, Table, Menu } from "antd";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import ModalShowTimesComponent from "../ModalShowTimes/ModalShowTimesComponent";
 import AddShowTimesComponent from "../AddShowTimes/AddShowTimesComponent";
 
 const { TabPane } = Tabs;
-
+const { SubMenu } = Menu;
 function callback(key) {
   console.log(key);
 }
@@ -110,6 +110,40 @@ export default function ShowCinemaAdminComponent(props) {
       </TabPane>
     ));
 
+  const renderShowTimesMobi = (arrayShowTimes) =>
+    arrayShowTimes?.map((film, index) => (
+      <div className="row showCinemaAm__film" key={index}>
+        <div className="col-12 col-md-10 col-xl-11 showCinemaAm__detail">
+          <div className="showCinemaAm__nameFilm">
+            <h6>
+              {film.maPhim} - {film.tenPhim}
+            </h6>
+          </div>
+
+          <div className="showCinemaAm__btn">
+            <ModalComponent
+              textShowModal="View Show Times"
+              Component={ModalShowTimesComponent}
+              showTimeList={film.lstLichChieuTheoPhim}
+              titleModal="Show Times"
+              functionOk={() => {}}
+            />
+          </div>
+        </div>
+      </div>
+    ));
+  const renderCinemaListMobi = () =>
+    cinemaList?.map((item, index) => (
+      <TabPane tab={<img src={item.logo} />} key={index}>
+        <Menu mode="inline" style={{ width: 256 }}>
+          {item.lstCumRap?.map((itemChild, index) => (
+            <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>
+              {renderShowTimesMobi(itemChild.danhSachPhim)}
+            </SubMenu>
+          ))}
+        </Menu>
+      </TabPane>
+    ));
   return (
     <section className="showCinemaAm">
       <div className="showCinemaAm__Title">
@@ -121,6 +155,11 @@ export default function ShowCinemaAdminComponent(props) {
       <div className="showCinemaAm__content">
         <Tabs defaultActiveKey="0" onChange={callback}>
           {renderCinemas()}
+        </Tabs>
+      </div>
+      <div className="showCinemaAm__contentMobi">
+        <Tabs defaultActiveKey="0" onChange={callback} tabPosition="left">
+          {renderCinemaListMobi()}
         </Tabs>
       </div>
     </section>

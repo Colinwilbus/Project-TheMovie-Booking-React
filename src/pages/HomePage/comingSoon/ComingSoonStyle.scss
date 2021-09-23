@@ -15,24 +15,31 @@
                 background-color: rgba(0, 0, 0, 0.842);
                 color: white;
                 position: relative;
-
+                height: 820px;
+                @media screen and (min-width: 768px) {
+                  height: 580px;
+                }
                 .comingSoon__bg {
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
                   img {
                     width: 100%;
                     height: 100%;
                     background-position: top;
                     background-size: cover;
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
+
+                    object-fit: cover;
                   }
                 }
                 .comingSoon__banner {
                   padding: 50px 10px;
+                  max-width: 1366px;
                   @media screen and(min-width: 992px) {
-                    width: 100%;
                     padding-left: 100px;
                     padding-right: 100px;
                     margin-left: auto;
@@ -59,9 +66,15 @@
                   .row {
                     .comingSoon__text {
                       margin-bottom: 20px;
+                      height: 300px;
+                      @media screen and (min-width: 768px) {
+                        height: 100%;
+                      }
                       p {
-                        // padding: 20px 100px 5px 0;
-                        padding: 20px 70px 5px 0;
+                        padding: 20px 20px 5px 0;
+                        @media screen and (min-width: 768px) {
+                          padding: 20px 70px 5px 0;
+                        }
                         &:first-of-type {
                           font-size: 0.9rem;
                           color: #ec7532;

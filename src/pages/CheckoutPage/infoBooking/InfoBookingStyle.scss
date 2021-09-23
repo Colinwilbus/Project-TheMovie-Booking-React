@@ -1,6 +1,6 @@
 .infoBooking {
   background-color: white;
-  @media screen and(min-width: 992px) {
+  @media screen and(min-width: 1200px) {
     width: 23%;
     margin: 0;
     padding: 0;
@@ -9,6 +9,9 @@
     right: 0;
     bottom: -100px;
     background-color: transparent;
+  }
+  @media screen and(min-width: 2560px) {
+    bottom: -130px;
   }
 
   .infoBooking__content {

@@ -6,15 +6,20 @@
   justify-content: center;
   align-items: center;
   .profilePage__Content {
-    width: 95%;
+    max-width: 1366px;
+
     margin: auto;
     height: 100%;
     background-color: #19191988;
     border-radius: 10px;
-    padding: 30px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media screen and (min-width: 768px) {
+      width: 95%;
+      padding: 30px;
+    }
     .profilePage__Info {
       position: relative;
 
@@ -71,8 +76,15 @@
       }
     }
     .profilePage__Ticket {
-      padding: 20px 10px;
-      height: 60%;
+      padding: 20px 0px;
+      height: 55%;
+      @media screen and(min-width: 768px) {
+        padding: 20px 10px;
+        height: 75%;
+      }
+      @media screen and(min-width: 1200px) {
+        height: 60%;
+      }
       .profilePage__HistoryBooking {
         overflow-y: scroll;
         height: 100%;

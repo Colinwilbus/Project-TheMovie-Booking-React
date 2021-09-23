@@ -18,8 +18,8 @@ export default function ShowFilmComponent(props) {
   return (
     <section className="showFilm" id="showFilmId">
       <div
-        data-aos="fade-down"
-        data-aos-once="true"
+        // data-aos="fade-down"
+        // data-aos-once="true"
         className="showFilm__content "
       >
         <div className="showFilm__title">

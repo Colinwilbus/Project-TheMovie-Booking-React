@@ -61,3 +61,11 @@
 .ant-select-dropdown {
   background-color: #4c4c4c;
 }
+.ant-picker-dropdown {
+  .ant-picker-datetime-panel {
+    flex-direction: column;
+    @media screen and (min-width: 576px) {
+      flex-direction: row;
+    }
+  }
+}

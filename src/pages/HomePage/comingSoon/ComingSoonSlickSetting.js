@@ -18,6 +18,42 @@ function SamplePrevArrow(props) {
 export const settingCarousel = {
   arrows: false,
   fade: true,
+
+  responsive: [
+    {
+      breakpoint: 576,
+      settings: {
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
+      },
+    },
+
+    {
+      breakpoint: 992,
+      settings: {
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
+      },
+    },
+    {
+      breakpoint: 1200,
+      settings: {
+        autoplay: true,
+        speed: 500,
+        autoplaySpeed: 4000,
+      },
+    },
+  ],
 };
 
 export const settingsSliderNav = {
@@ -31,12 +67,17 @@ export const settingsSliderNav = {
   centerMode: false,
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
+  speed: 500,
+  initialSlide: 0,
+  pauseOnHover: true,
+  pauseOnFocus: true,
   responsive: [
     {
       breakpoint: 576,
       settings: {
         slidesToShow: 2,
         arrows: false,
+        infinite: true,
       },
     },
     {
@@ -44,6 +85,7 @@ export const settingsSliderNav = {
       settings: {
         slidesToShow: 3,
         arrows: false,
+        infinite: true,
       },
     },
 
@@ -52,13 +94,15 @@ export const settingsSliderNav = {
       settings: {
         slidesToShow: 3,
         arrows: false,
+        infinite: true,
       },
     },
     {
       breakpoint: 1200,
       settings: {
         slidesToShow: 4,
-        arrows: true,
+        arrows: false,
+        infinite: true,
       },
     },
   ],

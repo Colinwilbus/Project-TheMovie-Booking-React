@@ -58,8 +58,8 @@ export default function BookingChairComponent(props) {
       <div className="bookingChair__content">
         <div
           className="bookingChair__Cinema"
-          data-aos="fade-right"
-          data-aos-once="true"
+          //   data-aos="fade-right"
+          //   data-aos-once="true"
           id="bookingChair__CinemaId"
         >
           <div className="bookingChair__Screen">
@@ -70,10 +70,10 @@ export default function BookingChairComponent(props) {
         </div>
         <div
           className="bookingChair__Note"
-          data-aos="fade-right"
-          data-aos-once="true"
-          data-aos-anchor="#bookingChair__CinemaId"
-          data-aos-delay="700"
+          //   data-aos="fade-right"
+          //   data-aos-once="true"
+          //   data-aos-anchor="#bookingChair__CinemaId"
+          //   data-aos-delay="700"
         >
           <div>
             <p>

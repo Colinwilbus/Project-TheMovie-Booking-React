@@ -1,7 +1,7 @@
 .myCarousel {
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 10px 60px 6px black;
+  box-shadow: 0 10px 40px 6px black;
   background-color: rgba(0, 0, 0, 0.925);
 
   .myCarousel__content {
@@ -24,13 +24,14 @@
         }
       }
       .carousel-inner {
-        height: 600px;
+        height: 90vh;
 
         .carousel__arrow {
           position: absolute;
           z-index: 2;
           bottom: 0;
           left: 50%;
+          transform: translateX(-50%);
           animation: arrowDrive 2s linear 0s infinite alternate;
         }
         .carousel-item {
@@ -63,6 +64,11 @@
               @media screen and (min-width: 992px) {
                 width: 60%;
                 bottom: 25%;
+                left: 10%;
+              }
+              @media screen and (min-width: 2560px) {
+                width: 60%;
+                bottom: 40%;
                 left: 10%;
               }
 
@@ -159,10 +165,10 @@
 }
 @keyframes arrowDrive {
   from {
-    transform: translateX(0);
+    transform: translateX(-40%);
   }
   to {
-    transform: translateX(-10px);
+    transform: translateX(-50%);
   }
 }
 @keyframes zoomText {

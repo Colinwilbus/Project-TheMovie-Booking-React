@@ -57,8 +57,12 @@ export default function HeaderComponent(props) {
     }
     return "";
   };
+
   return (
-    <header data-aos="zoom-out" data-aos-once="true" id="headerHomeId">
+    <header
+      // data-aos="zoom-out" data-aos-once="true"
+      id="headerHomeId"
+    >
       <div className="header__content">
         <div className="header__top">
           <div className="row">

@@ -135,7 +135,7 @@ export default function ModalAddFilmComponent(props) {
         <div className="addFilm">
           <form>
             <div className="row">
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Name</label>
                   <span className="addFilm__error">
@@ -153,8 +153,8 @@ export default function ModalAddFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6"></div>
-              <div className="col-6">
+              <div className="d-none d-sm-block col-sm-6"></div>
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Trailer</label>
                   <span className="addFilm__error">
@@ -172,7 +172,7 @@ export default function ModalAddFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-5 col-sm-3">
                 <div className="form-group">
                   <label>Rate</label>
                   <span className="addFilm__error">
@@ -192,7 +192,7 @@ export default function ModalAddFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-7 col-sm-3">
                 <div className="form-group">
                   <label>Release Date</label>
                   <span className="addFilm__error">
@@ -214,7 +214,7 @@ export default function ModalAddFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Image</label>
                   <span className="addFilm__error">
@@ -235,7 +235,7 @@ export default function ModalAddFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label htmlFor="exampleInputPassword1">Description</label>
                   <span className="addFilm__error">

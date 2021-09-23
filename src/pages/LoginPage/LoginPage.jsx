@@ -40,7 +40,10 @@ export default function LoginPage(props) {
   }, []);
   //   data-aos="zoom-out" data-aos-once="true"
   return (
-    <div data-aos="zoom-out" data-aos-once="true" className="Login">
+    <div
+      //  data-aos="zoom-out" data-aos-once="true"
+      className="Login"
+    >
       <div className="login__Logo">
         <NavLink to="/home">
           <img src={logo} alt="" />

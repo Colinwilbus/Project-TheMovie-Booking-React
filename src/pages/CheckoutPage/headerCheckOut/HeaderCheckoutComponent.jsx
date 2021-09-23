@@ -24,8 +24,8 @@ export default function HeaderCheckoutComponent(props) {
   window.addEventListener("scroll", changeHeaderCheckOut);
   return (
     <header
-      data-aos="fade-down"
-      data-aos-once="true"
+      //   data-aos="fade-down"
+      //   data-aos-once="true"
       className={`headerCheckOut `}
       id="headerCheckOutId"
     >

@@ -68,93 +68,101 @@ export default function FindShowTimeComponent(props) {
   return (
     <div className="findShowTime">
       <div className="findShowTime__content">
-        <form>
-          <div className="row">
-            <div className="col-4 ">
-              <div className="findShowTime__item">
-                <div className="form-group">
-                  <label>MOVIES</label>
-                  <Select
-                    showSearch
-                    style={{ width: 200 }}
-                    placeholder="Search to Select"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                      option.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                    filterSort={(optionA, optionB) =>
-                      optionA.children
-                        .toLowerCase()
-                        .localeCompare(optionB.children.toLowerCase())
-                    }
-                    onChange={handleChangeMovie}
-                  >
-                    {renderMovieListOption()}
-                  </Select>
+        <div className="findShowTime__detail">
+          <form>
+            <div className="row">
+              <div className="col-12 col-lg-4">
+                <div className="findShowTime__item">
+                  <div className="form-group">
+                    <label>MOVIES</label>
+                    <Select
+                      showSearch
+                      style={{ width: 200 }}
+                      placeholder="Search to Select"
+                      optionFilterProp="children"
+                      filterOption={(input, option) =>
+                        option.children
+                          .toLowerCase()
+                          .indexOf(input.toLowerCase()) >= 0
+                      }
+                      filterSort={(optionA, optionB) =>
+                        optionA.children
+                          .toLowerCase()
+                          .localeCompare(optionB.children.toLowerCase())
+                      }
+                      onChange={handleChangeMovie}
+                    >
+                      {renderMovieListOption()}
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-lg-4 ">
+                <div className="findShowTime__item">
+                  <div className="form-group">
+                    <label>CINEMAS</label>
+                    <Select
+                      showSearch
+                      style={{ width: 200 }}
+                      placeholder="Search to Select"
+                      optionFilterProp="children"
+                      filterOption={(input, option) =>
+                        option.children
+                          .toLowerCase()
+                          .indexOf(input.toLowerCase()) >= 0
+                      }
+                      filterSort={(optionA, optionB) =>
+                        optionA.children
+                          .toLowerCase()
+                          .localeCompare(optionB.children.toLowerCase())
+                      }
+                      onChange={handleChangeCinema}
+                    >
+                      {renderCinemaOption()}
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-lg-4">
+                <div className="findShowTime__item">
+                  <div className="form-group">
+                    <label>DATES</label>
+                    <Select
+                      showSearch
+                      style={{ width: 200 }}
+                      placeholder="Search to Select"
+                      optionFilterProp="children"
+                      filterOption={(input, option) =>
+                        option.children
+                          .toLowerCase()
+                          .indexOf(input.toLowerCase()) >= 0
+                      }
+                      filterSort={(optionA, optionB) =>
+                        optionA.children
+                          .toLowerCase()
+                          .localeCompare(optionB.children.toLowerCase())
+                      }
+                      onChange={handleChangeShowtimes}
+                    >
+                      {renderShowTimesOption()}
+                    </Select>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-4 ">
-              <div className="findShowTime__item">
-                <div className="form-group">
-                  <label>CINEMAS</label>
-                  <Select
-                    showSearch
-                    style={{ width: 200 }}
-                    placeholder="Search to Select"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                      option.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                    filterSort={(optionA, optionB) =>
-                      optionA.children
-                        .toLowerCase()
-                        .localeCompare(optionB.children.toLowerCase())
-                    }
-                    onChange={handleChangeCinema}
-                  >
-                    {renderCinemaOption()}
-                  </Select>
-                </div>
-              </div>
+            <div className="findShowTime__btn">
+              <NavLink
+                to={
+                  state.idShowTime !== ""
+                    ? `/check-out/${state.idShowTime}`
+                    : ""
+                }
+              >
+                <span>AVAIABLE NOW</span>
+              </NavLink>
             </div>
-            <div className="col-4 ">
-              <div className="findShowTime__item">
-                <div className="form-group">
-                  <label>DATES</label>
-                  <Select
-                    showSearch
-                    style={{ width: 200 }}
-                    placeholder="Search to Select"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                      option.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                    filterSort={(optionA, optionB) =>
-                      optionA.children
-                        .toLowerCase()
-                        .localeCompare(optionB.children.toLowerCase())
-                    }
-                    onChange={handleChangeShowtimes}
-                  >
-                    {renderShowTimesOption()}
-                  </Select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="findShowTime__btn">
-            <NavLink to={`/check-out/${state.idShowTime}`}>
-              <span>AVAIABLE NOW</span>
-            </NavLink>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

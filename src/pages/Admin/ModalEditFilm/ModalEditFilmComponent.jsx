@@ -144,7 +144,7 @@ export default function ModalEditFilmComponent(props) {
         <div className="editFilm">
           <form>
             <div className="row">
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Name</label>
                   <span className="editFilm__error">
@@ -159,8 +159,8 @@ export default function ModalEditFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6"></div>
-              <div className="col-6">
+              <div className="d-none d-sm-block col-sm-6"></div>
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Trailer</label>
                   <span className="editFilm__error">
@@ -175,7 +175,7 @@ export default function ModalEditFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-5 col-sm-3">
                 <div className="form-group">
                   <label>Rate</label>
                   <span className="editFilm__error">
@@ -192,7 +192,7 @@ export default function ModalEditFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-7 col-sm-3">
                 <div className="form-group">
                   <label>Release Date</label>
                   <span className="editFilm__error">
@@ -207,7 +207,7 @@ export default function ModalEditFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Image</label>
                   <span className="editFilm__error">
@@ -228,7 +228,7 @@ export default function ModalEditFilmComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label htmlFor="exampleInputPassword1">Description</label>
                   <span className="editFilm__error">{formik.errors.moTa}</span>

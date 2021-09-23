@@ -7,15 +7,30 @@
         tr {
           th {
             font-weight: 700;
+            &:nth-of-type(2) {
+              display: none;
+              @media screen and (min-width: 576px) {
+                display: table-cell;
+              }
+            }
           }
         }
       }
       tbody {
         tr {
           td {
+            &:nth-of-type(2) {
+              display: none;
+              @media screen and (min-width: 576px) {
+                display: table-cell;
+              }
+            }
             &:nth-of-type(4) {
-              width: 35%;
+              width: 42%;
               text-align: center;
+              @media screen and (min-width: 576px) {
+                width: 35%;
+              }
             }
           }
         }

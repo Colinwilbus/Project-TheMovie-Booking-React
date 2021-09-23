@@ -35,6 +35,9 @@
           @media screen and(min-width: 1200px) {
             width: 70%;
           }
+          @media screen and(min-width: 2560px) {
+            width: 50%;
+          }
         }
       }
       .headerCheckOut__user {
@@ -75,6 +78,9 @@
               height: 80px;
               object-fit: cover;
               border-radius: 10px;
+              @media screen and (min-width: 2560px) {
+                height: 110px;
+              }
             }
           }
           .headerCheckOut__Info {

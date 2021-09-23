@@ -1,12 +1,14 @@
 import React from "react";
 import "./BannerComingSoonStyle.scss";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
+import ModalComponent from "../../../components/ModalComponent/ModalComponent";
+import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayTrailerComponent";
 export default function BannerComingSoonComponent(props) {
   const { movieDetail } = props;
   return (
     <section className="myBannerCs">
       <div
-        data-aos="zoom-out"
+        // data-aos="zoom-out"
         className="myBannerCs__img"
         style={{ backgroundImage: `url(${movieDetail.hinhAnh})` }}
       >
@@ -19,12 +21,19 @@ export default function BannerComingSoonComponent(props) {
                 : movieDetail.moTa}
             </p>
             <div className="myBannerCs__btn">
-              <button>
-                <span>
-                  <i className="fa fa-play" />
-                  PLAY TRAILER
-                </span>
-              </button>
+              <ModalComponent
+                textShowModal={
+                  <span>
+                    <i className="fa fa-play" />
+                    PLAY TRAILER
+                  </span>
+                }
+                Component={PlayTrailerComponent}
+                functionOk={() => {}}
+                trailerFilm={movieDetail.trailer}
+                classModal="modal__black"
+                titleModal="Trailer"
+              />
               <span className="myBannerCs__score">{`${movieDetail.danhGia}/10`}</span>
             </div>
           </div>

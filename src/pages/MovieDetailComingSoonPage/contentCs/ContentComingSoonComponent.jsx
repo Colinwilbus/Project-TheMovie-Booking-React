@@ -8,8 +8,8 @@ export default function ContentComingSoonComponent(props) {
       <div className="contentFilmCs__content">
         <div className="row">
           <div
-            data-aos="fade-right"
-            data-aos-once="true"
+            // data-aos="fade-right"
+            // data-aos-once="true"
             className="col-12 col-lg-7 contentFilmCs__Synopsis"
           >
             <div className="contentFilmCs__title">
@@ -56,8 +56,8 @@ export default function ContentComingSoonComponent(props) {
             </div>
           </div>
           <div
-            data-aos="fade-left"
-            data-aos-once="true"
+            // data-aos="fade-left"
+            // data-aos-once="true"
             className="col-12 col-lg-5 contentFilmCs__viewingTimes"
           >
             <div className="contentFilmCs__title">

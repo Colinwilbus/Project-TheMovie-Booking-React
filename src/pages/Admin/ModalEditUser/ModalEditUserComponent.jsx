@@ -84,7 +84,7 @@ export default function ModalEditUserComponent(props) {
         <div className="editUser">
           <form>
             <div className="row">
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>UserName</label>
                   <span className="editUser__validate">
@@ -101,7 +101,7 @@ export default function ModalEditUserComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>FullName</label>
                   <span className="editUser__validate">
@@ -118,7 +118,7 @@ export default function ModalEditUserComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Email</label>
                   <span className="editUser__validate">
@@ -135,7 +135,7 @@ export default function ModalEditUserComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>PhoneNumber</label>
                   <span className="editUser__validate">
@@ -152,7 +152,7 @@ export default function ModalEditUserComponent(props) {
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>TypeUser</label>
                   <Select
@@ -170,7 +170,7 @@ export default function ModalEditUserComponent(props) {
                   </Select>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Password</label>
                   <span className="editUser__validate">
