@@ -47,7 +47,7 @@ export default function HeaderCheckoutComponent(props) {
             <div className="row">
               <div className="col-1 headerCheckOut__Img">
                 <img
-                  src={`${thongTinPhim.hinhAnh}m`}
+                  src={`${thongTinPhim.hinhAnh}`}
                   alt={thongTinPhim.hinhAnh}
                   onError={(e) => handleOnErrorImage(e)}
                 />
