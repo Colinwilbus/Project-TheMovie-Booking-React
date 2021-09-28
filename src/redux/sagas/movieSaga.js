@@ -1,12 +1,17 @@
-import { call, takeLatest, put } from "redux-saga/effects";
+import { call, takeLatest, put, delay } from "redux-saga/effects";
 import * as movieType from "../types/movieType";
 import { movieManagerService } from "../../services/MovieManagerService";
 import { notification } from "antd";
-
+import { DISLAY_LOADING, HIDE_LOADING } from "../types/lazyLoadingType";
 /*
 GET MOVIE LIST*/
 function* getMovieListApiAction(action) {
   try {
+    if (action.loading) {
+      yield put({
+        type: DISLAY_LOADING,
+      });
+    }
     const { data } = yield call(() =>
       movieManagerService.getMovieListApi(action.film)
     );
@@ -14,7 +19,19 @@ function* getMovieListApiAction(action) {
       type: movieType.GET_MOVIE_LIST,
       data,
     });
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
   } catch (error) {
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
     console.log(error.response?.data);
   }
 }
@@ -27,6 +44,11 @@ export function* getMovieListApiActionSaga() {
 GET MOVIE DETAIL*/
 function* getMovieDetailAction(action) {
   try {
+    if (action.loading) {
+      yield put({
+        type: DISLAY_LOADING,
+      });
+    }
     const { data } = yield call(() =>
       movieManagerService.getMovieDetailApi(action.id)
     );
@@ -34,7 +56,19 @@ function* getMovieDetailAction(action) {
       type: movieType.GET_MOVIE_DETAIL,
       data,
     });
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
   } catch (error) {
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
     console.log(error.response?.data);
   }
 }

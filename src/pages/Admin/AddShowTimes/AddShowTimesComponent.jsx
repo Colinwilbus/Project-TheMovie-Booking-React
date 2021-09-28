@@ -13,11 +13,9 @@ export default function AddShowTimesComponent(props) {
     cinemas: [],
     listTheater: [],
   });
-  //   console.log(state.listTheater);
-  //   console.log(state.cinemas);
 
+  const { movieList } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { movieList } = useSelector((state) => state.movieReducer);
 
   const formik = useFormik({
     initialValues: {
@@ -62,9 +60,9 @@ export default function AddShowTimesComponent(props) {
       }
     };
     getCinemasystem();
-    dispatch({
-      type: "getMovieListApiAction",
-    });
+    // dispatch({
+    //   type: "getMovieListApiAction",
+    // });
   }, []);
 
   const renderOptionListFilm = () =>
@@ -123,6 +121,9 @@ export default function AddShowTimesComponent(props) {
 
   const handleChangeCinemaSystem = (value) => {
     formik.setFieldValue("maHethongRap", value);
+    formik.setFieldValue("maCumRap", "");
+    formik.setFieldValue("maRap", "");
+
     const getCinemaList = async () => {
       try {
         const res = await cinemaManagerService.getCinemaListWithCinemaSystemApi(
@@ -140,6 +141,7 @@ export default function AddShowTimesComponent(props) {
   };
   const handleChangeCinema = (value) => {
     formik.setFieldValue("maCumRap", value);
+    formik.setFieldValue("maRap", "");
     const cinema = state.cinemas.find((item) => item.maCumRap === value);
     setState({
       ...state,
@@ -239,6 +241,9 @@ export default function AddShowTimesComponent(props) {
                   <div className="form-group">
                     <label>Cinema:</label>
                     <Select
+                      disabled={
+                        formik.values.maHethongRap === "" ? true : false
+                      }
                       showSearch
                       style={{ width: 200 }}
                       placeholder="Select film"
@@ -266,6 +271,7 @@ export default function AddShowTimesComponent(props) {
                   <div className="form-group">
                     <label>Theater:</label>
                     <Select
+                      disabled={formik.values.maCumRap === "" ? true : false}
                       showSearch
                       style={{ width: 200 }}
                       placeholder="Select film"

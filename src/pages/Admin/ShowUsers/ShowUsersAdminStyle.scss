@@ -71,7 +71,7 @@
                           width: 10%;
                         }
                         &:nth-of-type(4) {
-                          width: 20%;
+                          width: 15%;
                         }
                         &:nth-of-type(3) {
                           width: 20%;
@@ -82,7 +82,7 @@
                         }
                         &:nth-of-type(5) {
                           display: none;
-                          @media screen and(min-width: 576px) {
+                          @media screen and(min-width: 992px) {
                             display: table-cell;
                           }
                         }
@@ -159,12 +159,12 @@
                         }
                         &:nth-of-type(5) {
                           display: none;
-                          @media screen and(min-width: 576px) {
+                          @media screen and(min-width: 992px) {
                             display: table-cell;
                           }
                         }
                         &:nth-of-type(6) {
-                          width: 12%;
+                          width: 15%;
                           text-align: center;
                           div {
                             button {
@@ -182,6 +182,7 @@
                               overflow: hidden;
                               position: relative;
                               border: 1px solid black;
+                              margin-bottom: 5px;
                               &:hover {
                                 background: linear-gradient(
                                   to right,
@@ -202,7 +203,19 @@
                                   font-weight: 300;
                                 }
                               }
+                              @media screen and (min-width: 576px) {
+                                margin-bottom: 0px;
+                              }
                             }
+                          }
+                          @media screen and(min-width: 768px) {
+                            width: 26%;
+                          }
+                          @media screen and(min-width: 992px) {
+                            width: 24%;
+                          }
+                          @media screen and(min-width: 1200px) {
+                            width: 15%;
                           }
                         }
                       }

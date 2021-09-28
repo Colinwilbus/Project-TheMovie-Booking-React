@@ -92,9 +92,16 @@ export default function LoginPage(props) {
             className="btn btn-primary"
             disabled={!(formik.isValid && formik.dirty)}
           >
-            <span>Submit</span>
+            <span>Login</span>
           </button>
         </form>
+        <div className="login__register">
+          <p>
+            Don't have an account?
+            <br />
+            <NavLink to="/register"> Register now!</NavLink>
+          </p>
+        </div>
       </div>
     </div>
   );

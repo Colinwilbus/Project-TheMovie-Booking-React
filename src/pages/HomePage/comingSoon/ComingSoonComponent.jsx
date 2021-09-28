@@ -7,6 +7,7 @@ import bn from "../../../assets/img/slide-5.jpg";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import PlayTrailerComponent from "../../../components/PlayTrailerComponent/PlayTrailerComponent";
 import { NavLink } from "react-router-dom";
+import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
 
 const ComingSoonComponent = (props) => {
   const { movieList } = props;
@@ -25,7 +26,14 @@ const ComingSoonComponent = (props) => {
       nav2: slider2.current,
     });
   }, []);
-
+  const handleOnErrorImage = (e, classError) => {
+    e.target.onError = null;
+    e.target.style.display = "none";
+    const imgError = document.querySelectorAll(`${classError}`);
+    imgError.forEach((item, index) => {
+      item.style.display = "flex";
+    });
+  };
   const renderMovieListComingSoon = () => {
     const slideArray = [];
     const bannerArray = [];
@@ -33,7 +41,16 @@ const ComingSoonComponent = (props) => {
       slideArray.push(
         <div className="comingSoon__item" key={index}>
           <div className="item__img">
-            <img src={item.hinhAnh} alt={item.tenPhim} />
+            <img
+              src={`${item.hinhAnh}`}
+              alt={item.tenPhim}
+              onError={(e) =>
+                handleOnErrorImage(e, ".comingSoon__itemImgError")
+              }
+            />
+            <div className="comingSoon__itemImgError">
+              <LoadingItemComponent />
+            </div>
           </div>
           <div className="item__text">
             <h5>{item.tenPhim}</h5>
@@ -73,9 +90,15 @@ const ComingSoonComponent = (props) => {
               <div className="col-12 col-md-6 comingSoon__img">
                 <img
                   className="img-fluid"
-                  src={item.hinhAnh}
+                  src={`${item.hinhAnh}`}
                   alt={item.tenPhim}
+                  onError={(e) =>
+                    handleOnErrorImage(e, ".comingSoon__bannerImgError")
+                  }
                 />
+                <div className="comingSoon__bannerImgError">
+                  <LoadingItemComponent />
+                </div>
                 <div className="comingSoon__play">
                   <ModalComponent
                     textShowModal={<i className="fa fa-play showFilm__play" />}

@@ -17,23 +17,25 @@ export default function HomePage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({
-      type: DISLAY_LOADING,
-    });
+    // dispatch({
+    //   type: DISLAY_LOADING,
+    // });
     Aos.init({
       duration: 1000,
     });
     dispatch({
       type: "getMovieListApiAction",
+      loading: true,
     });
     dispatch({
       type: "getCinemaListApiAction",
+      loading: true,
     });
-    setTimeout(() => {
-      dispatch({
-        type: HIDE_LOADING,
-      });
-    }, 2000);
+    // setTimeout(() => {
+    //   dispatch({
+    //     type: HIDE_LOADING,
+    //   });
+    // }, 2500);
   }, []);
   return (
     <div>

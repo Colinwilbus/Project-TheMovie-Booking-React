@@ -1,7 +1,12 @@
 import { call, takeLatest, put, delay } from "@redux-saga/core/effects";
 import { userManagerService } from "../../services/UserManagerService";
 import * as userType from "../types/userType";
-import { DISLAY_LOADING, HIDE_LOADING } from "../types/lazyLoadingType";
+import {
+  DISLAY_LOADING,
+  DISLAY_LOADING_MODAL,
+  HIDE_LOADING,
+  HIDE_LOADING_MODAL,
+} from "../types/lazyLoadingType";
 import { notification } from "antd";
 // USER_LOGIN
 function* postUserLoginAction(action) {
@@ -38,10 +43,17 @@ export function* postUserLoginApiAcionSaga() {
 }
 // INFO_USER_LOGIN
 function* postUserLoginInfoApiAction(action) {
-  yield put({
-    type: DISLAY_LOADING,
-  });
   try {
+    if (action.loading) {
+      yield put({
+        type: DISLAY_LOADING,
+      });
+    }
+    if (action.loadingModal) {
+      yield put({
+        type: DISLAY_LOADING_MODAL,
+      });
+    }
     const { data } = yield call(() =>
       userManagerService.postInfoUserLoginApi(action.userAccount)
     );
@@ -50,13 +62,33 @@ function* postUserLoginInfoApiAction(action) {
       type: userType.POST_USER_INFO,
       data,
     });
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
+    if (action.loadingModal) {
+      yield delay(1000);
+      yield put({
+        type: HIDE_LOADING_MODAL,
+      });
+    }
   } catch (error) {
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
+    if (action.loadingModal) {
+      yield delay(1000);
+      yield put({
+        type: HIDE_LOADING_MODAL,
+      });
+    }
     console.log(error.response?.data);
   }
-  yield delay(2000);
-  yield put({
-    type: HIDE_LOADING,
-  });
 }
 export function* postUserLoginInfoApiActionSaga() {
   yield takeLatest("postUserLoginInfoApiAction", postUserLoginInfoApiAction);

@@ -13,24 +13,25 @@ export default function ProfilePage(props) {
   const { userLogin, userLoginInfo } = useSelector(
     (state) => state.userReducer
   );
-  console.log({ userLoginInfo });
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({
-      type: DISLAY_LOADING,
-    });
+    // dispatch({
+    //   type: DISLAY_LOADING,
+    // });
     const userAccount = {
       taiKhoan: userLogin.taiKhoan,
     };
     dispatch({
       type: "postUserLoginInfoApiAction",
       userAccount,
+      loading: true,
     });
-    setTimeout(() => {
-      dispatch({
-        type: HIDE_LOADING,
-      });
-    }, 2000);
+    // setTimeout(() => {
+    //   dispatch({
+    //     type: HIDE_LOADING,
+    //   });
+    // }, 2500);
   }, []);
   const renderHistoryBooking = () =>
     _.reverse(_.sortBy(userLoginInfo.thongTinDatVe, "ngayDat")).map(

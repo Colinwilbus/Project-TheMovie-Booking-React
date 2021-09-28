@@ -3,6 +3,7 @@ import * as cinemaType from "../types/cinemaType";
 const stateDefault = {
   cinemaList: [],
   showTimesFilm: {},
+  showTimesCinemaFilm: [],
 };
 
 const cinemaReducer = (state = stateDefault, action) => {
@@ -12,7 +13,29 @@ const cinemaReducer = (state = stateDefault, action) => {
       return { ...state, cinemaList: action.data };
     }
     case cinemaType.GET_SHOWTIMES_FILM: {
-      return { ...state, showTimesFilm: action.data };
+      const showTimesCinemaFilmUpdate = action.data.heThongRapChieu.map(
+        (item, index) => ({
+          ...item,
+          lstCumRap: item.cumRapChieu.map((itemChild, index) => ({
+            ...itemChild,
+            danhSachPhim: [
+              {
+                maPhim: action.data.maPhim,
+                tenPhim: action.data.tenPhim,
+                hinhAnh: action.data.hinhAnh,
+                lstLichChieuTheoPhim: itemChild.lichChieuPhim,
+              },
+            ],
+            lichChieuPhim: "",
+          })),
+          cumRapChieu: "",
+        })
+      );
+      return {
+        ...state,
+        showTimesFilm: action.data,
+        showTimesCinemaFilm: showTimesCinemaFilmUpdate,
+      };
     }
     default:
       return { ...state };

@@ -53,6 +53,18 @@
         @media screen and(min-width: 768px) {
           width: 100%;
         }
+        .bookingChair__bfrow {
+          color: #ec7532;
+          font-weight: 700;
+          padding-right: 10px;
+          border-radius: 50%;
+        }
+        .bookingChair__bhrow {
+          color: #ec7532;
+          font-weight: 700;
+          padding-left: 10px;
+          border-radius: 50%;
+        }
         .bookingChair__item {
           @media screen and(min-width: 576px) {
             margin: 0px 2px;

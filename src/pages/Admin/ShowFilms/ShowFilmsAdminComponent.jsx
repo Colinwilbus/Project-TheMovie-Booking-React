@@ -3,7 +3,7 @@ import "./ShowFilmsAdminStyle.scss";
 import { Table, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import imgErro from "../../../assets/img/img-err.jpg";
+import shipLogoError from "../../../assets/img/ship_Logo_Item.jpg";
 import ModalAddFilm from "../ModalAddFilm/ModalAddFilmComponent";
 import ModalEditFilmComponent from "../ModalEditFilm/ModalEditFilmComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
@@ -68,10 +68,11 @@ export default function ShowFilmsAdminComponent(props) {
       render: (text, film) => {
         return (
           <img
-            src={film.hinhAnh}
+            src={`${film.hinhAnh}`}
+            alt={film.hinhAnh}
             onError={(e) => {
               e.target.onError = null;
-              e.target.src = { imgErro };
+              e.target.src = shipLogoError;
             }}
           />
         );

@@ -1,8 +1,18 @@
 import React from "react";
 import "./ContentComingSoonStyle.scss";
 import moment from "moment";
+import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
+
 export default function ContentComingSoonComponent(props) {
   const { movieDetail } = props;
+  const handleOnErrorImage = (e, className) => {
+    e.target.onError = null;
+    e.target.style.display = "none";
+    const imgError = document.querySelectorAll(`${className}`);
+    imgError.forEach((item, index) => {
+      item.style.display = "flex";
+    });
+  };
   return (
     <section className="contentFilmCs">
       <div className="contentFilmCs__content">
@@ -18,7 +28,16 @@ export default function ContentComingSoonComponent(props) {
             <div className="contentFilmCs__detail">
               <div className="row">
                 <div className="col-12 col-lg-4 contentFilmCs__img">
-                  <img src={movieDetail.hinhAnh} alt={movieDetail.tenPhim} />
+                  <img
+                    src={`${movieDetail.hinhAnh}`}
+                    alt={movieDetail.tenPhim}
+                    onError={(e) =>
+                      handleOnErrorImage(e, ".contentFilmCs__errorImg")
+                    }
+                  />
+                  <div className="contentFilmCs__errorImg">
+                    <LoadingItemComponent />
+                  </div>
                 </div>
                 <div className="col-12 col-lg-8 contentFilmCs__text">
                   <h6>{movieDetail.tenPhim}</h6>

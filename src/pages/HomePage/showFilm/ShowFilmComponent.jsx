@@ -11,7 +11,7 @@ export default function ShowFilmComponent(props) {
   const renderMovieList = () =>
     movieList?.slice(0, 13).map((item, index) => (
       <div key={index}>
-        <FilmComponent item={item} />
+        <FilmComponent item={item} index={index} />
       </div>
     ));
 

@@ -20,21 +20,22 @@ export default function CheckoutPage(props) {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({
-      type: DISLAY_LOADING,
-    });
+    // dispatch({
+    //   type: DISLAY_LOADING,
+    // });
     dispatch({
       type: "getListChairApiAction",
       idShowtimes: id,
+      loading: true,
     });
     Aos.init({
       duration: 700,
     });
-    setTimeout(() => {
-      dispatch({
-        type: HIDE_LOADING,
-      });
-    }, 2000);
+    // setTimeout(() => {
+    //   dispatch({
+    //     type: HIDE_LOADING,
+    //   });
+    // }, 2500);
     return () => {
       dispatch({
         type: bookingType.BOOKING_TICKET,

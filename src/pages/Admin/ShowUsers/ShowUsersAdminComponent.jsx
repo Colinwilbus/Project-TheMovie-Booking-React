@@ -6,6 +6,7 @@ import ModalAddUserComponent from "../ModalAddUsers/ModalAddUserComponent";
 import ModalEditUserComponent from "../ModalEditUser/ModalEditUserComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import DeleteUserComponent from "../DeleteUser/DeleteUserComponent";
+import ShowTimesUserComponent from "../ShowTimeUser/ShowTimesUserComponent";
 const { Search } = Input;
 export default function ShowUsersAdminComponent() {
   const { listUser } = useSelector((state) => state.userReducer);
@@ -75,6 +76,19 @@ export default function ShowUsersAdminComponent() {
       render: (text, user) => {
         return (
           <div>
+            <ModalComponent
+              textShowModal={
+                <span>
+                  <i className="fa fa-clock"></i>
+                </span>
+              }
+              Component={ShowTimesUserComponent}
+              textOk="OK"
+              functionOk={() => {}}
+              titleModal="User Booking"
+              user={user}
+            />
+            {/*  */}
             <ModalEditUserComponent user={user} />
             <ModalComponent
               textShowModal={

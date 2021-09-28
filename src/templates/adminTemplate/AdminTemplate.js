@@ -1,8 +1,12 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Route, Redirect, NavLink } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import logo from "../../assets/img/logo_2.png";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  DISLAY_LOADING,
+  HIDE_LOADING,
+} from "../../redux/types/lazyLoadingType";
 // import { USER_LOGIN } from "../../util/settings/config";
 import _ from "lodash";
 
@@ -19,6 +23,16 @@ const AdminTemplate = (props) => {
   const { userLogin } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const { Component, ...restProps } = props;
+  useEffect(() => {
+    dispatch({
+      type: DISLAY_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  }, []);
   const onCollapse = (collapsed) => {
     console.log("collapsed", collapsed);
     setState({ collapsed });

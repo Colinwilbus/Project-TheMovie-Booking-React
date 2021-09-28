@@ -12,6 +12,11 @@ export default function FindShowTimeComponent(props) {
     showTimes: [],
     idShowTime: "",
   });
+  const [valueMovie, setValueMovie] = useState(undefined);
+
+  const [valueCinema, setValueCinema] = useState(undefined);
+  const [valueDate, setValueDate] = useState(undefined);
+
   const { movieList } = props;
   const { showTimesFilm } = useSelector((state) => state.cinemaReducer);
 
@@ -42,12 +47,21 @@ export default function FindShowTimeComponent(props) {
       </Option>
     ));
   const handleChangeMovie = (value) => {
+    setValueMovie(value);
+    setValueCinema(undefined);
+    setValueDate(undefined);
+    setState({
+      ...state,
+      idShowTime: "",
+    });
     dispatch({
       type: "getShowTimeFilmApiAction",
       id: value,
     });
   };
   const handleChangeCinema = (value) => {
+    setValueCinema(value);
+    setValueDate(undefined);
     const systemcinemaChoose = showTimesFilm.heThongRapChieu?.find((item) =>
       item.cumRapChieu?.find((itemChild) => itemChild.maCumRap === value)
     );
@@ -60,6 +74,8 @@ export default function FindShowTimeComponent(props) {
     });
   };
   const handleChangeShowtimes = (value) => {
+    setValueDate(value);
+
     setState({
       ...state,
       idShowTime: value,
@@ -76,6 +92,7 @@ export default function FindShowTimeComponent(props) {
                   <div className="form-group">
                     <label>MOVIES</label>
                     <Select
+                      value={valueMovie}
                       showSearch
                       style={{ width: 200 }}
                       placeholder="Search to Select"
@@ -102,6 +119,8 @@ export default function FindShowTimeComponent(props) {
                   <div className="form-group">
                     <label>CINEMAS</label>
                     <Select
+                      value={valueCinema}
+                      disabled={valueMovie ? false : true}
                       showSearch
                       style={{ width: 200 }}
                       placeholder="Search to Select"
@@ -128,6 +147,8 @@ export default function FindShowTimeComponent(props) {
                   <div className="form-group">
                     <label>DATES</label>
                     <Select
+                      value={valueDate}
+                      disabled={valueCinema ? false : true}
                       showSearch
                       style={{ width: 200 }}
                       placeholder="Search to Select"

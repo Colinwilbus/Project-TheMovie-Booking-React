@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Tabs, Menu } from "antd";
 import "./ShowTime2Style.scss";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
-import { slice } from "lodash";
+import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
+import shipLogoItem from "../../../assets/img/ship_Logo_Item.jpg";
 
 const { SubMenu } = Menu;
 const { TabPane } = Tabs;
@@ -11,13 +12,27 @@ const { TabPane } = Tabs;
 export default function ShowTime2Component(props) {
   const { cinemaList } = props;
   //   console.log(cinemaList);
-
+  const handleOnErrorImage = (e, className) => {
+    e.target.onError = null;
+    e.target.style.display = "none";
+    const imgError = document.querySelectorAll(`${className}`);
+    imgError.forEach((item, index) => {
+      item.style.display = "flex";
+    });
+  };
   const renderShowTimes = (arrayShowTimes) => {
     if (arrayShowTimes) {
       return arrayShowTimes.slice(0, 5)?.map((film, index) => (
         <div className="row showTime__film" key={index}>
           <div className="col-12 col-md-2 col-xl-1 sTfilm__img">
-            <img src={film.hinhAnh} alt={film.hinhAnh} />
+            <img
+              src={`${film.hinhAnh}`}
+              alt={film.hinhAnh}
+              onError={(e) => handleOnErrorImage(e, ".sTfilm__imgError")}
+            />
+            <div className="sTfilm__imgError">
+              <LoadingItemComponent />
+            </div>
           </div>
           <div className="col-12 col-md-10 col-xl-11 sTfim__detail">
             <h6>{film.tenPhim}</h6>
@@ -55,7 +70,14 @@ export default function ShowTime2Component(props) {
       return arrayShowTimes.slice(0, 5)?.map((film, index) => (
         <div className="row showTime__film" key={index}>
           <div className="col-12 col-md-2 col-xl-1 sTfilm__img">
-            <img src={film.hinhAnh} alt={film.hinhAnh} />
+            <img
+              src={`${film.hinhAnh}`}
+              alt={film.hinhAnh}
+              onError={(e) => handleOnErrorImage(e, ".sTfilm__imgError")}
+            />
+            <div className="sTfilm__imgError">
+              <LoadingItemComponent />
+            </div>
             <div className="sTfilm__nameFilm">
               <h6>{film.tenPhim}</h6>
             </div>
@@ -107,7 +129,19 @@ export default function ShowTime2Component(props) {
   };
   const renderCinemaList = () =>
     cinemaList?.map((item, index) => (
-      <TabPane tab={<img src={item.logo} />} key={index}>
+      <TabPane
+        tab={
+          <img
+            src={`${item.logo}`}
+            alt={item.logo}
+            onError={(e) => {
+              e.target.onError = null;
+              e.target.src = shipLogoItem;
+            }}
+          />
+        }
+        key={index}
+      >
         <Tabs
           //   data-aos="fade-right"
           //   data-aos-once="true"
@@ -120,7 +154,14 @@ export default function ShowTime2Component(props) {
               tab={
                 <div>
                   <div>
-                    <img src={item.logo} />
+                    <img
+                      src={`${item.logo}`}
+                      alt={item.logo}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src = shipLogoItem;
+                      }}
+                    />
                   </div>
 
                   {renderCinemaName(itemChild.tenCumRap)}
@@ -137,30 +178,25 @@ export default function ShowTime2Component(props) {
 
   const renderCinemaListMobi = () =>
     cinemaList?.map((item, index) => (
-      <TabPane tab={<img src={item.logo} />} key={index}>
+      <TabPane
+        tab={
+          <img
+            src={`${item.logo}`}
+            alt={item.logo}
+            onError={(e) => {
+              e.target.onError = null;
+              e.target.src = shipLogoItem;
+            }}
+          />
+        }
+        key={index}
+      >
         <Menu mode="inline" style={{ width: 256 }}>
           {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => (
             <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>
               {renderShowTimesMobi(itemChild.danhSachPhim)}
             </SubMenu>
           ))}
-          {/* <SubMenu key="sub1" title="Navigation One">
-           
-          </SubMenu>
-          <SubMenu key="sub2" title="Navigation Two">
-            <Menu.Item key="5">Option 5</Menu.Item>
-            <Menu.Item key="6">Option 6</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="7">Option 7</Menu.Item>
-              <Menu.Item key="8">Option 8</Menu.Item>
-            </SubMenu>
-          </SubMenu>
-          <SubMenu key="sub4" title="Navigation Three">
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <Menu.Item key="11">Option 11</Menu.Item>
-            <Menu.Item key="12">Option 12</Menu.Item>
-          </SubMenu> */}
         </Menu>
       </TabPane>
     ));

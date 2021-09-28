@@ -208,6 +208,22 @@
                           object-fit: cover;
                           border-radius: 3px;
                         }
+                        .sTfilm__imgError {
+                          display: none;
+                          width: 100%;
+                          flex-direction: column;
+                          justify-content: center;
+                          align-items: center;
+                          background: linear-gradient(
+                            to bottom,
+                            // #000000be,
+                            #ec7632,
+                            #fbbd61,
+                            #191919,
+                            #000000
+                          );
+                          height: 5rem;
+                        }
                       }
                       .sTfim__detail {
                         h6 {
@@ -430,6 +446,22 @@
                     height: 5rem;
                     object-fit: cover;
                     border-radius: 3px;
+                  }
+                  .sTfilm__imgError {
+                    display: none;
+                    width: 4rem;
+                    height: 5rem;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background: linear-gradient(
+                      to bottom,
+                      // #000000be,
+                      #ec7632,
+                      #fbbd61,
+                      #191919,
+                      #000000
+                    );
                   }
                   .sTfilm__nameFilm {
                     width: 70%;

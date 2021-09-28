@@ -35,6 +35,13 @@ export default function BookingChairComponent(props) {
       }
       return (
         <Fragment key={index}>
+          {(index + 1) % 16 === 1 ? (
+            <>
+              <span className="bookingChair__bfrow">
+                {String.fromCharCode(65 + ((index + 1) / 16 - 0.0625))}
+              </span>
+            </>
+          ) : null}
           <div
             className="bookingChair__item"
             style={{ display: "inline-block" }}
@@ -49,7 +56,14 @@ export default function BookingChairComponent(props) {
               <span className="bookingChair__Name">{item.tenGhe}</span>
             </span>
           </div>
-          {(index + 1) % 16 === 0 ? <br /> : null}
+          {(index + 1) % 16 === 0 ? (
+            <>
+              <span className="bookingChair__bhrow">
+                {String.fromCharCode(65 + (index + 1) / 16 - 1)}
+              </span>
+              <br />
+            </>
+          ) : null}
         </Fragment>
       );
     });

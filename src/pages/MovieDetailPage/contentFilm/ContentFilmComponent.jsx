@@ -4,6 +4,8 @@ import { Tabs } from "antd";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
 import _ from "lodash";
+import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
+import shipLogoItem from "../../../assets/img/ship_Logo_Item.jpg";
 
 const { TabPane } = Tabs;
 export default function ContentFilmComponent(props) {
@@ -29,7 +31,19 @@ export default function ContentFilmComponent(props) {
     });
   const renderCinemaList = () =>
     movieDetail.heThongRapChieu?.map((item, index) => (
-      <TabPane tab={<img src={item.logo} />} key={index}>
+      <TabPane
+        tab={
+          <img
+            src={`${item.logo}`}
+            alt={item.logo}
+            onError={(e) => {
+              e.target.onError = null;
+              e.target.src = shipLogoItem;
+            }}
+          />
+        }
+        key={index}
+      >
         <Tabs defaultActiveKey="0">
           {item.cumRapChieu.map((itemChild) => {
             const arrayShowTimesDate = renderShowTimes(itemChild);
@@ -66,6 +80,14 @@ export default function ContentFilmComponent(props) {
         </Tabs>
       </TabPane>
     ));
+  const handleOnErrorImage = (e, className) => {
+    e.target.onError = null;
+    e.target.style.display = "none";
+    const imgError = document.querySelectorAll(`${className}`);
+    imgError.forEach((item, index) => {
+      item.style.display = "flex";
+    });
+  };
   return (
     <section className="contentFilm">
       <div className="contentFilm__content">
@@ -81,7 +103,16 @@ export default function ContentFilmComponent(props) {
             <div className="contentFilm__detail">
               <div className="row">
                 <div className="col-12 col-lg-4 contentFilm__img">
-                  <img src={movieDetail.hinhAnh} alt={movieDetail.tenPhim} />
+                  <img
+                    src={`${movieDetail.hinhAnh}`}
+                    alt={movieDetail.tenPhim}
+                    onError={(e) =>
+                      handleOnErrorImage(e, ".contentFilm__errorImg")
+                    }
+                  />
+                  <div className="contentFilm__errorImg">
+                    <LoadingItemComponent />
+                  </div>
                 </div>
                 <div className="col-12 col-lg-8 contentFilm__text">
                   <h6>{movieDetail.tenPhim}</h6>

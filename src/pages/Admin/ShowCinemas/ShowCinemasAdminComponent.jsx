@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowCinemasAdminStyle.scss";
 import { Tabs, Table, Menu } from "antd";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import ModalShowTimesComponent from "../ModalShowTimes/ModalShowTimesComponent";
 import AddShowTimesComponent from "../AddShowTimes/AddShowTimesComponent";
+import _ from "lodash";
+import FindShowTimeComponent from "../FindShowTime/FindShowTimeComponent";
+import shipLogoError from "../../../assets/img/ship_Logo_Item.jpg";
 
 const { TabPane } = Tabs;
 const { SubMenu } = Menu;
@@ -14,12 +17,19 @@ function callback(key) {
 
 export default function ShowCinemaAdminComponent(props) {
   const { cinemaList } = useSelector((state) => state.cinemaReducer);
-  console.log(cinemaList);
+  const { movieList } = useSelector((state) => state.movieReducer);
+  const [state, setState] = useState({
+    dataSearch: [],
+  });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({
       type: "getCinemaListApiAction",
+    });
+    dispatch({
+      type: "getMovieListApiAction",
     });
   }, []);
 
@@ -72,14 +82,42 @@ export default function ShowCinemaAdminComponent(props) {
     }));
     return data;
   };
+  const renderCinemaName = (cinemaName) => {
+    const index = cinemaName.indexOf("-");
+    let newCinemaName = "";
+    let systemCinema = "";
+    if (index !== -1) {
+      newCinemaName = cinemaName?.slice(index);
+      systemCinema = cinemaName?.slice(0, index);
+    }
+    return (
+      <>
+        <p>{systemCinema}</p>
+        <p>{newCinemaName}</p>
+      </>
+    );
+  };
+  const renderCinemas = () => {
+    let listCinemaRender = [];
+    if (_.isEmpty(state.dataSearch)) {
+      listCinemaRender = cinemaList;
+    } else {
+      listCinemaRender = state.dataSearch;
+    }
 
-  const renderCinemas = () =>
-    cinemaList.map((item, index) => (
+    return listCinemaRender.map((item, index) => (
       <TabPane
         tab={
           <div>
             <div>
-              <img src={item.logo} />
+              <img
+                src={`${item.logo}`}
+                alt={item.logo}
+                onError={(e) => {
+                  e.target.onError = null;
+                  e.target.src = shipLogoError;
+                }}
+              />
             </div>
             <p>{item.tenHeThongRap}</p>
           </div>
@@ -92,9 +130,16 @@ export default function ShowCinemaAdminComponent(props) {
               tab={
                 <div>
                   <div>
-                    <img src={item.logo} />
+                    <img
+                      src={`${item.logo}`}
+                      alt={item.logo}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src = shipLogoError;
+                      }}
+                    />
                   </div>
-                  <p>{itemChild.tenCumRap}</p>
+                  {renderCinemaName(itemChild.tenCumRap)}
                 </div>
               }
               key={index}
@@ -109,7 +154,7 @@ export default function ShowCinemaAdminComponent(props) {
         </Tabs>
       </TabPane>
     ));
-
+  };
   const renderShowTimesMobi = (arrayShowTimes) =>
     arrayShowTimes?.map((film, index) => (
       <div className="row showCinemaAm__film" key={index}>
@@ -132,9 +177,27 @@ export default function ShowCinemaAdminComponent(props) {
         </div>
       </div>
     ));
-  const renderCinemaListMobi = () =>
-    cinemaList?.map((item, index) => (
-      <TabPane tab={<img src={item.logo} />} key={index}>
+  const renderCinemaListMobi = () => {
+    let listCinemaRender = [];
+    if (_.isEmpty(state.dataSearch)) {
+      listCinemaRender = cinemaList;
+    } else {
+      listCinemaRender = state.dataSearch;
+    }
+    return listCinemaRender?.map((item, index) => (
+      <TabPane
+        tab={
+          <img
+            src={`${item.logo}`}
+            alt={item.logo}
+            onError={(e) => {
+              e.target.onError = null;
+              e.target.src = shipLogoError;
+            }}
+          />
+        }
+        key={index}
+      >
         <Menu mode="inline" style={{ width: 256 }}>
           {item.lstCumRap?.map((itemChild, index) => (
             <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>
@@ -144,13 +207,28 @@ export default function ShowCinemaAdminComponent(props) {
         </Menu>
       </TabPane>
     ));
+  };
+
+  const handleDataSearch = (data) => {
+    setState({
+      ...state,
+      dataSearch: data,
+    });
+  };
+
   return (
     <section className="showCinemaAm">
       <div className="showCinemaAm__Title">
         <h3>ShowTimes Management</h3>
       </div>
+      <div className="showCinemaAm__FindSt">
+        <FindShowTimeComponent
+          movieList={movieList}
+          handleDataSearch={handleDataSearch}
+        />
+      </div>
       <div className="showCinemaAm__Add">
-        <AddShowTimesComponent />
+        <AddShowTimesComponent movieList={movieList} />
       </div>
       <div className="showCinemaAm__content">
         <Tabs defaultActiveKey="0" onChange={callback}>

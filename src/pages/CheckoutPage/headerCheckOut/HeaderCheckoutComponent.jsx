@@ -5,6 +5,7 @@ import "./HeaderCheckoutStyle.scss";
 import { USER_LOGIN, TOKEN } from "../../../util/settings/config";
 import { deleteUserLogin } from "../../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
+import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
 
 export default function HeaderCheckoutComponent(props) {
   const { userLogin } = props;
@@ -22,6 +23,14 @@ export default function HeaderCheckoutComponent(props) {
     }
   };
   window.addEventListener("scroll", changeHeaderCheckOut);
+  const handleOnErrorImage = (e) => {
+    e.target.onError = null;
+    e.target.style.display = "none";
+    const imgError = document.querySelectorAll(`.headerCheckOut__imgError`);
+    imgError.forEach((item, index) => {
+      item.style.display = "flex";
+    });
+  };
   return (
     <header
       //   data-aos="fade-down"
@@ -37,7 +46,14 @@ export default function HeaderCheckoutComponent(props) {
           <div className="headerCheckOut__InfoCinema">
             <div className="row">
               <div className="col-1 headerCheckOut__Img">
-                <img src={thongTinPhim.hinhAnh} alt={thongTinPhim.hinhAnh} />
+                <img
+                  src={`${thongTinPhim.hinhAnh}m`}
+                  alt={thongTinPhim.hinhAnh}
+                  onError={(e) => handleOnErrorImage(e)}
+                />
+                <div className={`headerCheckOut__imgError`}>
+                  <LoadingItemComponent />
+                </div>
               </div>
               <div className="col-11 headerCheckOut__Info">
                 <h5>{thongTinPhim.tenCumRap}</h5>

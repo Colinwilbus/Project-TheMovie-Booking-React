@@ -22,7 +22,7 @@
   //   }
   @media screen and(min-width: 1200px) {
     width: 30%;
-    height: 400px;
+    height: 450px;
     justify-content: space-around;
   }
   .login__Title {
@@ -98,6 +98,17 @@
         z-index: 1;
         i {
           margin-right: 5px;
+        }
+      }
+    }
+    .login__register {
+      margin-top: 20px;
+      p {
+        padding: 0;
+        margin: 0;
+        a {
+          text-decoration: none;
+          color: #ec7532;
         }
       }
     }

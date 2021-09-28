@@ -1,45 +1,18 @@
-import React from "react";
-import lzloading from "../../assets/img/lazy-loading.png";
+import React, { Fragment } from "react";
 import "./LazyLoadingLogoStyle.scss";
 import { useSelector } from "react-redux";
-import { Fragment } from "react";
+import LoadingScreenShipComponent from "../LoadingScreenShipComponent/LoadingScreenShipComponent";
+// import LoadingScreenGearComponent from "../LoadingScreenGearComponent/LoadingScreenGearComponent";
 
 export default function LazyLoadingLogoComponent(props) {
   const { isLoading } = useSelector((state) => state.lazyLoadingReducer);
-  console.log("ABC", isLoading);
+
   return (
     <Fragment>
       {isLoading ? (
         <div className="lazyLogo">
-          <div className="lazyLogo__detail row">
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
-            <div className="col-4">
-              <img src={lzloading} alt={lzloading} />
-            </div>
+          <div className={`lazyLogo__detail `}>
+            <LoadingScreenShipComponent />
           </div>
         </div>
       ) : (

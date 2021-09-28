@@ -9,7 +9,7 @@ import ModalInfoBookingComponent from "../ModalInfoBooking/ModalInfoBookingCompo
 export default function InfoBookingComponent(props) {
   const dispatch = useDispatch();
   const { thongTinPhim } = props.listChair;
-  const { listChoiceChair, userLogin, history } = props;
+  const { listChoiceChair, userLogin, history, listChair } = props;
 
   const [value, setValue] = useState(1);
   const renderListChoiceChair = () =>
@@ -53,6 +53,34 @@ export default function InfoBookingComponent(props) {
           <table className="table">
             <tbody>
               <tr>
+                <td className="infoBooking__title">
+                  <span>
+                    Vip Seat{" "}
+                    <i className="fa fa-couch" style={{ color: "#ec7532" }}></i>
+                    :
+                  </span>
+                </td>
+                <td style={{ width: "65%" }}>
+                  <span>
+                    {listChair.danhSachGhe[34]?.giaVe.toLocaleString("Vi-vn")}{" "}
+                    VNĐ
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td className="infoBooking__title">
+                  <span>
+                    Normal Seat <i className="fa fa-couch"></i>:
+                  </span>
+                </td>
+                <td style={{ width: "65%" }}>
+                  <span>
+                    {listChair.danhSachGhe[0]?.giaVe.toLocaleString("Vi-vn")}{" "}
+                    VNĐ
+                  </span>
+                </td>
+              </tr>
+              <tr>
                 <td className="infoBooking__title">Date:</td>
                 <td style={{ width: "65%" }}>{thongTinPhim.ngayChieu}</td>
               </tr>
@@ -72,14 +100,21 @@ export default function InfoBookingComponent(props) {
           </table>
         </div>
         <div className="infoBooking__Total">
-          <h3>
-            {listChoiceChair
-              .reduce((tt, item, index) => {
-                return tt + item.giaVe;
-              }, 0)
-              .toLocaleString("vi-VN")}
-            VNĐ
-          </h3>
+          <div className="row">
+            <div className="col-3">
+              <h3 style={{ textAlign: "left" }}>Total:</h3>
+            </div>
+            <div className="col-9">
+              <h3>
+                {listChoiceChair
+                  .reduce((tt, item, index) => {
+                    return tt + item.giaVe;
+                  }, 0)
+                  .toLocaleString("vi-VN")}
+                VNĐ
+              </h3>
+            </div>
+          </div>
         </div>
         <div className="infoBooking__PM">
           <h5>Payment method</h5>
