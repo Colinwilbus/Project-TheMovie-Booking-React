@@ -16,22 +16,25 @@ function callback(key) {
 }
 
 export default function ShowCinemaAdminComponent(props) {
-  const { cinemaList } = useSelector((state) => state.cinemaReducer);
+  const { cinemaList, newShowTime } = useSelector(
+    (state) => state.cinemaReducer
+  );
   const { movieList } = useSelector((state) => state.movieReducer);
   const [state, setState] = useState({
     dataSearch: [],
   });
 
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch({
-      type: "getCinemaListApiAction",
-    });
     dispatch({
       type: "getMovieListApiAction",
     });
   }, []);
+  useEffect(() => {
+    dispatch({
+      type: "getCinemaListApiAction",
+    });
+  }, [newShowTime]);
 
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);

@@ -30,6 +30,7 @@ export default function HeaderCheckoutComponent(props) {
     imgError.forEach((item, index) => {
       item.style.display = "flex";
     });
+    // document.querySelector("#headerCheckOut__imgError").style.display = "flex";
   };
   return (
     <header

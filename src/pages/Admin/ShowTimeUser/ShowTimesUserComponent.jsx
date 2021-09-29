@@ -6,12 +6,12 @@ import moment from "moment";
 import LazyLoadingModalComponent from "../../../components/LazyLoadingModalComponent/LazyLoadingModalComponent";
 export default function ShowTimesUserComponent(props) {
   const { userLoginInfo } = useSelector((state) => state.userReducer);
-  const { user } = props;
+  const { userShowTime } = props;
   const dispatch = useDispatch();
-  console.log("userLoginInfo", userLoginInfo);
+  console.log("userShowTime", userShowTime);
   useEffect(() => {
     const userAccount = {
-      taiKhoan: user.userName,
+      taiKhoan: userShowTime.userName,
     };
     dispatch({
       type: "postUserLoginInfoApiAction",

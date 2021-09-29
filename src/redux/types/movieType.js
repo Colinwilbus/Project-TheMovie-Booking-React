@@ -1,2 +1,5 @@
 export const GET_MOVIE_LIST = "GET_MOVIE_LIST";
 export const GET_MOVIE_DETAIL = "GET_MOVIE_DETAIL";
+export const POST_NEW_MOVIE = "POST_NEW_MOVIE";
+export const POST_UPDATE_MOVIE = "POST_UPDATE_MOVIE";
+export const DELETE_MOVIE = "DELETE_MOVIE";

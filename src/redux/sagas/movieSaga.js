@@ -91,6 +91,10 @@ function* postNewMovieApiAction(action) {
       },
       duration: 1.5,
     });
+    yield put({
+      type: movieType.POST_NEW_MOVIE,
+      form: action.formData,
+    });
   } catch (error) {
     notification.open({
       message: "Notification",
@@ -123,6 +127,10 @@ function* postUpdateMovieApiAction(action) {
       },
       duration: 1.5,
     });
+    yield put({
+      type: movieType.POST_UPDATE_MOVIE,
+      form: action.formData,
+    });
   } catch (error) {
     notification.open({
       message: "Notification",
@@ -151,6 +159,10 @@ function* deleteMovieApiAction(action) {
       },
       duration: 1.5,
     });
+    // yield put({
+    //   type: movieType.DELETE_MOVIE,
+    //   id: action.id,
+    // });
   } catch (error) {
     notification.open({
       message: "Notification",

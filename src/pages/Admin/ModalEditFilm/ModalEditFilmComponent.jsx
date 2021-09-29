@@ -71,24 +71,20 @@ export default function ModalEditFilmComponent(props) {
         formData.append(key, formik.values[key]);
       }
     }
-    const updateFilm = async () => {
-      await dispatch({
+    const updateFilm = () => {
+      dispatch({
         type: "postUpdateMovieApiAction",
         formData,
       });
-      await dispatch({
-        type: "getMovieListApiAction",
-      });
     };
     updateFilm();
-
-    formik.resetForm();
     setIsModalVisible(false);
+    formik.resetForm();
   };
 
   const handleCancel = () => {
-    resetFormEditFilm();
     setIsModalVisible(false);
+    resetFormEditFilm();
   };
   const handleChangeDate = (value) => {
     formik.setFieldValue("ngayKhoiChieu", value);
@@ -121,8 +117,8 @@ export default function ModalEditFilmComponent(props) {
   const resetFormEditFilm = () => {
     formik.resetForm();
     document.querySelector("#editFilm__InputFileId").value = "";
-    document.querySelector("#editFilm__ImgInputFileId").src = "";
-    document.querySelector("#editFilm__ImgInputFileId").alt = "";
+    // document.querySelector("#editFilm__ImgInputFileId").src = "";
+    // document.querySelector("#editFilm__ImgInputFileId").alt = "";
     setState({ ...state, srcImg: "" });
   };
   return (
@@ -223,7 +219,7 @@ export default function ModalEditFilmComponent(props) {
                   />
                   <img
                     src={state.srcImg === "" ? film.hinhAnh : state.srcImg}
-                    alt={state.srcImg}
+                    alt={state.srcImg === "" ? film.hinhAnh : state.srcImg}
                     id="editFilm__ImgInputFileId"
                   />
                 </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import "./DeleteUserStyle.scss";
 export default function DeleteUserComponent(props) {
-  const { user } = props;
-  console.log(user);
+  const { userDelete } = props;
+  console.log("userDelete", userDelete);
   return (
     <div className="deleteUser">
       <div className="deleteUser__content">
@@ -20,12 +20,12 @@ export default function DeleteUserComponent(props) {
           </thead>
           <tbody>
             <tr>
-              <td>{user.userName}</td>
-              <td>{user.fullName}</td>
-              <td>{user.email}</td>
-              <td>{user.typeUser}</td>
-              <td>{user.phoneNumber}</td>
-              <td>{user.password}</td>
+              <td>{userDelete.userName}</td>
+              <td>{userDelete.fullName}</td>
+              <td>{userDelete.email}</td>
+              <td>{userDelete.typeUser}</td>
+              <td>{userDelete.phoneNumber}</td>
+              <td>{userDelete.password}</td>
             </tr>
           </tbody>
         </table>
@@ -36,27 +36,27 @@ export default function DeleteUserComponent(props) {
           <tbody>
             <tr>
               <td>UserName</td>
-              <td>{user.userName}</td>
+              <td>{userDelete.userName}</td>
             </tr>
             <tr>
               <td>FullName</td>
-              <td>{user.fullName}</td>
+              <td>{userDelete.fullName}</td>
             </tr>
             <tr>
               <td>Email</td>
-              <td>{user.email}</td>
+              <td>{userDelete.email}</td>
             </tr>
             <tr>
               <td>TypeUser</td>
-              <td>{user.typeUser}</td>
+              <td>{userDelete.typeUser}</td>
             </tr>
             <tr>
               <td>PhoneNumber</td>
-              <td>{user.phoneNumber}</td>
+              <td>{userDelete.phoneNumber}</td>
             </tr>
             <tr>
               <td>Password</td>
-              <td>{user.password}</td>
+              <td>{userDelete.password}</td>
             </tr>
           </tbody>
         </table>

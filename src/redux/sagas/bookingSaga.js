@@ -19,14 +19,14 @@ function* getListChairApiAction(action) {
       data,
     });
     if (action.loading) {
-      yield delay(2000);
+      yield delay(1000);
       yield put({
         type: HIDE_LOADING,
       });
     }
   } catch (error) {
     if (action.loading) {
-      yield delay(2000);
+      yield delay(1000);
       yield put({
         type: HIDE_LOADING,
       });

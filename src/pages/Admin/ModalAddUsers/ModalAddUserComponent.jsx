@@ -15,7 +15,7 @@ export default function ModalAddUserComponent() {
       hoTen: "",
       email: "",
       soDt: "",
-      maLoaiNguoiDung: "",
+      maLoaiNguoiDung: "KhachHang",
       matKhau: "",
       maNhom: GROUPID,
     },
@@ -53,18 +53,18 @@ export default function ModalAddUserComponent() {
   };
 
   const handleOk = () => {
-    console.log(formik.values);
+    console.log("form", formik.values);
     dispatch({
       type: "postNewUserAdminApiAction",
       newUser: formik.values,
     });
-    formik.resetForm();
     setIsModalVisible(false);
+    formik.resetForm();
   };
 
   const handleCancel = () => {
-    formik.resetForm();
     setIsModalVisible(false);
+    formik.resetForm();
   };
   function handleChange(value) {
     formik.setFieldValue("maLoaiNguoiDung", value);
@@ -160,11 +160,7 @@ export default function ModalAddUserComponent() {
                     defaultValue="KhachHang"
                     style={{ width: 120 }}
                     onChange={handleChange}
-                    value={
-                      formik.values.maLoaiNguoiDung !== ""
-                        ? formik.values.maLoaiNguoiDung
-                        : "KhachHang"
-                    }
+                    value={formik.values.maLoaiNguoiDung}
                   >
                     <Option value="KhachHang">Khách Hàng</Option>
                     <Option value="QuanTri">Quản Trị</Option>

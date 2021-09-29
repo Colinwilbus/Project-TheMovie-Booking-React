@@ -63,7 +63,7 @@ function* postUserLoginInfoApiAction(action) {
       data,
     });
     if (action.loading) {
-      yield delay(2000);
+      yield delay(1000);
       yield put({
         type: HIDE_LOADING,
       });
@@ -76,7 +76,7 @@ function* postUserLoginInfoApiAction(action) {
     }
   } catch (error) {
     if (action.loading) {
-      yield delay(2000);
+      yield delay(1000);
       yield put({
         type: HIDE_LOADING,
       });
@@ -137,6 +137,10 @@ function* postNewUserAdminApiAction(action) {
       },
       duration: 1.5,
     });
+    yield put({
+      type: userType.POST_NEW_USER,
+      form: action.newUser,
+    });
   } catch (error) {
     notification.open({
       message: "Notification",
@@ -182,6 +186,11 @@ function* putUpdateUserApiAction(action) {
         console.log("Notification Clicked!");
       },
       duration: 1.5,
+    });
+
+    yield put({
+      type: userType.POST_UPDATE_USER,
+      form: action.form,
     });
   } catch (error) {
     notification.open({

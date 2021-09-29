@@ -1,7 +1,8 @@
 import { notification } from "antd";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, delay } from "redux-saga/effects";
 import { cinemaManagerService } from "../../services/CinemaManagerService";
 import * as cinemaType from "../types/cinemaType";
+import { DISLAY_LOADING, HIDE_LOADING } from "../types/lazyLoadingType";
 // GET_LIST_CINEMA
 function* getCinemaListApiAction(action) {
   try {
@@ -22,6 +23,11 @@ export function* getCinemaListApiActionSaga() {
 // GET_SHOWTIME_FILM
 function* getShowTimeFilmApiAction(action) {
   try {
+    if (action.loading) {
+      yield put({
+        type: DISLAY_LOADING,
+      });
+    }
     const { data } = yield call(() =>
       cinemaManagerService.getShowTimesFilmApi(action.id)
     );
@@ -29,7 +35,19 @@ function* getShowTimeFilmApiAction(action) {
       type: cinemaType.GET_SHOWTIMES_FILM,
       data,
     });
+    if (action.loading) {
+      yield delay(1000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
   } catch (error) {
+    if (action.loading) {
+      yield delay(2000);
+      yield put({
+        type: HIDE_LOADING,
+      });
+    }
     console.log(error.response?.data);
   }
 }
@@ -44,7 +62,6 @@ function* getShowTimesFilmCinemaAction(action) {
     const res = yield call(() =>
       cinemaManagerService.getShowTimesFilmCinemaApi(action.idCinema)
     );
-    console.log(res);
     yield put({
       type: cinemaType.GET_SHOWTIMES_FILM_CINEMA,
     });
@@ -73,6 +90,10 @@ function* postNewShowTimesApiAction(action) {
         console.log("Notification Clicked!");
       },
       duration: 1.5,
+    });
+    yield put({
+      type: cinemaType.POST_NEW_SHOWTIME,
+      form: action.form,
     });
   } catch (error) {
     notification.open({

@@ -4,6 +4,7 @@ const stateDefault = {
   cinemaList: [],
   showTimesFilm: {},
   showTimesCinemaFilm: [],
+  newShowTime: "",
 };
 
 const cinemaReducer = (state = stateDefault, action) => {
@@ -36,6 +37,9 @@ const cinemaReducer = (state = stateDefault, action) => {
         showTimesFilm: action.data,
         showTimesCinemaFilm: showTimesCinemaFilmUpdate,
       };
+    }
+    case cinemaType.POST_NEW_SHOWTIME: {
+      return { ...state, newShowTime: action.form };
     }
     default:
       return { ...state };

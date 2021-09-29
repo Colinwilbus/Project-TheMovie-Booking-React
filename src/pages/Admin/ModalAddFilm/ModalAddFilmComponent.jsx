@@ -89,25 +89,20 @@ export default function ModalAddFilmComponent(props) {
         );
       }
     }
-    const addFilm = async () => {
-      await dispatch({
+    const addFilm = () => {
+      dispatch({
         type: "postNewMovieApiAction",
         formData,
       });
-      await dispatch({
-        type: "getMovieListApiAction",
-      });
     };
     addFilm();
-
-    // resetFormAddFilm();
     setIsModalVisible(false);
+    resetFormAddFilm();
   };
   const resetFormAddFilm = () => {
     formik.resetForm();
     document.querySelector("#addFilm__InputFileId").value = "";
-    document.querySelector("#addFilm__ImgInputFileId").src = "";
-    document.querySelector("#addFilm__ImgInputFileId").alt = "";
+    setState({ srcImg: "" });
     console.log(formik.values);
   };
   const showModal = () => {
@@ -115,8 +110,8 @@ export default function ModalAddFilmComponent(props) {
   };
 
   const handleCancel = () => {
-    resetFormAddFilm();
     setIsModalVisible(false);
+    resetFormAddFilm();
   };
   return (
     <>

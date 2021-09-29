@@ -11,6 +11,8 @@ const stateDefault = {
   userLogin: user,
   userLoginInfo: new UserLoginInfo(),
   listUser: [],
+  userUpdate: "",
+  newUser: "",
 };
 
 const userReducer = (state = stateDefault, action) => {
@@ -30,6 +32,12 @@ const userReducer = (state = stateDefault, action) => {
     }
     case userType.GET_LIST_USER: {
       return { ...state, listUser: action.data };
+    }
+    case userType.POST_NEW_USER: {
+      return { ...state, newUser: action.form };
+    }
+    case userType.POST_UPDATE_USER: {
+      return { ...state, userUpdate: action.form };
     }
     default:
       return { ...state };

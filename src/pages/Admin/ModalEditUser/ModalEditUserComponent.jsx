@@ -3,22 +3,21 @@ import { Modal, Button, Select } from "antd";
 import "./ModalEditUserStyle.scss";
 import { useFormik } from "formik";
 import { GROUPID } from "../../../util/settings/config";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 const { Option } = Select;
 export default function ModalEditUserComponent(props) {
-  const { user } = props;
-
-  console.log(user);
+  const { userUpdate } = props;
+  console.log("userUpdate", userUpdate);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      taiKhoan: user.userName,
-      hoTen: user.fullName,
-      email: user.email,
-      soDt: user.phoneNumber,
-      maLoaiNguoiDung: user.typeUser,
-      matKhau: user.password,
+      taiKhoan: userUpdate.userName,
+      hoTen: userUpdate.fullName,
+      email: userUpdate.email,
+      soDt: userUpdate.phoneNumber,
+      maLoaiNguoiDung: userUpdate.typeUser,
+      matKhau: userUpdate.password,
       maNhom: GROUPID,
     },
     validate: (values) => {

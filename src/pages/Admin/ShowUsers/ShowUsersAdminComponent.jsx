@@ -9,14 +9,16 @@ import DeleteUserComponent from "../DeleteUser/DeleteUserComponent";
 import ShowTimesUserComponent from "../ShowTimeUser/ShowTimesUserComponent";
 const { Search } = Input;
 export default function ShowUsersAdminComponent() {
-  const { listUser } = useSelector((state) => state.userReducer);
-  console.log(listUser);
+  const { listUser, newUser, userUpdate } = useSelector(
+    (state) => state.userReducer
+  );
+  //   console.log("listUser", listUser);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: "getListUserApiAction",
     });
-  }, []);
+  }, [newUser, userUpdate]);
   const columns = [
     {
       title: "",
@@ -86,10 +88,11 @@ export default function ShowUsersAdminComponent() {
               textOk="OK"
               functionOk={() => {}}
               titleModal="User Booking"
-              user={user}
+              userShowTime={user}
             />
             {/*  */}
-            <ModalEditUserComponent user={user} />
+            <ModalEditUserComponent userUpdate={user} />
+            {/*  */}
             <ModalComponent
               textShowModal={
                 <span>
@@ -99,13 +102,19 @@ export default function ShowUsersAdminComponent() {
               Component={DeleteUserComponent}
               textOk="Delete User"
               functionOk={() => {
-                dispatch({
-                  type: "deleteInfoUserApiAction",
-                  userName: user.userName,
-                });
+                const deleteUser = async () => {
+                  await dispatch({
+                    type: "deleteInfoUserApiAction",
+                    userName: user.userName,
+                  });
+                  await dispatch({
+                    type: "getListUserApiAction",
+                  });
+                };
+                deleteUser();
               }}
               titleModal="Delete User"
-              user={user}
+              userDelete={user}
             />
           </div>
         );

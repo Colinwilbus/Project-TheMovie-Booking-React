@@ -10,13 +10,15 @@ import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import DeleteFilmComponent from "../DeleteFilm/DeleteFilmComponent";
 const { Search } = Input;
 export default function ShowFilmsAdminComponent(props) {
-  const { movieList } = useSelector((state) => state.movieReducer);
+  const { movieList, newMovie, updateMovie } = useSelector(
+    (state) => state.movieReducer
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: "getMovieListApiAction",
     });
-  }, []);
+  }, [newMovie, updateMovie]);
 
   const renderMovieList = () =>
     movieList.map((item, index) => ({
