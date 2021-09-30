@@ -95,7 +95,7 @@ export default function LoginPage(props) {
           </button>
         </form>
         <div className="login__register">
-          <NavLink to="/restore-password">Forgot password?</NavLink>
+          {/* <NavLink to="/restore-password">Forgot password?</NavLink> */}
           <p>
             Don't have an account?
             <br />

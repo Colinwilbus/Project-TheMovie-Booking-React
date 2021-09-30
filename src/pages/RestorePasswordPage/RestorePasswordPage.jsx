@@ -228,6 +228,7 @@ export default function RestorePasswordPage(props) {
                 dispatch({
                   type: "putUpdateUserApiAction",
                   form: formik.values,
+                  history: props.history,
                 });
               }}
             >

@@ -192,6 +192,9 @@ function* putUpdateUserApiAction(action) {
       type: userType.POST_UPDATE_USER,
       form: action.form,
     });
+    // if (action.history) {
+    //   action.history.push("login");
+    // }
   } catch (error) {
     notification.open({
       message: "Notification",

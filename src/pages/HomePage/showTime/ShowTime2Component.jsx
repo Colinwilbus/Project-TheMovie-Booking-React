@@ -94,7 +94,9 @@ export default function ShowTime2Component(props) {
               {film.lstLichChieuTheoPhim?.slice(0, 5).map((time, index) => (
                 <NavLink to={`/check-out/${time.maLichChieu}`} key={index}>
                   <span>
-                    {moment(time.ngayChieuGioChieu).format("hh:mm A")}
+                    {moment(time.ngayChieuGioChieu).format(
+                      "DD/MM/YYYY - hh:mm A"
+                    )}
                   </span>
                 </NavLink>
               ))}
