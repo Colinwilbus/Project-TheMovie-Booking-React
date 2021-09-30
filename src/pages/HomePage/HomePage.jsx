@@ -5,21 +5,16 @@ import ShowFilmComponent from "./showFilm/ShowFilmComponent";
 import ShowTime2Component from "./showTime/ShowTime2Component";
 import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
-import {
-  DISLAY_LOADING,
-  HIDE_LOADING,
-} from "../../redux/types/lazyLoadingType";
+
 import FindShowTimeComponent from "./findShowTime/FindShowTimeComponent";
 
 export default function HomePage() {
-  const { movieList } = useSelector((state) => state.movieReducer);
+  const { movieListNowShowing, movieListComingSoon } = useSelector(
+    (state) => state.movieReducer
+  );
   const { cinemaList } = useSelector((state) => state.cinemaReducer);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch({
-    //   type: DISLAY_LOADING,
-    // });
     Aos.init({
       duration: 1000,
     });
@@ -31,19 +26,32 @@ export default function HomePage() {
       type: "getCinemaListApiAction",
       loading: true,
     });
-    // setTimeout(() => {
-    //   dispatch({
-    //     type: HIDE_LOADING,
-    //   });
-    // }, 2500);
   }, []);
+  const listIdFilmNowShowing = movieListNowShowing.map(
+    (film, index) => film.maPhim
+  );
+  const cinemaListNowShowing = cinemaList.map((systemCinema, index) => {
+    const newListCinema = systemCinema.lstCumRap.map((cinema, index) => {
+      const newListFilm = [];
+      cinema.danhSachPhim.forEach((film, index) => {
+        if (listIdFilmNowShowing.includes(film.maPhim)) {
+          newListFilm.push(film);
+        }
+      });
+
+      return { ...cinema, danhSachPhim: newListFilm };
+    });
+    return { ...systemCinema, lstCumRap: newListCinema };
+  });
+  const dispatch = useDispatch();
+
   return (
     <div>
       <CarouselComponent />
-      <FindShowTimeComponent movieList={movieList} />
-      <ShowFilmComponent movieList={movieList} />
-      <ShowTime2Component cinemaList={cinemaList} />
-      <ComingSoonComponent movieList={movieList} />
+      <FindShowTimeComponent movieList={movieListNowShowing} />
+      <ShowFilmComponent movieList={movieListNowShowing} />
+      <ShowTime2Component cinemaList={cinemaListNowShowing} />
+      <ComingSoonComponent movieList={movieListComingSoon} />
     </div>
   );
 }

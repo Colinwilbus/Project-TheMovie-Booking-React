@@ -22,7 +22,6 @@
   //   }
   @media screen and(min-width: 1200px) {
     width: 30%;
-    height: 450px;
     justify-content: space-around;
   }
   .login__Title {
@@ -103,6 +102,10 @@
     }
     .login__register {
       margin-top: 20px;
+      a {
+        text-decoration: none;
+        color: #ec7532;
+      }
       p {
         padding: 0;
         margin: 0;

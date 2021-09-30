@@ -11,6 +11,7 @@ export default function ModalEditUserComponent(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       taiKhoan: userUpdate.userName,
       hoTen: userUpdate.fullName,
@@ -49,7 +50,6 @@ export default function ModalEditUserComponent(props) {
   };
 
   const handleOk = () => {
-    console.log("form", formik.values);
     dispatch({
       type: "putUpdateUserApiAction",
       form: formik.values,

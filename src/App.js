@@ -31,6 +31,7 @@ import DashboardAdminComponent from "./pages/Admin/Dashboard/DashboardAdminCompo
 import ShowFilmsAdminComponent from "./pages/Admin/ShowFilms/ShowFilmsAdminComponent.jsx";
 import ShowCinemaAdminComponent from "./pages/Admin/ShowCinemas/ShowCinemasAdminComponent";
 import ShowUsersAdminComponent from "./pages/Admin/ShowUsers/ShowUsersAdminComponent";
+import RestorePasswordPage from "./pages/RestorePasswordPage/RestorePasswordPage";
 
 export const history = createBrowserHistory();
 
@@ -60,6 +61,12 @@ function App() {
         <UserTemplate exact path="/login" Component={LoginPage} />
         <UserTemplate exact path="/profile" Component={ProfilePage} />
         <UserTemplate exact path="/register" Component={RegisterPage} />
+        <UserTemplate
+          exact
+          path="/restore-password"
+          Component={RestorePasswordPage}
+        />
+
         <AdminTemplate
           exact
           path="/admin"

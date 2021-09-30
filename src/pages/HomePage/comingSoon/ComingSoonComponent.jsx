@@ -37,7 +37,7 @@ const ComingSoonComponent = (props) => {
   const renderMovieListComingSoon = () => {
     const slideArray = [];
     const bannerArray = [];
-    movieList?.slice(32, 40).forEach((item, index) => {
+    movieList?.forEach((item, index) => {
       slideArray.push(
         <div className="comingSoon__item" key={index}>
           <div className="item__img">

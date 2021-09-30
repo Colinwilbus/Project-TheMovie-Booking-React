@@ -6,10 +6,9 @@ import FilmComponent from "../../../components/FilmComponent/FilmComponent";
 
 export default function ShowFilmComponent(props) {
   const { movieList } = props;
-  console.log(movieList);
 
   const renderMovieList = () =>
-    movieList?.slice(0, 13).map((item, index) => (
+    movieList?.map((item, index) => (
       <div key={index}>
         <FilmComponent item={item} index={index} />
       </div>

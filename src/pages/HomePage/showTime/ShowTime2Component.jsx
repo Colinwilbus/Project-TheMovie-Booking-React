@@ -5,13 +5,14 @@ import moment from "moment";
 import { NavLink } from "react-router-dom";
 import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";
 import shipLogoItem from "../../../assets/img/ship_Logo_Item.jpg";
+import _ from "lodash";
 
 const { SubMenu } = Menu;
 const { TabPane } = Tabs;
 
 export default function ShowTime2Component(props) {
   const { cinemaList } = props;
-  //   console.log(cinemaList);
+  console.log(cinemaList);
   const handleOnErrorImage = (e, className) => {
     e.target.onError = null;
     e.target.style.display = "none";
@@ -44,7 +45,9 @@ export default function ShowTime2Component(props) {
               {film.lstLichChieuTheoPhim?.slice(0, 5).map((time, index) => (
                 <NavLink to={`/check-out/${time.maLichChieu}`} key={index}>
                   <span>
-                    {moment(time.ngayChieuGioChieu).format("hh:mm A")}
+                    {moment(time.ngayChieuGioChieu).format(
+                      "DD/MM/YYYY - hh:mm A"
+                    )}
                   </span>
                 </NavLink>
               ))}
@@ -142,36 +145,34 @@ export default function ShowTime2Component(props) {
         }
         key={index}
       >
-        <Tabs
-          //   data-aos="fade-right"
-          //   data-aos-once="true"
-          defaultActiveKey="0"
-          tabPosition="left"
-          onChange={callback}
-        >
-          {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => (
-            <TabPane
-              tab={
-                <div>
-                  <div>
-                    <img
-                      src={`${item.logo}`}
-                      alt={item.logo}
-                      onError={(e) => {
-                        e.target.onError = null;
-                        e.target.src = shipLogoItem;
-                      }}
-                    />
-                  </div>
+        <Tabs defaultActiveKey="0" tabPosition="left" onChange={callback}>
+          {item.lstCumRap?.map((itemChild, index) => {
+            if (!_.isEmpty(itemChild.danhSachPhim)) {
+              return (
+                <TabPane
+                  tab={
+                    <div>
+                      <div>
+                        <img
+                          src={`${item.logo}`}
+                          alt={item.logo}
+                          onError={(e) => {
+                            e.target.onError = null;
+                            e.target.src = shipLogoItem;
+                          }}
+                        />
+                      </div>
 
-                  {renderCinemaName(itemChild.tenCumRap)}
-                </div>
-              }
-              key={index}
-            >
-              {renderShowTimes(itemChild.danhSachPhim)}
-            </TabPane>
-          ))}
+                      {renderCinemaName(itemChild.tenCumRap)}
+                    </div>
+                  }
+                  key={index}
+                >
+                  {renderShowTimes(itemChild.danhSachPhim)}
+                </TabPane>
+              );
+            }
+          })}
         </Tabs>
       </TabPane>
     ));
@@ -192,11 +193,15 @@ export default function ShowTime2Component(props) {
         key={index}
       >
         <Menu mode="inline" style={{ width: 256 }}>
-          {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => (
-            <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>
-              {renderShowTimesMobi(itemChild.danhSachPhim)}
-            </SubMenu>
-          ))}
+          {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => {
+            if (!_.isEmpty(itemChild.danhSachPhim)) {
+              return (
+                <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>
+                  {renderShowTimesMobi(itemChild.danhSachPhim)}
+                </SubMenu>
+              );
+            }
+          })}
         </Menu>
       </TabPane>
     ));

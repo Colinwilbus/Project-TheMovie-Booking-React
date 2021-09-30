@@ -27,14 +27,11 @@ export default function FindShowTimeComponent(props) {
         type: "getShowTimeFilmApiAction",
         id: value,
       });
-      setValueSystemCinema(undefined);
-      setValueCinema(undefined);
-      handleDataSearch([]);
-    } else {
-      setValueSystemCinema(undefined);
-      setValueCinema(undefined);
-      handleDataSearch([]);
     }
+    setValueSystemCinema(undefined);
+    setValueCinema(undefined);
+    handleDataSearch([]);
+    setState({ ...state, choiceListCinema: [], choiceCinema: [] });
     setValueMovie(value);
   };
   const handleChangeSystemCinema = (value) => {
