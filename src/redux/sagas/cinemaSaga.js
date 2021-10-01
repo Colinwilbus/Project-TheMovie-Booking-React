@@ -7,6 +7,7 @@ import { DISLAY_LOADING, HIDE_LOADING } from "../types/lazyLoadingType";
 function* getCinemaListApiAction(action) {
   try {
     const { data } = yield call(() => cinemaManagerService.getCinemaListApi());
+
     yield put({
       type: cinemaType.GET_CINEMA_LIST,
       data,

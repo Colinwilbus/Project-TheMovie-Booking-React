@@ -13,6 +13,16 @@ export class baseService {
       },
     });
   };
+  putPasswordHome = (url, model, token) => {
+    return Axios({
+      url: `${DOMAIN}/${url}`,
+      method: "PUT",
+      data: model,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+  };
 
   post = (url, model) => {
     return Axios({

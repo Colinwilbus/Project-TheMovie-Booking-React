@@ -61,11 +61,11 @@ function App() {
         <UserTemplate exact path="/login" Component={LoginPage} />
         <UserTemplate exact path="/profile" Component={ProfilePage} />
         <UserTemplate exact path="/register" Component={RegisterPage} />
-        {/* <UserTemplate
+        <UserTemplate
           exact
           path="/restore-password"
           Component={RestorePasswordPage}
-        /> */}
+        />
 
         <AdminTemplate
           exact

@@ -16,6 +16,7 @@ const movieReducer = (state = stateDefault, action) => {
     case movieType.GET_MOVIE_LIST: {
       let movieListNowShowingUpdate = [];
       let movieListComingSoonUpdate = [];
+
       action.data?.forEach((item, index) => {
         const i = item.ngayKhoiChieu.indexOf("T");
         let newReleaseDay = "";

@@ -25,6 +25,14 @@ class UserManagerService extends baseService {
   };
   putUpdateInfoUserApi = (form) =>
     this.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, form);
+  //
+  putUpdateInfoPasswordUserApi = (form, token) =>
+    this.putPasswordHome(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      form,
+      token
+    );
+  //
   deleteInfoUserApi = (userName) =>
     this.delete(`api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${userName}`);
 }

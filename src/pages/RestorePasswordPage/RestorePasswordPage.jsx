@@ -4,7 +4,7 @@ import logo from "../../assets/img/logo_2.png";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-
+import * as userType from "../../redux/types/userType";
 import { Steps, Button } from "antd";
 import { GROUPID } from "../../util/settings/config";
 import _ from "lodash";
@@ -14,19 +14,20 @@ const { Step } = Steps;
 export default function RestorePasswordPage(props) {
   const [current, setCurrent] = useState(0);
   const dispatch = useDispatch();
-  const { listUser } = useSelector((state) => state.userReducer);
+  const { listUser, userBoss, bossLogin } = useSelector(
+    (state) => state.userReducer
+  );
   const [disable, setDisable] = useState(true);
   const [notification, setNotification] = useState(false);
 
-  console.log("listUser", listUser);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      taiKhoan: listUser[0]?.taiKhoan,
-      hoTen: listUser[0]?.hoTen,
+      taiKhoan: "",
+      hoTen: "",
       email: "",
       soDt: "",
-      maLoaiNguoiDung: listUser[0]?.maLoaiNguoiDung,
+      maLoaiNguoiDung: "",
       matKhau: "",
       maNhom: GROUPID,
     },
@@ -35,12 +36,26 @@ export default function RestorePasswordPage(props) {
   useEffect(() => {
     if (_.isEmpty(listUser) || listUser.length >= 2) {
       setDisable(true);
-      formik.setFieldValue("taiKhoan", "");
     } else {
+      formik.setFieldValue("taiKhoan", listUser[0]?.taiKhoan);
+      formik.setFieldValue("hoTen", listUser[0]?.hoTen);
+      formik.setFieldValue("maLoaiNguoiDung", listUser[0]?.maLoaiNguoiDung);
       setDisable(false);
       setNotification(false);
     }
   }, [listUser]);
+  //
+  useEffect(() => {
+    dispatch({
+      type: "getListUserApiAction",
+      sortUserBoss: true,
+    });
+    return () => {
+      dispatch({
+        type: userType.DEL_LIST_USER,
+      });
+    };
+  }, []);
 
   const renderNotification = () => {
     if (notification) {
@@ -50,6 +65,7 @@ export default function RestorePasswordPage(props) {
       }
     }
   };
+
   const next = () => {
     setCurrent(current + 1);
     setDisable(true);
@@ -105,7 +121,6 @@ export default function RestorePasswordPage(props) {
                 keyWord: formik.values.taiKhoan,
               });
             }
-            setNotification(true);
           }}
         >
           <span>Check</span>
@@ -148,12 +163,19 @@ export default function RestorePasswordPage(props) {
           type="button"
           className="btn btn-primary"
           onClick={() => {
-            console.log(formik.values);
             if (
               listUser[0].email === formik.values.email &&
               listUser[0].soDt === formik.values.soDt
             ) {
               setDisable(false);
+              dispatch({
+                type: "postUserLoginAction",
+                userLogin: {
+                  taiKhoan: userBoss.taiKhoan,
+                  matKhau: userBoss.matKhau,
+                },
+                bossLogin: true,
+              });
             } else {
               setDisable(true);
             }
@@ -166,7 +188,7 @@ export default function RestorePasswordPage(props) {
   );
   const formPassword = () => (
     <form>
-      <div class="row">
+      <div className="row">
         <div className="col-12 col-sm-6">
           <div className="form-group">
             <input
@@ -224,22 +246,23 @@ export default function RestorePasswordPage(props) {
               disabled={formik.values.matKhau === "" ? true : false}
               type="primary"
               onClick={() => {
-                console.log(formik.values);
                 dispatch({
                   type: "putUpdateUserApiAction",
                   form: formik.values,
                   history: props.history,
+                  accessBoss: bossLogin.accessToken,
+                  typeUpdatePassword: true,
                 });
               }}
             >
               Done
             </Button>
           )}
-          {current > 0 && (
+          {/* {current > 0 && (
             <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
               Previous
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </div>

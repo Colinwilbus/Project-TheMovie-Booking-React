@@ -1,5 +1,5 @@
 import * as userType from "../types/userType";
-import { USER_LOGIN, TOKEN } from "../../util/settings/config";
+import { USER_LOGIN, TOKEN, BOSS_ACCOUNT } from "../../util/settings/config";
 import { UserLoginInfo } from "../../core/models/UserModel";
 
 let user = {};
@@ -13,6 +13,8 @@ const stateDefault = {
   listUser: [],
   userUpdate: "",
   newUser: "",
+  userBoss: {},
+  bossLogin: {},
 };
 
 const userReducer = (state = stateDefault, action) => {
@@ -38,6 +40,19 @@ const userReducer = (state = stateDefault, action) => {
     }
     case userType.POST_UPDATE_USER: {
       return { ...state, userUpdate: action.form };
+    }
+    case userType.DEL_LIST_USER: {
+      return { ...state, listUser: [], bossLogin: {} };
+    }
+    //
+    case userType.GET_USER_BOSS: {
+      return {
+        ...state,
+        userBoss: action.data.find((item) => item.taiKhoan === BOSS_ACCOUNT),
+      };
+    }
+    case userType.POST_USER_BOSS: {
+      return { ...state, bossLogin: action.data };
     }
     default:
       return { ...state };

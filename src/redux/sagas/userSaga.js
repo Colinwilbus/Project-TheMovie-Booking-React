@@ -8,34 +8,46 @@ import {
   HIDE_LOADING_MODAL,
 } from "../types/lazyLoadingType";
 import { notification } from "antd";
+
 // USER_LOGIN
 function* postUserLoginAction(action) {
   try {
     const { data } = yield call(() =>
       userManagerService.postUserLoginApi(action.userLogin)
     );
-    yield put({
-      type: userType.POST_USER_LOGIN,
-      data,
-    });
-    notification.open({
-      message: "Notification",
-      description: "Đăng nhập thành công",
-      onClick: () => {
-        console.log("Notification Clicked!");
-      },
-      duration: 1.5,
-    });
+    if (action.bossLogin) {
+      yield put({
+        type: userType.POST_USER_BOSS,
+        data,
+      });
+    } else {
+      yield put({
+        type: userType.POST_USER_LOGIN,
+        data,
+      });
+    }
+    if (action.notifi) {
+      notification.open({
+        message: "Notification",
+        description: "Đăng nhập thành công",
+        onClick: () => {
+          console.log("Notification Clicked!");
+        },
+        duration: 1.5,
+      });
+    }
     action.history.goBack();
   } catch (err) {
-    notification.open({
-      message: "Notification",
-      description: err.response?.data,
-      onClick: () => {
-        console.log("Notification Clicked!");
-      },
-      duration: 1.5,
-    });
+    if (action.notifi) {
+      notification.open({
+        message: "Notification",
+        description: err.response?.data,
+        onClick: () => {
+          console.log("Notification Clicked!");
+        },
+        duration: 1.5,
+      });
+    }
   }
 }
 export function* postUserLoginApiAcionSaga() {
@@ -158,13 +170,19 @@ export function* postNewUserAdminApiActionSaga() {
 // GET_LIST_USER
 function* getListUserApiAction(action) {
   try {
-    const res = yield call(() =>
+    const { data } = yield call(() =>
       userManagerService.getUserListApi(action.keyWord)
     );
     yield put({
       type: userType.GET_LIST_USER,
-      data: res.data,
+      data,
     });
+    if (action.sortUserBoss) {
+      yield put({
+        type: userType.GET_USER_BOSS,
+        data,
+      });
+    }
   } catch (error) {
     console.log(error.response?.data);
   }
@@ -175,9 +193,18 @@ export function* getListUserApiActionSaga() {
 // UPDATE_USER
 function* putUpdateUserApiAction(action) {
   try {
-    const res = yield call(() =>
-      userManagerService.putUpdateInfoUserApi(action.form)
-    );
+    if (action.typeUpdatePassword) {
+      const res = yield call(() =>
+        userManagerService.putUpdateInfoPasswordUserApi(
+          action.form,
+          action.accessBoss
+        )
+      );
+    } else {
+      const res = yield call(() =>
+        userManagerService.putUpdateInfoUserApi(action.form)
+      );
+    }
 
     notification.open({
       message: "Notification",
@@ -192,9 +219,9 @@ function* putUpdateUserApiAction(action) {
       type: userType.POST_UPDATE_USER,
       form: action.form,
     });
-    // if (action.history) {
-    //   action.history.push("login");
-    // }
+    if (action.history) {
+      action.history.push("login");
+    }
   } catch (error) {
     notification.open({
       message: "Notification",
