@@ -42,7 +42,7 @@ export default function ShowTime2Component(props) {
               <span>VIEWING TIMES</span>
             </p>
             <div>
-              {film.lstLichChieuTheoPhim?.slice(0, 5).map((time, index) => (
+              {film.lstLichChieuTheoPhim?.map((time, index) => (
                 <NavLink to={`/check-out/${time.maLichChieu}`} key={index}>
                   <span>
                     {moment(time.ngayChieuGioChieu).format(
@@ -91,7 +91,7 @@ export default function ShowTime2Component(props) {
               <span>VIEWING TIMES</span>
             </p>
             <div>
-              {film.lstLichChieuTheoPhim?.slice(0, 5).map((time, index) => (
+              {film.lstLichChieuTheoPhim?.map((time, index) => (
                 <NavLink to={`/check-out/${time.maLichChieu}`} key={index}>
                   <span>
                     {moment(time.ngayChieuGioChieu).format(
@@ -195,7 +195,7 @@ export default function ShowTime2Component(props) {
         key={index}
       >
         <Menu mode="inline" style={{ width: 256 }}>
-          {item.lstCumRap.slice(0, 5)?.map((itemChild, index) => {
+          {item.lstCumRap?.map((itemChild, index) => {
             if (!_.isEmpty(itemChild.danhSachPhim)) {
               return (
                 <SubMenu key={`sub${index}`} title={itemChild.tenCumRap}>

@@ -31,6 +31,13 @@ export default function RestorePasswordPage(props) {
       matKhau: "",
       maNhom: GROUPID,
     },
+    validate: (values) => {
+      const errors = {};
+      if (!/^[a-zA-Z0-9]*$/.test(values.matKhau)) {
+        errors.matKhau = "Only letter (a-z), number (0-9)";
+      }
+      return errors;
+    },
   });
 
   useEffect(() => {
@@ -57,11 +64,38 @@ export default function RestorePasswordPage(props) {
     };
   }, []);
 
-  const renderNotification = () => {
+  const renderNotification = (key) => {
     if (notification) {
-      if (_.isEmpty(listUser) || listUser.length >= 2) {
-        return <span>Tài khoản không chính xác</span>;
-      } else {
+      switch (key) {
+        case "userName":
+          {
+            if (
+              _.isEmpty(listUser) ||
+              listUser.length >= 2 ||
+              formik.values.taiKhoan === ""
+            ) {
+              return <span>Tài khoản không chính xác</span>;
+            }
+          }
+          break;
+
+        case "phonenumber":
+          {
+            if (formik.values.soDt !== listUser[0]?.soDt) {
+              return <span>Số đt không chính xác</span>;
+            }
+          }
+          break;
+        case "email":
+          {
+            if (formik.values.email !== listUser[0]?.email) {
+              return <span>email không chính xác</span>;
+            }
+          }
+          break;
+        default: {
+          return "";
+        }
       }
     }
   };
@@ -69,11 +103,12 @@ export default function RestorePasswordPage(props) {
   const next = () => {
     setCurrent(current + 1);
     setDisable(true);
+    setNotification(false);
   };
 
-  const prev = () => {
-    setCurrent(current - 1);
-  };
+  //   const prev = () => {
+  //     setCurrent(current - 1);
+  //   };
 
   const handleChangeUsername = (e) => {
     formik.setFieldValue("taiKhoan", e.target.value);
@@ -82,10 +117,11 @@ export default function RestorePasswordPage(props) {
   const handleChangeEmail = (e) => {
     formik.setFieldValue("email", e.target.value);
     setDisable(true);
+    setNotification(false);
   };
   const handleChangePhonenumber = (e) => {
     formik.setFieldValue("soDt", e.target.value);
-
+    setNotification(false);
     setDisable(true);
   };
   const handleChangePassword = (e) => {
@@ -93,11 +129,30 @@ export default function RestorePasswordPage(props) {
     setDisable(false);
   };
 
+  window.addEventListener(
+    "keydown",
+    function (e) {
+      if (
+        e.keyIdentifier == "U+000A" ||
+        e.keyIdentifier == "Enter" ||
+        e.keyCode == 13
+      ) {
+        if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+          e.preventDefault();
+          return false;
+        }
+      }
+    },
+    true
+  );
   const formUsername = () => (
     <form>
       <div className="row">
         <div className="col-12 col-sm-6">
           <div className="form-group">
+            <p className="restorePassword__validate">
+              {renderNotification("userName")}
+            </p>
             <input
               placeholder="Username"
               name="taiKhoan"
@@ -106,7 +161,6 @@ export default function RestorePasswordPage(props) {
               value={formik.values.taiKhoan}
               onBlur={(e) => formik.handleBlur(e)}
             />
-            <p className="restorePassword__validate">{renderNotification()}</p>
           </div>
         </div>
       </div>
@@ -118,9 +172,10 @@ export default function RestorePasswordPage(props) {
             if (formik.values.taiKhoan !== "") {
               dispatch({
                 type: "getListUserApiAction",
-                keyWord: formik.values.taiKhoan,
+                keyWord: formik.values.taiKhoan.trim(),
               });
             }
+            setNotification(true);
           }}
         >
           <span>Check</span>
@@ -133,6 +188,9 @@ export default function RestorePasswordPage(props) {
       <div className="row">
         <div className="col-12 col-sm-6">
           <div className="form-group">
+            <p className="restorePassword__validate">
+              {renderNotification("email")}
+            </p>
             <input
               placeholder="Email"
               name="email"
@@ -141,11 +199,13 @@ export default function RestorePasswordPage(props) {
               value={formik.values.email}
               onBlur={(e) => formik.handleBlur(e)}
             />
-            <p className="restorePassword__validate"></p>
           </div>
         </div>
         <div className="col-12 col-sm-6">
           <div className="form-group">
+            <p className="restorePassword__validate">
+              {renderNotification("phonenumber")}
+            </p>
             <input
               placeholder="PhoneNumber"
               name="soDt"
@@ -154,7 +214,6 @@ export default function RestorePasswordPage(props) {
               value={formik.values.soDt}
               onBlur={(e) => formik.handleBlur(e)}
             />
-            <p className="restorePassword__validate"></p>
           </div>
         </div>
       </div>
@@ -163,9 +222,10 @@ export default function RestorePasswordPage(props) {
           type="button"
           className="btn btn-primary"
           onClick={() => {
+            setNotification(true);
             if (
-              listUser[0].email === formik.values.email &&
-              listUser[0].soDt === formik.values.soDt
+              listUser[0].email === formik.values.email.trim() &&
+              listUser[0].soDt === formik.values.soDt.trim()
             ) {
               setDisable(false);
               dispatch({
@@ -191,6 +251,11 @@ export default function RestorePasswordPage(props) {
       <div className="row">
         <div className="col-12 col-sm-6">
           <div className="form-group">
+            <p className="restorePassword__validate">
+              {formik.touched.matKhau && formik.errors.matKhau
+                ? formik.errors.matKhau
+                : ""}
+            </p>
             <input
               type="password"
               placeholder="New Password"
@@ -243,7 +308,9 @@ export default function RestorePasswordPage(props) {
           {current === steps.length - 1 && (
             <Button
               className="btn-done"
-              disabled={formik.values.matKhau === "" ? true : false}
+              disabled={
+                formik.values.matKhau !== "" && formik.isValid ? false : true
+              }
               type="primary"
               onClick={() => {
                 dispatch({

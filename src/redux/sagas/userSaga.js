@@ -36,7 +36,7 @@ function* postUserLoginAction(action) {
         duration: 1.5,
       });
     }
-    action.history.goBack();
+    action.history.push("/home");
   } catch (err) {
     if (action.notifi) {
       notification.open({
