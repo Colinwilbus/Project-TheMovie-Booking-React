@@ -4,10 +4,10 @@ import { Table, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import shipLogoError from "../../../assets/img/ship_Logo_Item.jpg";
-import ModalAddFilm from "../ModalAddFilm/ModalAddFilmComponent";
-import ModalEditFilmComponent from "../ModalEditFilm/ModalEditFilmComponent";
+import ModalAddFilm from "./ModalAddFilm/ModalAddFilmComponent";
+import ModalEditFilmComponent from "./ModalEditFilm/ModalEditFilmComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
-import DeleteFilmComponent from "../DeleteFilm/DeleteFilmComponent";
+import DeleteFilmComponent from "./DeleteFilm/DeleteFilmComponent";
 const { Search } = Input;
 export default function ShowFilmsAdminComponent(props) {
   const { movieList, newMovie, updateMovie } = useSelector(
@@ -136,7 +136,7 @@ export default function ShowFilmsAdminComponent(props) {
       </div>
       <div className="showFilmsAm__Search">
         <Search
-          placeholder="input search text"
+          placeholder="Search Film"
           onSearch={onSearch}
           enterButton
           onChange={(e) => {

@@ -2,11 +2,11 @@ import { Table, Input } from "antd";
 import React, { useEffect } from "react";
 import "./ShowUsersAdminStyle.scss";
 import { useDispatch, useSelector } from "react-redux";
-import ModalAddUserComponent from "../ModalAddUsers/ModalAddUserComponent";
-import ModalEditUserComponent from "../ModalEditUser/ModalEditUserComponent";
+import ModalAddUserComponent from "./ModalAddUsers/ModalAddUserComponent";
+import ModalEditUserComponent from "./ModalEditUser/ModalEditUserComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
-import DeleteUserComponent from "../DeleteUser/DeleteUserComponent";
-import ShowTimesUserComponent from "../ShowTimeUser/ShowTimesUserComponent";
+import DeleteUserComponent from "./DeleteUser/DeleteUserComponent";
+import ShowTimesUserComponent from "./ShowTimeUser/ShowTimesUserComponent";
 const { Search } = Input;
 export default function ShowUsersAdminComponent() {
   const { listUser, newUser, userUpdate } = useSelector(

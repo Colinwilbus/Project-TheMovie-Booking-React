@@ -85,7 +85,7 @@ function* postNewMovieApiAction(action) {
     );
     notification.open({
       message: "Notification",
-      description: "Thêm film thành công",
+      description: "Add Film Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },
@@ -121,7 +121,7 @@ function* postUpdateMovieApiAction(action) {
 
     notification.open({
       message: "Notification",
-      description: "Update Film thành công!",
+      description: "Update Film Successfully!",
       onClick: () => {
         console.log("Notification Clicked!");
       },
@@ -153,7 +153,7 @@ function* deleteMovieApiAction(action) {
     const res = yield call(() => movieManagerService.deleteMovieApi(action.id));
     notification.open({
       message: "Notification",
-      description: "Delete Film thành công!",
+      description: "Delete Film Successfully!",
       onClick: () => {
         console.log("Notification Clicked!");
       },

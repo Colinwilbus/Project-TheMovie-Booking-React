@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Select } from "antd";
 import "./ModalAddUserStyle.scss";
 import { useFormik } from "formik";
-import { GROUPID } from "../../../util/settings/config";
+import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
 import _ from "lodash";
 const { Option } = Select;

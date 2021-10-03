@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./AddShowTimesStyle.scss";
 import { DatePicker, Modal, Button, Select, InputNumber } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { cinemaManagerService } from "../../../services/CinemaManagerService";
+import { cinemaManagerService } from "../../../../services/CinemaManagerService";
 import { useFormik } from "formik";
 import moment from "moment";
 

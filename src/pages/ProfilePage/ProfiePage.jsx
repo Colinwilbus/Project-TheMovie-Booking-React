@@ -13,7 +13,7 @@ export default function ProfilePage(props) {
   const { userLogin, userLoginInfo } = useSelector(
     (state) => state.userReducer
   );
-
+  console.log("userLoginInfo", userLoginInfo);
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch({
@@ -83,6 +83,17 @@ export default function ProfilePage(props) {
                     <tr>
                       <td>Phone Number:</td>
                       <td>{userLoginInfo.soDT}</td>
+                    </tr>
+                    <tr>
+                      <td>Points(50.000 = 1):</td>
+                      <td>
+                        {Math.floor(
+                          userLoginInfo.thongTinDatVe.reduce(
+                            (total, item, index) => total + item.giaVe,
+                            0
+                          ) / 50000
+                        )}
+                      </td>
                     </tr>
                   </tbody>
                 </table>

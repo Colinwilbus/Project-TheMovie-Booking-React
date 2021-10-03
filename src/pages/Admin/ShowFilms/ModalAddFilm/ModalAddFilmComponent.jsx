@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, DatePicker, InputNumber } from "antd";
 import { useFormik } from "formik";
+import "./ModalAddFilmStyle.scss";
 import moment from "moment";
 import _ from "lodash";
-import { GROUPID } from "../../../util/settings/config";
+import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
-import "./ModalEditFilmStyle.scss";
-export default function ModalEditFilmComponent(props) {
-  const { film } = props;
+export default function ModalAddFilmComponent(props) {
   const [state, setState] = useState({ srcImg: "", activeButton: true });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
-
   const formik = useFormik({
-    enableReinitialize: true,
     initialValues: {
-      maPhim: film.maPhim,
-      tenPhim: film.tenPhim,
-      trailer: film.trailer,
-      moTa: film.moTa,
-      danhGia: film.danhGia,
-      ngayKhoiChieu: film.ngayKhoiChieu,
-      hinhAnh: null,
+      tenPhim: "",
+      trailer: "",
+      moTa: "",
+      danhGia: "",
+      ngayKhoiChieu: "",
+      hinhAnh: "",
       maNhom: GROUPID,
     },
     validate: (values) => {
@@ -41,55 +37,21 @@ export default function ModalEditFilmComponent(props) {
       if (!values.danhGia) {
         errors.danhGia = "required";
       }
+      if (!values.hinhAnh) {
+        errors.hinhAnh = "required";
+      }
 
       return errors;
     },
   });
 
   //
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
 
-  const handleOk = () => {
-    let formData = new FormData();
-    for (let key in formik.values) {
-      if (key === "hinhAnh") {
-        if (formik.values.hinhAnh !== null) {
-          formData.append(
-            "File",
-            formik.values.hinhAnh,
-            formik.values.hinhAnh.name
-          );
-        }
-      } else if (key === "ngayKhoiChieu") {
-        const releaseDate = moment(formik.values.ngayKhoiChieu).format(
-          "DD/MM/YYYY"
-        );
-        formData.append(key, releaseDate);
-      } else {
-        formData.append(key, formik.values[key]);
-      }
-    }
-    const updateFilm = () => {
-      dispatch({
-        type: "postUpdateMovieApiAction",
-        formData,
-      });
-    };
-    updateFilm();
-    setIsModalVisible(false);
-    formik.resetForm();
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-    resetFormEditFilm();
-  };
   const handleChangeDate = (value) => {
-    formik.setFieldValue("ngayKhoiChieu", value);
+    const releaseDate = moment(value).format("DD/MM/YYYY");
+    formik.setFieldValue("ngayKhoiChieu", releaseDate);
   };
-  const handleChangeFile = async (e) => {
+  const handleChangeFile = (e) => {
     const file = e.target.files[0];
 
     let reader = new FileReader();
@@ -98,7 +60,6 @@ export default function ModalEditFilmComponent(props) {
       file?.type === "image/jpeg" ||
       file?.type === "image/jpg"
     ) {
-      await formik.setFieldValue("hinhAnh", file);
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         setState({
@@ -106,45 +67,76 @@ export default function ModalEditFilmComponent(props) {
           srcImg: e.target.result,
         });
       };
+      formik.setFieldValue("hinhAnh", file);
     } else if (_.isEmpty(file)) {
-      await formik.setFieldValue("hinhAnh", "");
+      formik.setFieldValue("hinhAnh", "");
       setState({
         ...state,
         srcImg: "",
       });
     }
   };
-  const resetFormEditFilm = () => {
+  const handleOk = () => {
+    let formData = new FormData();
+    for (let key in formik.values) {
+      if (key !== "hinhAnh") {
+        formData.append(key, formik.values[key]);
+      } else {
+        formData.append(
+          "File",
+          formik.values.hinhAnh,
+          formik.values.hinhAnh.name
+        );
+      }
+    }
+    const addFilm = () => {
+      dispatch({
+        type: "postNewMovieApiAction",
+        formData,
+      });
+    };
+    addFilm();
+    setIsModalVisible(false);
+    resetFormAddFilm();
+  };
+  const resetFormAddFilm = () => {
     formik.resetForm();
-    document.querySelector("#editFilm__InputFileId").value = "";
-    // document.querySelector("#editFilm__ImgInputFileId").src = "";
-    // document.querySelector("#editFilm__ImgInputFileId").alt = "";
-    setState({ ...state, srcImg: "" });
+    document.querySelector("#addFilm__InputFileId").value = "";
+    setState({ srcImg: "" });
+    console.log(formik.values);
+  };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    resetFormAddFilm();
   };
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        <span>
-          <i className="fa fa-edit"></i>
-        </span>
+        Add Film
       </Button>
       <Modal
-        title="Update Film"
+        title="Create New Film"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        okText="Update Film"
-        destroyOnClose={true}
+        okText="Add Film"
         okButtonProps={{ disabled: !(formik.dirty && formik.isValid) }}
+        destroyOnClose={true}
       >
-        <div className="editFilm">
+        <div className="addFilm">
           <form>
             <div className="row">
               <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Name</label>
-                  <span className="editFilm__error">
-                    {formik.errors.tenPhim}
+                  <span className="addFilm__error">
+                    {formik.touched.tenPhim && formik.errors.tenPhim
+                      ? "*" + formik.errors.tenPhim
+                      : ""}
                   </span>
 
                   <input
@@ -152,6 +144,7 @@ export default function ModalEditFilmComponent(props) {
                     className="form-control"
                     onChange={(e) => formik.handleChange(e)}
                     value={formik.values.tenPhim}
+                    onBlur={(e) => formik.handleBlur(e)}
                   />
                 </div>
               </div>
@@ -159,8 +152,10 @@ export default function ModalEditFilmComponent(props) {
               <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Trailer</label>
-                  <span className="editFilm__error">
-                    {formik.errors.trailer}
+                  <span className="addFilm__error">
+                    {formik.touched.trailer && formik.errors.trailer
+                      ? "*" + formik.errors.trailer
+                      : ""}
                   </span>
 
                   <input
@@ -168,14 +163,15 @@ export default function ModalEditFilmComponent(props) {
                     className="form-control"
                     onChange={(e) => formik.handleChange(e)}
                     value={formik.values.trailer}
+                    onBlur={(e) => formik.handleBlur(e)}
                   />
                 </div>
               </div>
               <div className="col-5 col-sm-3">
                 <div className="form-group">
                   <label>Rate</label>
-                  <span className="editFilm__error">
-                    {formik.errors.danhGia}
+                  <span className="addFilm__error">
+                    {formik.errors.danhGia ? "*" + formik.errors.danhGia : ""}
                   </span>
 
                   <InputNumber
@@ -184,56 +180,71 @@ export default function ModalEditFilmComponent(props) {
                     onChange={(values) => {
                       formik.setFieldValue("danhGia", values);
                     }}
-                    value={formik.values.danhGia}
+                    id="addFilm__inputNumberId"
+                    value={
+                      formik.values.danhGia !== "" ? formik.values.danhGia : ""
+                    }
                   />
                 </div>
               </div>
               <div className="col-7 col-sm-3">
                 <div className="form-group">
                   <label>Release Date</label>
-                  <span className="editFilm__error">
-                    {formik.errors.ngayKhoiChieu}
+                  <span className="addFilm__error">
+                    {formik.errors.ngayKhoiChieu
+                      ? "*" + formik.errors.ngayKhoiChieu
+                      : ""}
                   </span>
 
                   <DatePicker
                     placeholder="DD/MM/YYYY"
                     format="DD/MM/YYYY"
                     onChange={(e) => handleChangeDate(e)}
-                    value={moment(formik.values.ngayKhoiChieu)}
+                    id="addFilm__inputDateId"
+                    value={
+                      formik.values.ngayKhoiChieu !== ""
+                        ? moment(formik.values.ngayKhoiChieu, "DD/MM/YYYY")
+                        : ""
+                    }
                   />
                 </div>
               </div>
               <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label>Image</label>
-                  <span className="editFilm__error">
-                    {formik.errors.hinhAnh}
+                  <span className="addFilm__error">
+                    {formik.errors.hinhAnh ? "*" + formik.errors.hinhAnh : ""}
                   </span>
 
                   <input
-                    className="editFilm__InputFile"
+                    className="addFilm__InputFile"
                     type="file"
                     onChange={(e) => handleChangeFile(e)}
                     accept="image/png, image/jpeg, image/jpg"
-                    id="editFilm__InputFileId"
+                    id="addFilm__InputFileId"
                   />
                   <img
-                    src={state.srcImg === "" ? film.hinhAnh : state.srcImg}
-                    alt={state.srcImg === "" ? film.hinhAnh : state.srcImg}
-                    id="editFilm__ImgInputFileId"
+                    id="addFilm__ImgInputFileId"
+                    src={state.srcImg}
+                    alt={state.srcImg}
                   />
                 </div>
               </div>
               <div className="col-12 col-sm-6">
                 <div className="form-group">
                   <label htmlFor="exampleInputPassword1">Description</label>
-                  <span className="editFilm__error">{formik.errors.moTa}</span>
+                  <span className="addFilm__error">
+                    {formik.touched.moTa && formik.errors.moTa
+                      ? "*" + formik.errors.moTa
+                      : ""}
+                  </span>
 
                   <textarea
                     name="moTa"
                     className="form-control"
                     onChange={(e) => formik.handleChange(e)}
                     value={formik.values.moTa}
+                    onBlur={(e) => formik.handleBlur(e)}
                   />
                 </div>
               </div>

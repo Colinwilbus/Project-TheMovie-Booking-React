@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Table } from "antd";
 import "./ShowTimesUserStyle.scss";
 import moment from "moment";
-import LazyLoadingModalComponent from "../../../components/LazyLoadingModalComponent/LazyLoadingModalComponent";
+import LazyLoadingModalComponent from "../../../../components/LazyLoadingModalComponent/LazyLoadingModalComponent";
 export default function ShowTimesUserComponent(props) {
   const { userLoginInfo } = useSelector((state) => state.userReducer);
   const { userShowTime } = props;

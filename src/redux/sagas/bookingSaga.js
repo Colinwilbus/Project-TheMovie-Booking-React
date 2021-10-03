@@ -52,7 +52,7 @@ function* bookingTicketApiAction(action) {
     });
     notification.open({
       message: "Notification",
-      description: data,
+      description: "Book Ticket Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },

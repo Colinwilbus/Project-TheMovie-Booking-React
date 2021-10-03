@@ -86,7 +86,7 @@ function* postNewShowTimesApiAction(action) {
     );
     notification.open({
       message: "Notification",
-      description: "Thêm lịch chiếu thành công!",
+      description: "Add Showtimes Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },

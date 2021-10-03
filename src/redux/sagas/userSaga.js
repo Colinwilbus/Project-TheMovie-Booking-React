@@ -29,7 +29,7 @@ function* postUserLoginAction(action) {
     if (action.notifi) {
       notification.open({
         message: "Notification",
-        description: "Đăng nhập thành công",
+        description: "Login Successfully",
         onClick: () => {
           console.log("Notification Clicked!");
         },
@@ -113,7 +113,7 @@ function* postNewUserApiAction(action) {
     );
     notification.open({
       message: "Notification",
-      description: "đăng ký thành công",
+      description: "Register Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },
@@ -143,7 +143,7 @@ function* postNewUserAdminApiAction(action) {
 
     notification.open({
       message: "Notification",
-      description: "Thêm tài khoản thành công",
+      description: "Add User Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },
@@ -208,7 +208,7 @@ function* putUpdateUserApiAction(action) {
 
     notification.open({
       message: "Notification",
-      description: "update tài khoản thành công",
+      description: "Update User Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },
@@ -248,7 +248,7 @@ function* deleteInfoUserApiAction(action) {
 
     notification.open({
       message: "Notification",
-      description: "xóa tài khoản thành công!",
+      description: "Delete User Successfully",
       onClick: () => {
         console.log("Notification Clicked!");
       },

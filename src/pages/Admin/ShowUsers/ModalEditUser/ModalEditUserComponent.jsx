@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Select } from "antd";
 import "./ModalEditUserStyle.scss";
 import { useFormik } from "formik";
-import { GROUPID } from "../../../util/settings/config";
+import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
 const { Option } = Select;
 export default function ModalEditUserComponent(props) {

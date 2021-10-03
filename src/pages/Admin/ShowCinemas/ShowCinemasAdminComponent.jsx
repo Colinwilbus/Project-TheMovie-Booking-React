@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ShowCinemasAdminStyle.scss";
 import { Tabs, Table, Menu } from "antd";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
-import ModalShowTimesComponent from "../ModalShowTimes/ModalShowTimesComponent";
-import AddShowTimesComponent from "../AddShowTimes/AddShowTimesComponent";
+import ModalShowTimesComponent from "./ModalShowTimes/ModalShowTimesComponent";
+import AddShowTimesComponent from "./AddShowTimes/AddShowTimesComponent";
 import _ from "lodash";
-import FindShowTimeComponent from "../FindShowTime/FindShowTimeComponent";
+import FindShowTimeComponent from "./FindShowTime/FindShowTimeComponent";
 import shipLogoError from "../../../assets/img/ship_Logo_Item.jpg";
 
 const { TabPane } = Tabs;
