@@ -44,7 +44,7 @@ export default function AddShowTimesComponent(props) {
       return errors;
     },
   });
-  console.log(formik.values);
+  //   console.log(formik.values);
   const dispatch = useDispatch();
   useEffect(() => {
     const getCinemasystem = async () => {
@@ -91,7 +91,7 @@ export default function AddShowTimesComponent(props) {
     ));
   function onChangeDate(value, dateString) {
     // console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
+    // console.log("Formatted Selected Time: ", dateString);
     formik.setFieldValue("ngayChieuGioChieu", dateString);
   }
   function onChangeNumber(value) {
@@ -150,7 +150,7 @@ export default function AddShowTimesComponent(props) {
   };
 
   const handleChangeFilm = (value) => {
-    console.log("film", value);
+    // console.log("film", value);
     formik.setFieldValue("maPhim", value);
   };
   const handleChangeTheather = (value) => {

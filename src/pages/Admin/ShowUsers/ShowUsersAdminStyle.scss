@@ -82,7 +82,7 @@
                         }
                         &:nth-of-type(5) {
                           display: none;
-                          @media screen and(min-width: 992px) {
+                          @media screen and(min-width: 1200px) {
                             display: table-cell;
                           }
                         }
@@ -159,7 +159,7 @@
                         }
                         &:nth-of-type(5) {
                           display: none;
-                          @media screen and(min-width: 992px) {
+                          @media screen and(min-width: 1200px) {
                             display: table-cell;
                           }
                         }
@@ -215,7 +215,7 @@
                             width: 24%;
                           }
                           @media screen and(min-width: 1200px) {
-                            width: 15%;
+                            width: 20%;
                           }
                         }
                       }

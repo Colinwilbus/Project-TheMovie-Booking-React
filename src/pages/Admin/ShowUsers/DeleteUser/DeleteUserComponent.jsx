@@ -2,7 +2,7 @@ import React from "react";
 import "./DeleteUserStyle.scss";
 export default function DeleteUserComponent(props) {
   const { userDelete } = props;
-  console.log("userDelete", userDelete);
+  //   console.log("userDelete", userDelete);
   return (
     <div className="deleteUser">
       <div className="deleteUser__content">

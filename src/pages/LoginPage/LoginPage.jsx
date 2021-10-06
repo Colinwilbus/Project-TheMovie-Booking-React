@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import Aos from "aos";
 import _ from "lodash";
 export default function LoginPage(props) {
-  console.log(props);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {

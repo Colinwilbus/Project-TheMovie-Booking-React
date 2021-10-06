@@ -103,7 +103,7 @@ export default function ModalAddFilmComponent(props) {
     formik.resetForm();
     document.querySelector("#addFilm__InputFileId").value = "";
     setState({ srcImg: "" });
-    console.log(formik.values);
+    // console.log(formik.values);
   };
   const showModal = () => {
     setIsModalVisible(true);

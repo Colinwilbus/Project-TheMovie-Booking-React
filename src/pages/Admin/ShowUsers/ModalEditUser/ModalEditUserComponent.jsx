@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 const { Option } = Select;
 export default function ModalEditUserComponent(props) {
   const { userUpdate } = props;
-  console.log("userUpdate", userUpdate);
+  //   console.log("userUpdate", userUpdate);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const formik = useFormik({

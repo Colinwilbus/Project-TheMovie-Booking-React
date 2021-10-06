@@ -13,7 +13,7 @@ export default function ProfilePage(props) {
   const { userLogin, userLoginInfo } = useSelector(
     (state) => state.userReducer
   );
-  console.log("userLoginInfo", userLoginInfo);
+
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch({

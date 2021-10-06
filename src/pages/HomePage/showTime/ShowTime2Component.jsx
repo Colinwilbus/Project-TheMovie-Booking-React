@@ -12,7 +12,7 @@ const { TabPane } = Tabs;
 
 export default function ShowTime2Component(props) {
   const { cinemaList } = props;
-  console.log(cinemaList);
+
   const handleOnErrorImage = (e, className) => {
     e.target.onError = null;
     e.target.style.display = "none";

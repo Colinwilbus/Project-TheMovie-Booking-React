@@ -19,8 +19,8 @@ export default function FindShowTimeComponent(props) {
   const { showTimesFilm, showTimesCinemaFilm } = useSelector(
     (state) => state.cinemaReducer
   );
-  console.log("showTimesCinemaFilm", showTimesCinemaFilm);
-  console.log("listCinemaOption", state.listCinemaOption);
+  //   console.log("showTimesCinemaFilm", showTimesCinemaFilm);
+  //   console.log("listCinemaOption", state.listCinemaOption);
   const handleChangeMovie = (value) => {
     if (value) {
       dispatch({

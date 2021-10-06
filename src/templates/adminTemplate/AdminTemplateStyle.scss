@@ -50,6 +50,10 @@
     }
     .ant-layout-sider-trigger {
       background: linear-gradient(to right, #191919, #fbbd61, #ec7532);
+      pointer-events: none;
+      @media screen and(min-width: 992px) {
+        pointer-events: all;
+      }
 
       span {
         color: black;
@@ -100,6 +104,7 @@
   .ant-layout-header {
     background-color: #191919;
     padding: 0;
+    height: 130px;
     .admin__HeaderContent {
       display: flex;
       justify-content: space-between;
@@ -130,6 +135,7 @@
     .ant-menu {
       background-color: #191919;
       justify-content: center;
+      z-index: 999999 !important;
       .ant-menu-item {
         background-color: #323232;
         width: 25%;

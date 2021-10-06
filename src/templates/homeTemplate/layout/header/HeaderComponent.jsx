@@ -12,8 +12,8 @@ import { deleteUserLogin } from "../../../../redux/actions/userAction";
 export default function HeaderComponent(props) {
   const [state, setState] = useState({ isLogin: false, isShow: false });
   const { userLogin } = useSelector((state) => state.userReducer);
-  console.log("userLogin", userLogin);
-  console.log("state", state.isLogin);
+  //   console.log("userLogin", userLogin);
+  //   console.log("state", state.isLogin);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!_.isEmpty(userLogin)) {

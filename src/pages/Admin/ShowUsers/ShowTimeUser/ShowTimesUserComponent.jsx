@@ -8,7 +8,7 @@ export default function ShowTimesUserComponent(props) {
   const { userLoginInfo } = useSelector((state) => state.userReducer);
   const { userShowTime } = props;
   const dispatch = useDispatch();
-  console.log("userShowTime", userShowTime);
+  //   console.log("userShowTime", userShowTime);
   useEffect(() => {
     const userAccount = {
       taiKhoan: userShowTime.userName,

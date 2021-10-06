@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 export default function MovieDetailPage(props) {
   const { id } = props.match.params;
   const { showTimesFilm } = useSelector((state) => state.cinemaReducer);
-  console.log({ showTimesFilm });
+
   const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({

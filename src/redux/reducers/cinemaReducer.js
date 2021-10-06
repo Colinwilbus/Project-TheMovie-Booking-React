@@ -8,7 +8,7 @@ const stateDefault = {
 };
 
 const cinemaReducer = (state = stateDefault, action) => {
-  console.log(action.type);
+  //   console.log(action.type);
   switch (action.type) {
     case cinemaType.GET_CINEMA_LIST: {
       return { ...state, cinemaList: action.data };

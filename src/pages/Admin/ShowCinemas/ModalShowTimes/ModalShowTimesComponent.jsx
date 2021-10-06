@@ -4,7 +4,7 @@ import moment from "moment";
 import "./ModalShowTimesStyle.scss";
 export default function ModalShowTimesComponent(props) {
   const { showTimeList } = props;
-  console.log(showTimeList);
+  //   console.log(showTimeList);
   const columns = [
     {
       title: "ID",

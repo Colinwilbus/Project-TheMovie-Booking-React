@@ -3,8 +3,8 @@ import "./ModalInfoBookingStyle.scss";
 
 export default function ModalInfoBookingComponent(props) {
   const { listChoiceChair, infoFilm } = props;
-  console.log("listChoiceChair", listChoiceChair);
-  console.log("infoFilm", infoFilm);
+  //   console.log("listChoiceChair", listChoiceChair);
+  //   console.log("infoFilm", infoFilm);
   return (
     <div className="modalInfoBooking">
       <div className="row">

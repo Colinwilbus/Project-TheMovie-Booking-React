@@ -10,7 +10,7 @@ import ContentComingSoonComponent from "./contentCs/ContentComingSoonComponent";
 export default function MovieDetailComingSoonPage(props) {
   const { id } = props.match.params;
   const { showTimesFilm } = useSelector((state) => state.cinemaReducer);
-  console.log({ showTimesFilm });
+
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch({

@@ -102,16 +102,13 @@ export default function ShowUsersAdminComponent() {
               Component={DeleteUserComponent}
               textOk="Delete User"
               functionOk={() => {
-                const deleteUser = async () => {
-                  await dispatch({
-                    type: "deleteInfoUserApiAction",
-                    userName: user.userName,
-                  });
-                  await dispatch({
-                    type: "getListUserApiAction",
-                  });
-                };
-                deleteUser();
+                dispatch({
+                  type: "deleteInfoUserApiAction",
+                  userName: user.userName,
+                });
+                dispatch({
+                  type: "getListUserApiAction",
+                });
               }}
               titleModal="Delete User"
               userDelete={user}

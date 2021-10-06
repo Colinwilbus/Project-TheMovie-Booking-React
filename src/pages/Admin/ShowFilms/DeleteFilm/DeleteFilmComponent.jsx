@@ -4,7 +4,7 @@ import "./DeleteFilmStyle.scss";
 
 export default function DeleteFilmComponent(props) {
   const { film } = props;
-  console.log(film);
+  //   console.log(film);
   return (
     <div className="deleteFilm">
       <div className="deleteFilm__Content">

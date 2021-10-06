@@ -96,16 +96,13 @@ export default function ShowFilmsAdminComponent(props) {
               Component={DeleteFilmComponent}
               textOk="Delete Film"
               functionOk={() => {
-                const deleteFilm = async () => {
-                  await dispatch({
-                    type: "deleteMovieApiAction",
-                    id: film.maPhim,
-                  });
-                  await dispatch({
-                    type: "getMovieListApiAction",
-                  });
-                };
-                deleteFilm();
+                dispatch({
+                  type: "deleteMovieApiAction",
+                  id: film.maPhim,
+                });
+                dispatch({
+                  type: "getMovieListApiAction",
+                });
               }}
               film={film}
               titleModal="Delete Film"
