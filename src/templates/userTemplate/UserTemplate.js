@@ -10,7 +10,7 @@ const UserTemplate = (props) => {
   //   if (localStorage.getItem(USER_LOGIN)) {
   //     return <Redirect to="/home" />;
   //   }
-  if (props.path === "/login") {
+  if (props.path === "/login" || props.path === "/restore-password") {
     if (!_.isEmpty(userLogin)) {
       return <Redirect to="/" />;
     }

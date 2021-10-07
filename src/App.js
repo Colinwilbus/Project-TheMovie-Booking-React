@@ -1,7 +1,7 @@
 import "./App.css";
 // setup react-router-dom
 import { createBrowserHistory } from "history";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 // setup loading screen
 import LazyLoadingLogoComponent from "./components/LazyLoadingComponent/LazyLoadingLogoComponent";
 // setup antd
@@ -89,6 +89,9 @@ function App() {
           path="/admin/showUsers"
           Component={ShowUsersAdminComponent}
         />
+        <Route path="">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
