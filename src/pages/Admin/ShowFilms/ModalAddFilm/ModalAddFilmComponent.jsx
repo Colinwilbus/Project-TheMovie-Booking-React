@@ -6,6 +6,7 @@ import moment from "moment";
 import _ from "lodash";
 import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
+import * as movieType from "../../../../redux/types/movieType";
 export default function ModalAddFilmComponent(props) {
   const [state, setState] = useState({ srcImg: "", activeButton: true });
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -91,7 +92,7 @@ export default function ModalAddFilmComponent(props) {
     }
     const addFilm = () => {
       dispatch({
-        type: "postNewMovieApiAction",
+        type: movieType.POST_NEW_MOVIE_SAGA,
         formData,
       });
     };

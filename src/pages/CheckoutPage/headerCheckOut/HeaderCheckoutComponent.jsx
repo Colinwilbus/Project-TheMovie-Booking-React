@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/img/logo_2.png";
 import "./HeaderCheckoutStyle.scss";
-import { USER_LOGIN, TOKEN } from "../../../util/settings/config";
+
 import { deleteUserLogin } from "../../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
 import LoadingItemComponent from "../../../components/LoadingItemComponent/LoadingItemComponent";

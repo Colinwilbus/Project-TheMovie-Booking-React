@@ -37,7 +37,7 @@ function* getMovieListApiAction(action) {
 }
 
 export function* getMovieListApiActionSaga() {
-  yield takeLatest("getMovieListApiAction", getMovieListApiAction);
+  yield takeLatest(movieType.GET_MOVIE_LIST_SAGA, getMovieListApiAction);
 }
 
 /*
@@ -73,7 +73,7 @@ function* getMovieDetailAction(action) {
   }
 }
 export function* getMovieDetailApiActionSaga() {
-  yield takeLatest("getMovieDetailAction", getMovieDetailAction);
+  yield takeLatest(movieType.GET_MOVIE_DETAIL_SAGA, getMovieDetailAction);
 }
 
 /*
@@ -108,7 +108,7 @@ function* postNewMovieApiAction(action) {
 }
 
 export function* postNewMovieApiActionSaga() {
-  yield takeLatest("postNewMovieApiAction", postNewMovieApiAction);
+  yield takeLatest(movieType.POST_NEW_MOVIE_SAGA, postNewMovieApiAction);
 }
 
 /*
@@ -143,7 +143,7 @@ function* postUpdateMovieApiAction(action) {
   }
 }
 export function* postUpdateMovieApiActionSaga() {
-  yield takeLatest("postUpdateMovieApiAction", postUpdateMovieApiAction);
+  yield takeLatest(movieType.POST_UPDATE_MOVIE_SAGA, postUpdateMovieApiAction);
 }
 /*
 DELETE MOVIE
@@ -175,5 +175,5 @@ function* deleteMovieApiAction(action) {
   }
 }
 export function* deleteMovieApiActionSaga() {
-  yield takeLatest("deleteMovieApiAction", deleteMovieApiAction);
+  yield takeLatest(movieType.DELETE_MOVIE_SAGA, deleteMovieApiAction);
 }

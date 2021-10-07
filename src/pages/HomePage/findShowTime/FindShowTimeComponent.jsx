@@ -4,7 +4,7 @@ import { Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
-
+import * as cinemaType from "../../../redux/types/cinemaType";
 const { Option } = Select;
 
 export default function FindShowTimeComponent(props) {
@@ -55,7 +55,7 @@ export default function FindShowTimeComponent(props) {
       idShowTime: "",
     });
     dispatch({
-      type: "getShowTimeFilmApiAction",
+      type: cinemaType.GET_SHOWTIMES_FILM_SAGA,
       id: value,
     });
   };

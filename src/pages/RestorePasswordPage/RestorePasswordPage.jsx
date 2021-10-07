@@ -54,7 +54,7 @@ export default function RestorePasswordPage(props) {
   //
   useEffect(() => {
     dispatch({
-      type: "getListUserApiAction",
+      type: userType.GET_LIST_USER_SAGA,
       sortUserBoss: true,
     });
     return () => {
@@ -171,7 +171,7 @@ export default function RestorePasswordPage(props) {
           onClick={() => {
             if (formik.values.taiKhoan !== "") {
               dispatch({
-                type: "getListUserApiAction",
+                type: userType.GET_LIST_USER_SAGA,
                 keyWord: formik.values.taiKhoan.trim(),
               });
             }
@@ -229,7 +229,7 @@ export default function RestorePasswordPage(props) {
             ) {
               setDisable(false);
               dispatch({
-                type: "postUserLoginAction",
+                type: userType.POST_USER_LOGIN_SAGA,
                 userLogin: {
                   taiKhoan: userBoss.taiKhoan,
                   matKhau: userBoss.matKhau,
@@ -314,7 +314,7 @@ export default function RestorePasswordPage(props) {
               type="primary"
               onClick={() => {
                 dispatch({
-                  type: "putUpdateUserApiAction",
+                  type: userType.POST_UPDATE_USER_SAGA,
                   form: formik.values,
                   history: props.history,
                   accessBoss: bossLogin.accessToken,

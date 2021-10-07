@@ -5,7 +5,7 @@ import BannerComponent from "./banner/BannerComponent";
 import Aos from "aos";
 import ContentFilmComponent from "./contentFilm/ContentFilmComponent";
 import { useSelector, useDispatch } from "react-redux";
-
+import * as cinemaType from "../../redux/types/cinemaType";
 export default function MovieDetailPage(props) {
   const { id } = props.match.params;
   const { showTimesFilm } = useSelector((state) => state.cinemaReducer);
@@ -16,7 +16,7 @@ export default function MovieDetailPage(props) {
       duration: 1000,
     });
     dispatch({
-      type: "getShowTimeFilmApiAction",
+      type: cinemaType.GET_SHOWTIMES_FILM_SAGA,
       id,
       loading: true,
     });

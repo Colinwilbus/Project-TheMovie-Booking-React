@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import "./RegisterStyle.scss";
 import { GROUPID, TYPE_USER } from "../../util/settings/config";
-
+import * as userType from "../../redux/types/userType";
 export default function RegisterPage(props) {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -59,7 +59,7 @@ export default function RegisterPage(props) {
     },
     onSubmit: (values) => {
       dispatch({
-        type: "postNewUserApiAction",
+        type: userType.POST_NEW_USER_SAGA,
         newUser: values,
         history: props.history,
       });

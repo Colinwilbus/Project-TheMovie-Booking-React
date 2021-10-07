@@ -4,6 +4,8 @@ import "./ModalEditUserStyle.scss";
 import { useFormik } from "formik";
 import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
+import * as userType from "../../../../redux/types/userType";
+
 const { Option } = Select;
 export default function ModalEditUserComponent(props) {
   const { userUpdate } = props;
@@ -51,7 +53,7 @@ export default function ModalEditUserComponent(props) {
 
   const handleOk = () => {
     dispatch({
-      type: "putUpdateUserApiAction",
+      type: userType.POST_UPDATE_USER_SAGA,
       form: formik.values,
     });
     formik.resetForm();

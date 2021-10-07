@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import Aos from "aos";
 import _ from "lodash";
+import * as userType from "../../redux/types/userType";
 export default function LoginPage(props) {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -26,7 +27,7 @@ export default function LoginPage(props) {
     },
     onSubmit: (values) => {
       dispatch({
-        type: "postUserLoginAction",
+        type: userType.POST_USER_LOGIN_SAGA,
         userLogin: values,
         history: props.history,
         notifi: true,

@@ -1,14 +1,21 @@
 import { Redirect, Route } from "react-router-dom";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
-import { USER_LOGIN } from "../../util/settings/config";
-
+import { useSelector } from "react-redux";
+import _ from "lodash";
 import "./UserTemplateStyle.scss";
 
 const UserTemplate = (props) => {
+  const { userLogin } = useSelector((state) => state.userReducer);
   const { Component, ...restProps } = props;
   //   if (localStorage.getItem(USER_LOGIN)) {
   //     return <Redirect to="/home" />;
   //   }
+  if (props.path === "/login") {
+    if (!_.isEmpty(userLogin)) {
+      return <Redirect to="/" />;
+    }
+  }
+
   return (
     <Route
       {...restProps}

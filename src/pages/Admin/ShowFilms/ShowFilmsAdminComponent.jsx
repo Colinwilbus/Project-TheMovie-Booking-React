@@ -8,6 +8,7 @@ import ModalAddFilm from "./ModalAddFilm/ModalAddFilmComponent";
 import ModalEditFilmComponent from "./ModalEditFilm/ModalEditFilmComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import DeleteFilmComponent from "./DeleteFilm/DeleteFilmComponent";
+import * as movieType from "../../../redux/types/movieType";
 const { Search } = Input;
 export default function ShowFilmsAdminComponent(props) {
   const { movieList, newMovie, updateMovie } = useSelector(
@@ -16,7 +17,7 @@ export default function ShowFilmsAdminComponent(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
-      type: "getMovieListApiAction",
+      type: movieType.GET_MOVIE_LIST_SAGA,
     });
   }, [newMovie, updateMovie]);
 
@@ -96,13 +97,16 @@ export default function ShowFilmsAdminComponent(props) {
               Component={DeleteFilmComponent}
               textOk="Delete Film"
               functionOk={() => {
-                dispatch({
-                  type: "deleteMovieApiAction",
-                  id: film.maPhim,
-                });
-                dispatch({
-                  type: "getMovieListApiAction",
-                });
+                const handleDeleteFilm = async () => {
+                  await dispatch({
+                    type: movieType.DELETE_MOVIE_SAGA,
+                    id: film.maPhim,
+                  });
+                  await dispatch({
+                    type: movieType.GET_MOVIE_LIST_SAGA,
+                  });
+                };
+                handleDeleteFilm();
               }}
               film={film}
               titleModal="Delete Film"
@@ -121,7 +125,7 @@ export default function ShowFilmsAdminComponent(props) {
   const onSearch = (value) => {
     if (value.trim() !== "") {
       dispatch({
-        type: "getMovieListApiAction",
+        type: movieType.GET_MOVIE_LIST_SAGA,
         film: value,
       });
     }
@@ -139,7 +143,7 @@ export default function ShowFilmsAdminComponent(props) {
           onChange={(e) => {
             if (e.target.value.trim() === "") {
               dispatch({
-                type: "getMovieListApiAction",
+                type: movieType.GET_MOVIE_LIST_SAGA,
               });
             }
           }}

@@ -7,6 +7,7 @@ import ModalEditUserComponent from "./ModalEditUser/ModalEditUserComponent";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import DeleteUserComponent from "./DeleteUser/DeleteUserComponent";
 import ShowTimesUserComponent from "./ShowTimeUser/ShowTimesUserComponent";
+import * as userType from "../../../redux/types/userType";
 const { Search } = Input;
 export default function ShowUsersAdminComponent() {
   const { listUser, newUser, userUpdate } = useSelector(
@@ -16,7 +17,7 @@ export default function ShowUsersAdminComponent() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
-      type: "getListUserApiAction",
+      type: userType.GET_LIST_USER_SAGA,
     });
   }, [newUser, userUpdate]);
   const columns = [
@@ -103,11 +104,11 @@ export default function ShowUsersAdminComponent() {
               textOk="Delete User"
               functionOk={() => {
                 dispatch({
-                  type: "deleteInfoUserApiAction",
+                  type: userType.DEL_USER_SAGA,
                   userName: user.userName,
                 });
                 dispatch({
-                  type: "getListUserApiAction",
+                  type: userType.GET_LIST_USER_SAGA,
                 });
               }}
               titleModal="Delete User"
@@ -135,7 +136,7 @@ export default function ShowUsersAdminComponent() {
   const onSearch = (value) => {
     if (value.trim() !== "") {
       dispatch({
-        type: "getListUserApiAction",
+        type: userType.GET_LIST_USER_SAGA,
         keyWord: value,
       });
     }
@@ -154,7 +155,7 @@ export default function ShowUsersAdminComponent() {
           onChange={(e) => {
             if (e.target.value.trim() === "") {
               dispatch({
-                type: "getListUserApiAction",
+                type: userType.GET_LIST_USER_SAGA,
               });
             }
           }}

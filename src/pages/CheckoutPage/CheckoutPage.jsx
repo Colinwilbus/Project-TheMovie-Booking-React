@@ -5,10 +5,6 @@ import InfoBookingComponent from "./infoBooking/InfoBookingComponent";
 import "./CheckOutPageStyle.scss";
 import BookingChairComponent from "./bookingChair/BookingChairComponent";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  HIDE_LOADING,
-  DISLAY_LOADING,
-} from "../../redux/types/lazyLoadingType";
 import * as bookingType from "../../redux/types/bookingType";
 
 export default function CheckoutPage(props) {
@@ -24,7 +20,7 @@ export default function CheckoutPage(props) {
     //   type: DISLAY_LOADING,
     // });
     dispatch({
-      type: "getListChairApiAction",
+      type: bookingType.GET_LIST_CHAIR_CINEMA_SAGA,
       idShowtimes: id,
       loading: true,
     });

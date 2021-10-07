@@ -3,6 +3,7 @@ import { Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import "./FindShowTimeStyle.scss";
+import * as cinemaType from "../../../../redux/types/cinemaType";
 const { Option } = Select;
 export default function FindShowTimeComponent(props) {
   const { movieList, handleDataSearch } = props;
@@ -24,7 +25,7 @@ export default function FindShowTimeComponent(props) {
   const handleChangeMovie = (value) => {
     if (value) {
       dispatch({
-        type: "getShowTimeFilmApiAction",
+        type: cinemaType.GET_SHOWTIMES_FILM_SAGA,
         id: value,
       });
     }

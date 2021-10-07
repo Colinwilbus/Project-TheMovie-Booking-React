@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cinemaManagerService } from "../../../../services/CinemaManagerService";
 import { useFormik } from "formik";
 import moment from "moment";
-
+import * as cinemaType from "../../../../redux/types/cinemaType";
 const { Option } = Select;
 export default function AddShowTimesComponent(props) {
   const [state, setState] = useState({
@@ -60,9 +60,6 @@ export default function AddShowTimesComponent(props) {
       }
     };
     getCinemasystem();
-    // dispatch({
-    //   type: "getMovieListApiAction",
-    // });
   }, []);
 
   const renderOptionListFilm = () =>
@@ -108,7 +105,7 @@ export default function AddShowTimesComponent(props) {
   const handleOk = () => {
     formik.resetForm();
     dispatch({
-      type: "postNewShowTimesApiAction",
+      type: cinemaType.POST_NEW_SHOWTIME_SAGA,
       form: formik.values,
     });
     setIsModalVisible(false);

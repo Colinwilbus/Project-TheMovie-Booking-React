@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { InfoBooking } from "../../../core/models/BookingModel";
 import ModalComponent from "../../../components/ModalComponent/ModalComponent";
 import ModalInfoBookingComponent from "../ModalInfoBooking/ModalInfoBookingComponent";
+import * as bookingType from "../../../redux/types/bookingType";
 export default function InfoBookingComponent(props) {
   const dispatch = useDispatch();
   const { thongTinPhim } = props.listChair;
@@ -28,12 +29,12 @@ export default function InfoBookingComponent(props) {
     infoBooking.taiKhoanNguoiDung = userLogin.taiKhoan;
     if (!_.isEmpty(infoBooking.danhSachVe)) {
       dispatch({
-        type: "bookingTicketApiAction",
+        type: bookingType.BOOKING_TICKET_SAGA,
         infoBooking,
         history,
       });
       dispatch({
-        type: "getListChairApiAction",
+        type: bookingType.GET_LIST_CHAIR_CINEMA_SAGA,
         idShowtimes: props.idShowtimes,
       });
     }

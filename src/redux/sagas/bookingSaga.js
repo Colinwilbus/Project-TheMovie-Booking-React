@@ -3,6 +3,7 @@ import { DISLAY_LOADING, HIDE_LOADING } from "../types/lazyLoadingType";
 import { call, put, takeLatest, delay } from "redux-saga/effects";
 import { bookingService } from "../../services/BookingService";
 import { notification } from "antd";
+
 // GET_LIST_CHAIR
 function* getListChairApiAction(action) {
   try {
@@ -35,7 +36,10 @@ function* getListChairApiAction(action) {
   }
 }
 export function* getListChairApiActionSaga() {
-  yield takeLatest("getListChairApiAction", getListChairApiAction);
+  yield takeLatest(
+    bookingType.GET_LIST_CHAIR_CINEMA_SAGA,
+    getListChairApiAction
+  );
 }
 
 // BOOKING_CHAIR
@@ -75,5 +79,5 @@ function* bookingTicketApiAction(action) {
   //   });
 }
 export function* bookingTicketApiActionSaga() {
-  yield takeLatest("bookingTicketApiAction", bookingTicketApiAction);
+  yield takeLatest(bookingType.BOOKING_TICKET_SAGA, bookingTicketApiAction);
 }

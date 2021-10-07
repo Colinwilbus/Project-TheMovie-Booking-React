@@ -5,10 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "moment";
 import _ from "lodash";
-import {
-  HIDE_LOADING,
-  DISLAY_LOADING,
-} from "../../redux/types/lazyLoadingType";
+import * as userType from "../../redux/types/userType";
 export default function ProfilePage(props) {
   const { userLogin, userLoginInfo } = useSelector(
     (state) => state.userReducer
@@ -16,22 +13,14 @@ export default function ProfilePage(props) {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch({
-    //   type: DISLAY_LOADING,
-    // });
     const userAccount = {
       taiKhoan: userLogin.taiKhoan,
     };
     dispatch({
-      type: "postUserLoginInfoApiAction",
+      type: userType.POST_USER_INFO_SAGA,
       userAccount,
       loading: true,
     });
-    // setTimeout(() => {
-    //   dispatch({
-    //     type: HIDE_LOADING,
-    //   });
-    // }, 2500);
   }, []);
   const renderHistoryBooking = () =>
     _.reverse(_.sortBy(userLoginInfo.thongTinDatVe, "ngayDat")).map(

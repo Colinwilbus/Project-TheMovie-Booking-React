@@ -6,6 +6,7 @@ import _ from "lodash";
 import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
 import "./ModalEditFilmStyle.scss";
+import * as movieType from "../../../../redux/types/movieType";
 export default function ModalEditFilmComponent(props) {
   const { film } = props;
   const [state, setState] = useState({ srcImg: "", activeButton: true });
@@ -73,7 +74,7 @@ export default function ModalEditFilmComponent(props) {
     }
     const updateFilm = () => {
       dispatch({
-        type: "postUpdateMovieApiAction",
+        type: movieType.POST_UPDATE_MOVIE_SAGA,
         formData,
       });
     };

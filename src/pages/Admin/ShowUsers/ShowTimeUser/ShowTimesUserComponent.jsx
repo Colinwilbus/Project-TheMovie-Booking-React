@@ -4,6 +4,7 @@ import { Table } from "antd";
 import "./ShowTimesUserStyle.scss";
 import moment from "moment";
 import LazyLoadingModalComponent from "../../../../components/LazyLoadingModalComponent/LazyLoadingModalComponent";
+import * as userType from "../../../../redux/types/userType";
 export default function ShowTimesUserComponent(props) {
   const { userLoginInfo } = useSelector((state) => state.userReducer);
   const { userShowTime } = props;
@@ -14,7 +15,7 @@ export default function ShowTimesUserComponent(props) {
       taiKhoan: userShowTime.userName,
     };
     dispatch({
-      type: "postUserLoginInfoApiAction",
+      type: userType.POST_USER_INFO_SAGA,
       userAccount,
       loadingModal: true,
     });

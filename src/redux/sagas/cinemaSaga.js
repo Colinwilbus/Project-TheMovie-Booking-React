@@ -18,7 +18,7 @@ function* getCinemaListApiAction(action) {
 }
 
 export function* getCinemaListApiActionSaga() {
-  yield takeLatest("getCinemaListApiAction", getCinemaListApiAction);
+  yield takeLatest(cinemaType.GET_CINEMA_LIST_SAGA, getCinemaListApiAction);
 }
 
 // GET_SHOWTIME_FILM
@@ -54,7 +54,10 @@ function* getShowTimeFilmApiAction(action) {
 }
 
 export function* getShowTimesFilmActionSaga() {
-  yield takeLatest("getShowTimeFilmApiAction", getShowTimeFilmApiAction);
+  yield takeLatest(
+    cinemaType.GET_SHOWTIMES_FILM_SAGA,
+    getShowTimeFilmApiAction
+  );
 }
 
 // GET_SHOWTIME_FILM_CINEMA
@@ -73,7 +76,7 @@ function* getShowTimesFilmCinemaAction(action) {
 
 export function* getShowTimesFilmCinemaActionSaga() {
   yield takeLatest(
-    "getShowTimesFilmCinemaAction",
+    cinemaType.GET_SHOWTIMES_FILM_CINEMA_SAGA,
     getShowTimesFilmCinemaAction
   );
 }
@@ -109,5 +112,8 @@ function* postNewShowTimesApiAction(action) {
 }
 
 export function* postNewShowTimesApiActionSaga() {
-  yield takeLatest("postNewShowTimesApiAction", postNewShowTimesApiAction);
+  yield takeLatest(
+    cinemaType.POST_NEW_SHOWTIME_SAGA,
+    postNewShowTimesApiAction
+  );
 }

@@ -4,6 +4,7 @@ import "./ModalAddUserStyle.scss";
 import { useFormik } from "formik";
 import { GROUPID } from "../../../../util/settings/config";
 import { useDispatch } from "react-redux";
+import * as userType from "../../../../redux/types/userType";
 import _ from "lodash";
 const { Option } = Select;
 export default function ModalAddUserComponent() {
@@ -23,26 +24,36 @@ export default function ModalAddUserComponent() {
       const errors = {};
       if (!values.hoTen.trim()) {
         errors.hoTen = "required";
+      } else if (
+        !/^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$/.test(
+          values.hoTen.trim()
+        )
+      ) {
+        errors.hoTen = "Fullname not valid !";
       }
       if (!values.soDt.trim()) {
         errors.soDt = "required";
-      } else if (!/^[0-9]+$/.test(values.soDt)) {
-        errors.soDt = "Phone number not valid!";
+      } else if (!/^[0-9]+$/.test(values.soDt.trim())) {
+        errors.soDt = "Only number (0-9)";
       }
       if (!values.email.trim()) {
         errors.email = "required";
       } else if (
         !/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/.test(
-          values.email
+          values.email.trim()
         )
       ) {
         errors.email = "email not valid !";
       }
       if (!values.taiKhoan.trim()) {
         errors.taiKhoan = "required";
+      } else if (!/^[a-zA-Z0-9]*$/.test(values.taiKhoan)) {
+        errors.taiKhoan = "Only letter (a-z), number (0-9)";
       }
       if (!values.matKhau.trim()) {
         errors.matKhau = "required";
+      } else if (!/^[a-zA-Z0-9]*$/.test(values.matKhau)) {
+        errors.matKhau = "Only letter (a-z), number (0-9)";
       }
 
       return errors;
@@ -55,7 +66,7 @@ export default function ModalAddUserComponent() {
   const handleOk = () => {
     // console.log("form", formik.values);
     dispatch({
-      type: "postNewUserAdminApiAction",
+      type: userType.POST_NEW_USER_ADMIN_SAGA,
       newUser: formik.values,
     });
     setIsModalVisible(false);

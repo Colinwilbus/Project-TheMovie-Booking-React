@@ -51,7 +51,7 @@ function* postUserLoginAction(action) {
   }
 }
 export function* postUserLoginApiAcionSaga() {
-  yield takeLatest("postUserLoginAction", postUserLoginAction);
+  yield takeLatest(userType.POST_USER_LOGIN_SAGA, postUserLoginAction);
 }
 // INFO_USER_LOGIN
 function* postUserLoginInfoApiAction(action) {
@@ -103,7 +103,7 @@ function* postUserLoginInfoApiAction(action) {
   }
 }
 export function* postUserLoginInfoApiActionSaga() {
-  yield takeLatest("postUserLoginInfoApiAction", postUserLoginInfoApiAction);
+  yield takeLatest(userType.POST_USER_INFO_SAGA, postUserLoginInfoApiAction);
 }
 // USER_REGISTER
 function* postNewUserApiAction(action) {
@@ -132,7 +132,7 @@ function* postNewUserApiAction(action) {
   }
 }
 export function* postNewUserApiActionSaga() {
-  yield takeLatest("postNewUserApiAction", postNewUserApiAction);
+  yield takeLatest(userType.POST_NEW_USER_SAGA, postNewUserApiAction);
 }
 // USER_REGISTER_ADMIN
 function* postNewUserAdminApiAction(action) {
@@ -165,7 +165,10 @@ function* postNewUserAdminApiAction(action) {
   }
 }
 export function* postNewUserAdminApiActionSaga() {
-  yield takeLatest("postNewUserAdminApiAction", postNewUserAdminApiAction);
+  yield takeLatest(
+    userType.POST_NEW_USER_ADMIN_SAGA,
+    postNewUserAdminApiAction
+  );
 }
 // GET_LIST_USER
 function* getListUserApiAction(action) {
@@ -188,7 +191,7 @@ function* getListUserApiAction(action) {
   }
 }
 export function* getListUserApiActionSaga() {
-  yield takeLatest("getListUserApiAction", getListUserApiAction);
+  yield takeLatest(userType.GET_LIST_USER_SAGA, getListUserApiAction);
 }
 // UPDATE_USER
 function* putUpdateUserApiAction(action) {
@@ -235,7 +238,7 @@ function* putUpdateUserApiAction(action) {
 }
 
 export function* putUpdateUserApiActionSaga() {
-  yield takeLatest("putUpdateUserApiAction", putUpdateUserApiAction);
+  yield takeLatest(userType.POST_UPDATE_USER_SAGA, putUpdateUserApiAction);
 }
 
 // DELETE_USER
@@ -267,5 +270,5 @@ function* deleteInfoUserApiAction(action) {
 }
 
 export function* deleteInfoUserApiActionSaga() {
-  yield takeLatest("deleteInfoUserApiAction", deleteInfoUserApiAction);
+  yield takeLatest(userType.DEL_USER_SAGA, deleteInfoUserApiAction);
 }

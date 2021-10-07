@@ -8,6 +8,8 @@ import AddShowTimesComponent from "./AddShowTimes/AddShowTimesComponent";
 import _ from "lodash";
 import FindShowTimeComponent from "./FindShowTime/FindShowTimeComponent";
 import shipLogoError from "../../../assets/img/ship_Logo_Item.jpg";
+import * as movieType from "../../../redux/types/movieType";
+import * as cinemaType from "../../../redux/types/cinemaType";
 
 const { TabPane } = Tabs;
 const { SubMenu } = Menu;
@@ -27,12 +29,12 @@ export default function ShowCinemaAdminComponent(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
-      type: "getMovieListApiAction",
+      type: movieType.GET_MOVIE_LIST_SAGA,
     });
   }, []);
   useEffect(() => {
     dispatch({
-      type: "getCinemaListApiAction",
+      type: cinemaType.GET_CINEMA_LIST_SAGA,
     });
   }, [newShowTime]);
 

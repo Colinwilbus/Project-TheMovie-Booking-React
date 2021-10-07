@@ -5,6 +5,8 @@ import ShowFilmComponent from "./showFilm/ShowFilmComponent";
 import ShowTime2Component from "./showTime/ShowTime2Component";
 import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
+import * as movieType from "../../redux/types/movieType";
+import * as cinemaType from "../../redux/types/cinemaType";
 
 import FindShowTimeComponent from "./findShowTime/FindShowTimeComponent";
 
@@ -19,11 +21,11 @@ export default function HomePage() {
       duration: 1000,
     });
     dispatch({
-      type: "getMovieListApiAction",
+      type: movieType.GET_MOVIE_LIST_SAGA,
       loading: true,
     });
     dispatch({
-      type: "getCinemaListApiAction",
+      type: cinemaType.GET_CINEMA_LIST_SAGA,
       loading: true,
     });
   }, []);
