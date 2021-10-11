@@ -70,7 +70,15 @@ export default function FooterComponent() {
           </div>
         </div>
         <div className="footer__bot">
-          <p>2021 © B.Movie | Booking Ticket Website | By Colin_Wilbus</p>
+          <p>
+            2021 © B.Movie | Booking Ticket Website | By{" "}
+            <a
+              href="https://portfolio-colin-wilbus.vercel.app/"
+              target="_blank"
+            >
+              Colin_Wilbus
+            </a>
+          </p>
         </div>
       </div>
     </footer>

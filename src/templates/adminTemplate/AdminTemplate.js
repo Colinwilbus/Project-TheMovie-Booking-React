@@ -142,7 +142,13 @@ const AdminTemplate = (props) => {
                   </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>
-                  2021 © B.Movie | Booking Ticket Website | By Colin_Wilbus
+                  2021 © B.Movie | Booking Ticket Website | By{" "}
+                  <a
+                    href="https://portfolio-colin-wilbus.vercel.app/"
+                    target="_blank"
+                  >
+                    Colin_Wilbus
+                  </a>
                 </Footer>
               </Layout>
             </Layout>
@@ -201,7 +207,13 @@ const AdminTemplate = (props) => {
                 <Component {...propsRoute} />
               </Content>
               <Footer style={{ textAlign: "center" }}>
-                2021 © B.Movie | Booking Ticket Website | By Colin_Wilbus
+                2021 © B.Movie | Booking Ticket Website | By{" "}
+                <a
+                  href="https://portfolio-colin-wilbus.vercel.app/"
+                  target="_blank"
+                >
+                  Colin_Wilbus
+                </a>
               </Footer>
             </Layout>
           </Fragment>

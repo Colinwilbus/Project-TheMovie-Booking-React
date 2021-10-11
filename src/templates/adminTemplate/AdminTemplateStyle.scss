@@ -93,6 +93,11 @@
       &::before {
         display: none;
       }
+      a {
+        color: black;
+        font-weight: 900;
+        text-decoration: none;
+      }
     }
   }
 }
@@ -174,6 +179,11 @@
 
     &::before {
       display: none;
+    }
+    a {
+      color: black;
+      font-weight: 900;
+      text-decoration: none;
     }
   }
 }
